@@ -105,3 +105,52 @@ export const register = async (req, res) => {
     });
   }
 };
+
+/* -------- Verify Email -------- */
+export const verifyEmail = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+
+    if (!email || !otp) {
+      return res.status(400).json({
+        success: false,
+        message: "Email and OTP are required.",
+      });
+    }
+
+    const user = await User.findOne({
+      email,
+      verificationOTP: otp,
+      verificationOTPExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "The verification code is invalid or has expired.",
+      });
+    }
+
+    user.isVerified = true;
+    user.verificationOTP = undefined;
+    user.verificationOTPExpires = undefined;
+
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Email verified successfully! You can now log in.",
+    });
+  } catch (error) {
+    console.error(
+      "Verify Email Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while verifying the email.",
+      error: `Verify Email Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
