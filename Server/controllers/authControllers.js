@@ -1,5 +1,6 @@
 // Jobvia / Server / controllers / authControllers.js
 import User from "../models/User.js";
+import { validatePassword } from "../utils/passwordValidator.js";
 import bcrypt from "bcrypt";
 import { generateOTP, getOTPExpiration } from "../utils/otp.js";
 import { jwtSecret, jwtSecretExpiresIn, otpTtlMinutes } from "../config/env.js";
@@ -14,6 +15,27 @@ export const register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
+    if (!name?.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Name is required.",
+      });
+    }
+
+    if (!email?.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required.",
+      });
+    }
+
+    if (!password) {
+      return res.status(400).json({
+        success: false,
+        message: "Password is required.",
+      });
+    }
+
     const userExists = await User.findOne({ email });
 
     if (userExists) {
@@ -23,45 +45,12 @@ export const register = async (req, res) => {
       });
     }
 
-    if (password.length < 6) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must be at least 6 characters long.",
-      });
-    }
+    const passwordError = validatePassword(password);
 
-    if (password.length > 12) {
+    if (passwordError) {
       return res.status(400).json({
         success: false,
-        message: "Password must not exceed 12 characters.",
-      });
-    }
-
-    if (!/[A-Z]/.test(password)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one uppercase letter (A-Z).",
-      });
-    }
-
-    if (!/[a-z]/.test(password)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one lowercase letter (a-z).",
-      });
-    }
-
-    if (!/[0-9]/.test(password)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one number (0-9).",
-      });
-    }
-
-    if (!/[^A-Za-z0-9]/.test(password)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one special character.",
+        message: passwordError,
       });
     }
 
@@ -115,10 +104,17 @@ export const verifyEmail = async (req, res) => {
   try {
     const { email, otp } = req.body;
 
-    if (!email || !otp) {
+    if (!email) {
       return res.status(400).json({
         success: false,
-        message: "Email and OTP are required.",
+        message: "Email is required.",
+      });
+    }
+
+    if (!otp) {
+      return res.status(400).json({
+        success: false,
+        message: "OTP is required.",
       });
     }
 
@@ -163,6 +159,20 @@ export const verifyEmail = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required.",
+      });
+    }
+
+    if (!password) {
+      return res.status(400).json({
+        success: false,
+        message: "Password is required.",
+      });
+    }
 
     const user = await User.findOne({ email });
 
@@ -276,10 +286,24 @@ export const resetPassword = async (req, res) => {
   try {
     const { email, otp, newPassword } = req.body;
 
-    if (!email || !otp || !newPassword) {
+    if (!email) {
       return res.status(400).json({
         success: false,
-        message: "Email, OTP, and new password are required.",
+        message: "Email is required.",
+      });
+    }
+
+    if (!otp) {
+      return res.status(400).json({
+        success: false,
+        message: "OTP is required.",
+      });
+    }
+
+    if (!newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "New password is required.",
       });
     }
 
@@ -296,48 +320,14 @@ export const resetPassword = async (req, res) => {
       });
     }
 
-    if (newPassword.length < 6) {
+    const passwordError = validatePassword(newPassword);
+
+    if (passwordError) {
       return res.status(400).json({
         success: false,
-        message: "Password must be at least 6 characters long.",
+        message: passwordError,
       });
     }
-
-    if (newPassword.length > 12) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must not exceed 12 characters.",
-      });
-    }
-
-    if (!/[A-Z]/.test(newPassword)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one uppercase letter (A-Z).",
-      });
-    }
-
-    if (!/[a-z]/.test(newPassword)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one lowercase letter (a-z).",
-      });
-    }
-
-    if (!/[0-9]/.test(newPassword)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one number (0-9).",
-      });
-    }
-
-    if (!/[^A-Za-z0-9]/.test(newPassword)) {
-      return res.status(400).json({
-        success: false,
-        message: "Password must contain at least one special character.",
-      });
-    }
-
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;
     user.resetPasswordOTP = undefined;
