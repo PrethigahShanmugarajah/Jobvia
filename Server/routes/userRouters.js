@@ -1,7 +1,11 @@
 // Jobvia / Server / routes / userRouters.js
 import express from "express";
 import { authMiddleware, authorize } from "../middleware/authMiddleware.js";
-import { getProfile, updateProfile } from "../controllers/userControllers.js";
+import {
+  getProfile,
+  getResume,
+  updateProfile,
+} from "../controllers/userControllers.js";
 import { upload } from "../middleware/uploadMiddleware.js";
 
 const userRouter = express.Router();
@@ -14,5 +18,6 @@ userRouter.put(
   upload.single("resume"),
   updateProfile,
 );
+userRouter.get("/resume/:id", getResume);
 
 export default userRouter;
