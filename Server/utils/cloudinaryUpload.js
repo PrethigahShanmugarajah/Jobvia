@@ -23,7 +23,7 @@ export const uploadToCloudinary = (
         options.public_id = publicId;
       } else {
         options.public_id = publicId.includes(".")
-          ? publicId.spilt(".").slice(0, -1).join(".")
+          ? publicId.split(".").slice(0, -1).join(".")
           : publicId;
       }
     }
