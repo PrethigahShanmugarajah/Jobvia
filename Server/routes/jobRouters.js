@@ -5,6 +5,7 @@ import { upload } from "../middleware/uploadMiddleware.js";
 import {
   createJob,
   getDashboardStats,
+  getJobs,
   getJobsByAdmin,
 } from "../controllers/jobControllers.js";
 
@@ -31,5 +32,7 @@ jobRouter.get(
   authorize("admin"),
   getJobsByAdmin,
 );
+
+jobRouter.get("/", getJobs);
 
 export default jobRouter;
