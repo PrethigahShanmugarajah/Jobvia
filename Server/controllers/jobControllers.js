@@ -441,3 +441,31 @@ export const getJobs = async (req, res) => {
     });
   }
 };
+
+/* -------- Get Job -------- */
+export const getJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Job retrieved successfully.",
+      job,
+    });
+  } catch (error) {
+    console.error("Get Job Error:", error?.stack || error?.message || error);
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while retrieving the job.",
+      error: `Get Job Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
