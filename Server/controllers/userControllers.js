@@ -1,6 +1,8 @@
 // Jobvia / Server / controllers / userControllers.js
 import User from "../models/User.js";
 import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
+import { getPublicIdFromUrl } from "../utils/cloudinaryUtils.js";
+import cloudinary from "../config/cloudinary.js";
 
 /* -------- Get Profile -------- */
 export const getProfile = async (req, res) => {
@@ -106,6 +108,70 @@ export const updateProfile = async (req, res) => {
       success: false,
       message: "An unexpected error occurred while updating the profile.",
       error: `Update Profile Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Get Resume -------- */
+export const getResume = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    if (!user || !user.resume) {
+      return res.status(404).json({
+        success: false,
+        message: "Resume not found.",
+      });
+    }
+
+    const resourceType = user.resume.includes("/raw/") ? "raw" : "image";
+    const publicId =
+      user.resumePublicId || getPublicIdFromUrl(user.resume, resourceType);
+
+    if (!publicId) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid resume reference.",
+      });
+    }
+
+    if (resourceType === "raw") {
+      const fileName = publicId.split("/").pop() || "resume.pdf";
+      const format = fileName.includes(".")
+        ? fileName.split(".").pop().toLowerCase()
+        : "pdf";
+
+      const signedUrl = cloudinary.utils.private_download_url(
+        publicId,
+        format,
+        {
+          resource_type: "raw",
+          type: "upload",
+          secure: true,
+          expires_at: Math.floor(Date.now() / 1000) + 300, // 5 minutes
+        },
+      );
+
+      return res.redirect(signedUrl);
+    }
+
+    /* -------- Images -------- */
+    const signedUrl = cloudinary.url(publicId, {
+      resource_type: "image",
+      type: "upload",
+      secure: true,
+      sign_url: true,
+      expires_at: Math.floor(Date.now() / 1000) + 300,
+    });
+
+    return res.redirect(signedUrl);
+  } catch (error) {
+    console.error("Get Resume Error:", error?.stack || error?.message || error);
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while retrieving the resume.",
+      error: `Get Resume Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
