@@ -3,7 +3,10 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import { generateOTP, getOTPExpiration } from "../utils/otp.js";
 import { jwtSecret, jwtSecretExpiresIn, otpTtlMinutes } from "../config/env.js";
-import { sendForgotPasswordEmail, sendVerification } from "../utils/emailService.js";
+import {
+  sendForgotPasswordEmail,
+  sendVerification,
+} from "../utils/emailService.js";
 import jwt from "jsonwebtoken";
 
 /* -------- Register -------- */
@@ -264,6 +267,99 @@ export const forgotPassword = async (req, res) => {
       message:
         "An unexpected error occurred while processing the password reset request.",
       error: `Forgot Password Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Reset Password-------- */
+export const resetPassword = async (req, res) => {
+  try {
+    const { email, otp, newPassword } = req.body;
+
+    if (!email || !otp || !newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Email, OTP, and new password are required.",
+      });
+    }
+
+    const user = await User.findOne({
+      email,
+      resetPasswordOTP: otp,
+      resetPasswordOTPExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "The OTP is invalid or has expired.",
+      });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must be at least 6 characters long.",
+      });
+    }
+
+    if (newPassword.length > 12) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must not exceed 12 characters.",
+      });
+    }
+
+    if (!/[A-Z]/.test(newPassword)) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must contain at least one uppercase letter (A-Z).",
+      });
+    }
+
+    if (!/[a-z]/.test(newPassword)) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must contain at least one lowercase letter (a-z).",
+      });
+    }
+
+    if (!/[0-9]/.test(newPassword)) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must contain at least one number (0-9).",
+      });
+    }
+
+    if (!/[^A-Za-z0-9]/.test(newPassword)) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must contain at least one special character.",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    user.resetPasswordOTP = undefined;
+    user.resetPasswordOTPExpires = undefined;
+
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message:
+        "Password reset successfully. You can now log in with your new password.",
+    });
+  } catch (error) {
+    console.error(
+      "Reset Password Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while resetting the password.",
+      error: `Reset Password Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
