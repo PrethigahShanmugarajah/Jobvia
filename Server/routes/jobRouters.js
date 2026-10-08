@@ -3,6 +3,7 @@ import express from "express";
 import { authMiddleware, authorize } from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/uploadMiddleware.js";
 import {
+  closeJob,
   createJob,
   deleteJob,
   getDashboardStats,
@@ -49,5 +50,7 @@ jobRouter.put(
 );
 
 jobRouter.delete("/:id", authMiddleware, authorize("admin"), deleteJob);
+
+jobRouter.patch("/:id/close", authMiddleware, authorize("admin"), closeJob);
 
 export default jobRouter;
