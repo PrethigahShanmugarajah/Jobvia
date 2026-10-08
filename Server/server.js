@@ -5,6 +5,7 @@ import cors from "cors";
 import { port } from "./config/env.js";
 import connectDB from "./config/db.js";
 import authRouter from "./routes/authRouters.js";
+import userRouter from "./routes/userRouters.js";
 
 /* -------- INITIALIZE EXPRESS -------- */
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.json());
 /* -------- ROUTES -------- */
 app.get("/", (req, res) => res.send("API is Working!"));
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
 /* -------- PORT -------- */
 app.listen(port, () => {
