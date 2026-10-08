@@ -2,7 +2,11 @@
 import express from "express";
 import { authMiddleware, authorize } from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/uploadMiddleware.js";
-import { createJob, getDashboardStats } from "../controllers/jobControllers.js";
+import {
+  createJob,
+  getDashboardStats,
+  getJobsByAdmin,
+} from "../controllers/jobControllers.js";
 
 const jobRouter = express.Router();
 
@@ -19,6 +23,13 @@ jobRouter.get(
   authMiddleware,
   authorize("admin"),
   getDashboardStats,
+);
+
+jobRouter.get(
+  "/admin/jobs",
+  authMiddleware,
+  authorize("admin"),
+  getJobsByAdmin,
 );
 
 export default jobRouter;
