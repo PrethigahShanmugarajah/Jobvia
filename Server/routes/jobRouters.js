@@ -8,6 +8,7 @@ import {
   getJob,
   getJobs,
   getJobsByAdmin,
+  updateJob,
 } from "../controllers/jobControllers.js";
 
 const jobRouter = express.Router();
@@ -37,5 +38,13 @@ jobRouter.get(
 jobRouter.get("/", getJobs);
 
 jobRouter.get("/:id", getJob);
+
+jobRouter.put(
+  "/:id",
+  authMiddleware,
+  authorize("admin"),
+  upload.single("companyLogo"),
+  updateJob,
+);
 
 export default jobRouter;
