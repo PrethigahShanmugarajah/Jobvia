@@ -4,6 +4,7 @@ import { authMiddleware, authorize } from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/uploadMiddleware.js";
 import {
   createJob,
+  deleteJob,
   getDashboardStats,
   getJob,
   getJobs,
@@ -46,5 +47,7 @@ jobRouter.put(
   upload.single("companyLogo"),
   updateJob,
 );
+
+jobRouter.delete("/:id", authMiddleware, authorize("admin"), deleteJob);
 
 export default jobRouter;
