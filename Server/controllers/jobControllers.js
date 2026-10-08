@@ -297,3 +297,57 @@ export const getDashboardStats = async (req, res) => {
     });
   }
 };
+
+/* -------- Get Jobs By Admin -------- */
+export const getJobsByAdmin = async (req, res) => {
+  try {
+    const jobs = await Job.find().sort({ createdAt: -1 });
+
+    const applicationStats = await Application.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "userRecord",
+        },
+      },
+
+      { $unwind: "$userRecord" },
+
+      { $group: { _id: "$job", count: { $sum: 1 } } },
+    ]);
+
+    const countsMap = applicationStats.reduce((acc, curr) => {
+      acc[curr._id.toString()] = curr.count;
+      return acc;
+    }, {});
+
+    const jobsWithStats = jobs.map((job) => ({
+      ...job._doc,
+      applicantsCount: countsMap[job._id.toString()] || 0,
+    }));
+
+    return res.status(200).json({
+      success: true,
+      message:
+        jobsWithStats.length === 0
+          ? "No jobs found."
+          : jobsWithStats.length === 1
+            ? "Job retrieved successfully."
+            : "Jobs retrieved successfully.",
+      jobs: jobsWithStats,
+    });
+  } catch (error) {
+    console.error(
+      "Get Jobs By Admin Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while retrieving jobs.",
+      error: `Get Jobs By Admin Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
