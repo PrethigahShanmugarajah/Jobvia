@@ -1,6 +1,7 @@
 // Jobvia / Server / controllers / jobControllers.js
 import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
 import Job from "../models/Job.js";
+import Application from "../models/Application.js";
 
 /* -------- Create Job -------- */
 export const createJob = async (req, res) => {
@@ -232,6 +233,67 @@ export const createJob = async (req, res) => {
       success: false,
       message: "An unexpected error occurred while creating the job.",
       error: `Create Job Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Get Dashboard Stats -------- */
+export const getDashboardStats = async (req, res) => {
+  try {
+    const adminId = req.user.id;
+    const totalJobs = await Job.countDocuments();
+    const closedJobs = await Job.countDocuments({ status: "closed" });
+    const totalApplicationsResult = await Application.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "userRecord",
+        },
+      },
+
+      { $unwind: "$userRecord" },
+
+      {
+        $lookup: {
+          from: "jobs",
+          localField: "job",
+          foreignField: "_id",
+          as: "jobRecord",
+        },
+      },
+
+      { $unwind: "$jobRecord" },
+
+      { $count: "count" },
+    ]);
+
+    const totalApplications = totalApplicationsResult[0]?.count || 0;
+    const companies = await Job.distinct("companyName", { status: "active" });
+    const totalCompanies = companies.length;
+
+    return res.status(200).json({
+      success: true,
+      message: "Dashboard statistics retrieved successfully.",
+      stats: {
+        totalJobs: totalJobs.toLocaleString(),
+        closedJobs: closedJobs.toLocaleString(),
+        totalApplicants: totalApplications.toLocaleString(),
+        totalCompanies: totalCompanies.toLocaleString(),
+      },
+    });
+  } catch (error) {
+    console.error(
+      "Get Dashboard Stats Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while retrieving dashboard statistics.",
+      error: `Get Dashboard Stats Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
