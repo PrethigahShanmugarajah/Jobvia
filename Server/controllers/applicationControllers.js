@@ -119,3 +119,55 @@ export const getUserApplications = async (req, res) => {
     });
   }
 };
+
+/* -------- Get Applications -------- */
+export const getApplications = async (req, res) => {
+  try {
+    const jobId = req.params.id;
+    const job = await Job.findById(jobId);
+
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found.",
+      });
+    }
+
+    const applications = await Application.find({ job: jobId })
+      .populate({ path: "user", select: "name email phone role resume" })
+      .sort({ createdAt: -1 });
+
+    const validApplications = applications.filter((app) => app.user);
+
+    return res.status(200).json({
+      success: true,
+      message:
+        applications.filter((app) => app.user).length === 0
+          ? "No applications found for this job."
+          : applications.filter((app) => app.user).length === 1
+            ? "Application retrieved successfully."
+            : "Applications retrieved successfully.",
+      count: validApplications.length,
+      jobName: job.roleName,
+      applications: applications
+        .filter((app) => app.user)
+        .map((app) => ({
+          applicationId: app._id,
+          ...app.user._doc,
+          appliedDate: app.createdAt,
+          resume: app.user.resume || "",
+        })),
+    });
+  } catch (error) {
+    console.error(
+      "Get Applications Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while retrieving applications.",
+      error: `Get Applications Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
