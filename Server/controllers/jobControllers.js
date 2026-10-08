@@ -622,3 +622,33 @@ export const deleteJob = async (req, res) => {
     });
   }
 };
+
+/* -------- Close Job -------- */
+export const closeJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found.",
+      });
+    }
+
+    job.status = "closed";
+    await job.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Job closed successfully.",
+    });
+  } catch (error) {
+    console.error("Close Job Error:", error?.stack || error?.message || error);
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while closing the job.",
+      error: `Close Job Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
