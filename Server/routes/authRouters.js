@@ -4,6 +4,7 @@ import {
   forgotPassword,
   login,
   register,
+  resetPassword,
   verifyEmail,
 } from "../controllers/authControllers.js";
 
@@ -13,5 +14,6 @@ authRouter.post("/register", register);
 authRouter.post("/verify-email", verifyEmail);
 authRouter.post("/login", login);
 authRouter.post("/forgot-password", forgotPassword);
+authRouter.post("/reset-password", resetPassword);
 
 export default authRouter;
