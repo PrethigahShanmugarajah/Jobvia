@@ -3,6 +3,8 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import { generateOTP, getOTPExpiration } from "../utils/otp.js";
 import { sendVerification } from "../utils/emailService.js";
+import jwt from "jsonwebtoken";
+import { jwtSecret, jwtSecretExpiresIn } from "../config/env.js";
 
 /* -------- Register -------- */
 export const register = async (req, res) => {
@@ -151,6 +153,61 @@ export const verifyEmail = async (req, res) => {
       success: false,
       message: "An unexpected error occurred while verifying the email.",
       error: `Verify Email Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Login -------- */
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email or password.",
+      });
+    }
+
+    if (!user.isVerified) {
+      return res.status(400).json({
+        success: false,
+        message: "Please verify your email address before logging in.",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email or password.",
+      });
+    }
+
+    const token = jwt.sign({ id: user._id, role: user.role }, jwtSecret, {
+      expiresIn: jwtSecretExpiresIn,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Login successful!",
+      token,
+      user: {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (error) {
+    console.error("Login Error:", error?.stack || error?.message || error);
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while logging in.",
+      error: `Login Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
