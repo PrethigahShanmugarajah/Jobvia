@@ -7,6 +7,7 @@ import connectDB from "./config/db.js";
 import authRouter from "./routes/authRouters.js";
 import userRouter from "./routes/userRouters.js";
 import companyRouter from "./routes/companyRouters.js";
+import jobRouter from "./routes/jobRouters.js";
 
 /* -------- INITIALIZE EXPRESS -------- */
 const app = express();
@@ -25,6 +26,7 @@ app.get("/", (req, res) => res.send("API is Working!"));
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/company", companyRouter);
+app.use("/api/job", jobRouter);
 
 /* -------- PORT -------- */
 app.listen(port, () => {
