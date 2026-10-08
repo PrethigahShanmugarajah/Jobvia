@@ -44,18 +44,23 @@ export const addCompany = async (req, res) => {
       });
     }
 
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "Company logo is required.",
+      });
+    }
+
     let logoUrl = "";
 
-    if (req.file) {
-      const uploadResult = await uploadToCloudinary(
-        req.file.buffer,
-        "jobvia/logos",
-        "image",
-        req.file.originalname,
-      );
+    const uploadResult = await uploadToCloudinary(
+      req.file.buffer,
+      "jobvia/logos",
+      "image",
+      req.file.originalname,
+    );
 
-      logoUrl = uploadResult.secure_url;
-    }
+    logoUrl = uploadResult.secure_url;
 
     const company = await Company.create({
       logo: logoUrl,
@@ -78,6 +83,38 @@ export const addCompany = async (req, res) => {
       success: false,
       message: "An unexpected error occurred while creating the company.",
       error: `Add Company Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Delete Company -------- */
+export const deleteCompany = async (req, res) => {
+  try {
+    const company = await Company.findById(req.params.id);
+
+    if (!company) {
+      return res.status(404).json({
+        success: false,
+        message: "Company not found.",
+      });
+    }
+
+    await company.deleteOne();
+
+    return res.status(200).json({
+      success: true,
+      message: "Company deleted successfully.",
+    });
+  } catch (error) {
+    console.error(
+      "Delete Company Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while deleting the company.",
+      error: `Delete Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
