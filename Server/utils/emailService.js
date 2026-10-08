@@ -75,3 +75,17 @@ export const sendVerification = async (email, name, otp) => {
     ),
   });
 };
+
+/* -------- Send Forgot Password Email -------- */
+export const sendForgotPasswordEmail = async (email, name, otp) => {
+  return sendEmail({
+    to: [{ email, name }],
+    subject: "Reset Your Password - Jobvia",
+    htmlContent: otpTemplate(
+      "Reset Your Password",
+      name,
+      otp,
+      "You requested to reset your password. Please use the following 6-digit code to proceed.",
+    ),
+  });
+};
