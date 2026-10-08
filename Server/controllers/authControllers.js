@@ -2,9 +2,9 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import { generateOTP, getOTPExpiration } from "../utils/otp.js";
-import { sendVerification } from "../utils/emailService.js";
+import { jwtSecret, jwtSecretExpiresIn, otpTtlMinutes } from "../config/env.js";
+import { sendForgotPasswordEmail, sendVerification } from "../utils/emailService.js";
 import jwt from "jsonwebtoken";
-import { jwtSecret, jwtSecretExpiresIn } from "../config/env.js";
 
 /* -------- Register -------- */
 export const register = async (req, res) => {
@@ -67,8 +67,7 @@ export const register = async (req, res) => {
     const userRole = role || "user";
 
     const verificationOTP = generateOTP();
-
-    const verificationOTPExpires = getOTPExpiration(10);
+    const verificationOTPExpires = getOTPExpiration(otpTtlMinutes);
 
     const user = await User.create({
       name,
@@ -208,6 +207,63 @@ export const login = async (req, res) => {
       success: false,
       message: "An unexpected error occurred while logging in.",
       error: `Login Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Forgot Password-------- */
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required.",
+      });
+    }
+
+    const user = await User.findOne({
+      email,
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "No account was found with this email address.",
+      });
+    }
+
+    const resetOTP = generateOTP();
+    const resetOTPExpires = getOTPExpiration(otpTtlMinutes);
+
+    user.resetPasswordOTP = resetOTP;
+    user.resetPasswordOTPExpires = resetOTPExpires;
+
+    await user.save();
+
+    /* -------- Send the Verification Email -------- */
+    try {
+      await sendForgotPasswordEmail(email, user.name, resetOTP);
+    } catch (error) {
+      console.error("Failed to send reset email:", error);
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "A password reset code has been sent to your email.",
+    });
+  } catch (error) {
+    console.error(
+      "Forgot Password Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while processing the password reset request.",
+      error: `Forgot Password Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
