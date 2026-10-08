@@ -83,3 +83,39 @@ export const applyJob = async (req, res) => {
     });
   }
 };
+
+/* -------- Get User Applications -------- */
+export const getUserApplications = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const applications = await Application.find({ user: userId })
+      .populate("job")
+      .sort({ createdAt: -1 });
+
+    const validApplications = applications.filter((app) => app.job !== null);
+
+    return res.status(200).json({
+      success: true,
+      message:
+        validApplications.length === 0
+          ? "No applications found."
+          : validApplications.length === 1
+            ? "Application retrieved successfully."
+            : "Applications retrieved successfully.",
+      count: validApplications.length,
+      applications: validApplications,
+    });
+  } catch (error) {
+    console.error(
+      "Get User Applications Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while retrieving your applications.",
+      error: `Get User Applications Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
