@@ -1,6 +1,7 @@
 // Jobvia / Server / routes / authRouters.js
 import express from "express";
 import {
+  forgotPassword,
   login,
   register,
   verifyEmail,
@@ -11,5 +12,6 @@ const authRouter = express.Router();
 authRouter.post("/register", register);
 authRouter.post("/verify-email", verifyEmail);
 authRouter.post("/login", login);
+authRouter.post("/forgot-password", forgotPassword);
 
 export default authRouter;
