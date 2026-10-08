@@ -591,3 +591,34 @@ export const updateJob = async (req, res) => {
     });
   }
 };
+
+/* -------- Delete Job -------- */
+export const deleteJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found.",
+      });
+    }
+
+    await Application.deleteMany({ job: req.params.id });
+    await job.deleteOne();
+
+    return res.status(200).json({
+      success: true,
+      message:
+        "Job deleted successfully, and associated applications were removed.",
+    });
+  } catch (error) {
+    console.error("Delete Job Error:", error?.stack || error?.message || error);
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while deleting the job.",
+      error: `Delete Job Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
