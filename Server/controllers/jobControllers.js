@@ -336,6 +336,7 @@ export const getJobsByAdmin = async (req, res) => {
           : jobsWithStats.length === 1
             ? "Job retrieved successfully."
             : "Jobs retrieved successfully.",
+      count: jobs.length,
       jobs: jobsWithStats,
     });
   } catch (error) {
@@ -348,6 +349,95 @@ export const getJobsByAdmin = async (req, res) => {
       success: false,
       message: "An unexpected error occurred while retrieving jobs.",
       error: `Get Jobs By Admin Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Get Jobs -------- */
+export const getJobs = async (req, res) => {
+  try {
+    const {
+      roleName,
+      companyName,
+      location,
+      category,
+      jobType,
+      experience,
+      minSalary,
+      maxSalary,
+      search,
+    } = req.query;
+
+    const query = { status: "active" };
+
+    if (search) {
+      query.$or = [
+        { roleName: { $regex: search, $options: "i" } },
+        { companyName: { $regex: search, $options: "i" } },
+        { techStack: { $regex: search, $options: "i" } },
+      ];
+    }
+
+    if (roleName) {
+      query.roleName = { $regex: roleName, $options: "i" };
+    }
+
+    if (companyName) {
+      query.companyName = { $regex: companyName, $options: "i" };
+    }
+
+    if (location) {
+      query.location = { $regex: location, $options: "i" };
+    }
+
+    if (experience) {
+      query.experience = { $regex: experience, $options: "i" };
+    }
+
+    if (category) {
+      const categories = Array.isArray(category)
+        ? category
+        : category.split(",");
+      query.category = { $in: categories.map((cat) => new RegExp(cat, "i")) };
+    }
+
+    if (jobType) {
+      const types = Array.isArray(jobType) ? jobType : jobType.split(",");
+      const normalizeTypeToRegex = (type) => {
+        const raw = String(type).trim();
+        const escaped = raw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const normalized = escaped.replace(/[-_\s]+/g, "[-_\\s]*");
+        return new RegExp(`^${normalized}$`, "i");
+      };
+      query.jobType = { $in: types.map(normalizeTypeToRegex) };
+    }
+
+    if (minSalary || maxSalary) {
+      query.salary = {};
+      if (minSalary) query.salary.$gte = Number(minSalary);
+      if (maxSalary) query.salary.$lte = Number(maxSalary);
+    }
+
+    const jobs = await Job.find(query).sort({ createdAt: -1 });
+
+    return res.status(200).json({
+      success: true,
+      message:
+        jobs.length === 0
+          ? "No jobs found."
+          : jobs.length === 1
+            ? "Job retrieved successfully."
+            : "Jobs retrieved successfully.",
+      count: jobs.length,
+      jobs,
+    });
+  } catch (error) {
+    console.error("Get Jobs Error:", error?.stack || error?.message || error);
+
+    return res.status(500).json({
+      success: false,
+      message: "An unexpected error occurred while retrieving jobs.",
+      error: `Get Jobs Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
