@@ -3,6 +3,7 @@ import express from "express";
 import {
   addInterviewRole,
   deleteInterviewRole,
+  getInterviewCompanies,
   getInterviewRoles,
   getQuestionsByRole,
   updateInterviewRole,
@@ -44,5 +45,7 @@ interviewRouter.delete(
   authorize("admin"),
   deleteInterviewRole,
 );
+
+interviewRouter.get("/companies", getInterviewCompanies);
 
 export default interviewRouter;
