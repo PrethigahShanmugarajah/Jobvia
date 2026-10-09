@@ -1,10 +1,12 @@
 // Jobvia / Admin / src / App.jsx
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <>
+      <ToastContainer autoClose={3000} newestOnTop={true} />
+    </>
   );
 };
 
