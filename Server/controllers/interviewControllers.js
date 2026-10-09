@@ -564,3 +564,126 @@ export const addInterviewCompany = async (req, res) => {
     });
   }
 };
+
+/* -------- Update Interview Company -------- */
+export const updateInterviewCompany = async (req, res) => {
+  try {
+    const { companyId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(companyId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid interview company ID.",
+      });
+    }
+
+    const { companyName, questionsCount, questionsData } = req.body;
+
+    const company = await InterviewCompany.findById(companyId);
+
+    if (!company) {
+      return res.status(404).json({
+        success: false,
+        message: "Interview company not found.",
+      });
+    }
+
+    if (companyName !== undefined) {
+      if (typeof companyName !== "string") {
+        return res.status(400).json({
+          success: false,
+          message: "Company name must be a valid string.",
+        });
+      }
+
+      if (!companyName.trim()) {
+        return res.status(400).json({
+          success: false,
+          message: "Company name is required.",
+        });
+      }
+
+      company.companyName = companyName.trim();
+    }
+
+    if (questionsCount !== undefined) {
+      if (questionsCount === null) {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count cannot be null.",
+        });
+      }
+
+      if (questionsCount === "") {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count cannot be empty.",
+        });
+      }
+
+      if (!Number.isInteger(Number(questionsCount))) {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count must be an integer.",
+        });
+      }
+
+      if (Number(questionsCount) < 1) {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count must be at least 1.",
+        });
+      }
+
+      company.questionsCount = Number(questionsCount);
+    }
+
+    const uploads = await uploadFiles(req.files, {
+      logoFile: { folder: "jobvia/logos", type: "image" },
+      csvFile: { folder: "jobvia/csv", type: "raw" },
+    });
+
+    if (uploads.logoFile) {
+      company.logo = uploads.logoFile;
+    }
+
+    if (uploads.csvFile) {
+      company.csvFileUrl = uploads.csvFile;
+    }
+
+    await company.save();
+
+    if (questionsData) {
+      const formatted = parseQuestions(
+        questionsData,
+        "company",
+        company._id,
+        req.user.id,
+      );
+
+      await replaceQuestions(
+        InterviewQuestion,
+        { company: companyId },
+        formatted,
+      );
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Interview company updated successfully.",
+      company,
+    });
+  } catch (error) {
+    console.error(
+      "Update Interview Company Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while updating the interview company.",
+      error: `Update Interview Company Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
