@@ -1,6 +1,7 @@
 // Jobvia / Server / routes / interviewRouters.js
 import express from "express";
 import {
+  addInterviewCompany,
   addInterviewRole,
   deleteInterviewRole,
   getInterviewCompanies,
@@ -50,5 +51,16 @@ interviewRouter.delete(
 interviewRouter.get("/companies", getInterviewCompanies);
 
 interviewRouter.get("/company/:companyId", getInterviewQuestionsByCompany);
+
+interviewRouter.post(
+  "/",
+  authMiddleware,
+  authorize("admin"),
+  upload.fields([
+    { name: "logoFile", maxCount: 1 },
+    { name: "csvFile", maxCount: 1 },
+  ]),
+  addInterviewCompany,
+);
 
 export default interviewRouter;
