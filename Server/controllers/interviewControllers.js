@@ -403,7 +403,7 @@ export const getInterviewCompanies = async (req, res) => {
   }
 };
 
-/* -------- Get Companies -------- */
+/* -------- Get Interview Questions By Company -------- */
 export const getInterviewQuestionsByCompany = async (req, res) => {
   try {
     const { companyId } = req.params;
@@ -448,6 +448,119 @@ export const getInterviewQuestionsByCompany = async (req, res) => {
       message:
         "An unexpected error occurred while retrieving interview questions for the company.",
       error: `Get Interview Questions By Company Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Add Interview Company -------- */
+export const addInterviewCompany = async (req, res) => {
+  try {
+    const { companyName, questionsCount, questionsData } = req.body;
+
+    if (typeof companyName !== "string") {
+      return res.status(400).json({
+        success: false,
+        message: "Company name must be a valid string.",
+      });
+    }
+
+    if (!companyName.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Company name is required.",
+      });
+    }
+
+    if (questionsCount === undefined) {
+      return res.status(400).json({
+        success: false,
+        message: "Questions count is required.",
+      });
+    }
+
+    if (questionsCount === null) {
+      return res.status(400).json({
+        success: false,
+        message: "Questions count cannot be null.",
+      });
+    }
+
+    if (questionsCount === "") {
+      return res.status(400).json({
+        success: false,
+        message: "Questions count cannot be empty.",
+      });
+    }
+
+    const parsedQuestionsCount = Number(questionsCount);
+
+    if (!Number.isInteger(parsedQuestionsCount)) {
+      return res.status(400).json({
+        success: false,
+        message: "Questions count must be an integer.",
+      });
+    }
+
+    if (parsedQuestionsCount < 1) {
+      return res.status(400).json({
+        success: false,
+        message: "Questions count must be at least 1.",
+      });
+    }
+
+    const normalizedCompanyName = companyName.trim();
+
+    const exists = await InterviewCompany.findOne({
+      companyName: normalizedCompanyName,
+    });
+
+    if (exists) {
+      return res.status(409).json({
+        success: false,
+        message: "An interview company with this name already exists.",
+      });
+    }
+
+    const uploads = await uploadFiles(req.files, {
+      logoFile: { folder: "jobvia/logos", type: "image" },
+      csvFile: { folder: "jobvia/csv", type: "raw" },
+    });
+
+    const company = await InterviewCompany.create({
+      companyName: normalizedCompanyName,
+      logo: uploads.logoFile || "",
+      questionsCount: parsedQuestionsCount,
+      csvFileUrl: uploads.csvFile || "",
+      createdBy: req.user.id,
+    });
+
+    if (questionsData) {
+      const formatted = parseQuestions(
+        questionsData,
+        "company",
+        company._id,
+        req.user.id,
+      );
+
+      await InterviewQuestion.insertMany(formatted);
+    }
+
+    return res.status(201).json({
+      success: true,
+      message: "Interview company created successfully.",
+      company,
+    });
+  } catch (error) {
+    console.error(
+      "Add Interview Company Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while creating the interview company.",
+      error: `Add Interview Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
