@@ -8,6 +8,7 @@ import {
   getInterviewQuestionsByCompany,
   getInterviewRoles,
   getQuestionsByRole,
+  updateInterviewCompany,
   updateInterviewRole,
 } from "../controllers/interviewControllers.js";
 import { authMiddleware, authorize } from "../middleware/authMiddleware.js";
@@ -61,6 +62,17 @@ interviewRouter.post(
     { name: "csvFile", maxCount: 1 },
   ]),
   addInterviewCompany,
+);
+
+interviewRouter.put(
+  "/:companyId",
+  authMiddleware,
+  authorize("admin"),
+  upload.fields([
+    { name: "logoFile", maxCount: 1 },
+    { name: "csvFile", maxCount: 1 },
+  ]),
+  updateInterviewCompany,
 );
 
 export default interviewRouter;
