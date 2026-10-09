@@ -11,6 +11,7 @@ import jobRouter from "./routes/jobRouters.js";
 import applicationRouter from "./routes/applicationRouters.js";
 import interviewRouter from "./routes/interviewRouters.js";
 import savedRouter from "./routes/savedRouters.js";
+import inquiryRouter from "./routes/inquiryRouters.js";
 
 /* -------- INITIALIZE EXPRESS -------- */
 const app = express();
@@ -33,6 +34,7 @@ app.use("/api/job", jobRouter);
 app.use("/api/application", applicationRouter);
 app.use("/api/interview", interviewRouter);
 app.use("/api/saved", savedRouter);
+app.use("/api/inquiry", inquiryRouter);
 
 /* -------- PORT -------- */
 app.listen(port, () => {
