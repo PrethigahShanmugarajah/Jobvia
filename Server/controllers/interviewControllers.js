@@ -2,7 +2,11 @@
 import InterviewRole from "../models/InterviewRole.js";
 import mongoose from "mongoose";
 import RoleQuestion from "../models/RoleQuestion.js";
-import { parseQuestions, uploadFiles } from "../utils/helpers.js";
+import {
+  parseQuestions,
+  replaceQuestions,
+  uploadFiles,
+} from "../utils/helpers.js";
 
 /* -------- Get Interview Roles -------- */
 export const getInterviewRoles = async (req, res) => {
@@ -179,6 +183,146 @@ export const addInterviewRole = async (req, res) => {
       message:
         "An unexpected error occurred while creating the interview role.",
       error: `Add Interview Role Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Update Interview Role -------- */
+export const updateInterviewRole = async (req, res) => {
+  try {
+    const { roleId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(roleId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid interview role ID.",
+      });
+    }
+
+    const { roleName, questionsCount, questionsData } = req.body;
+
+    const role = await InterviewRole.findById(roleId);
+
+    if (!role) {
+      return res.status(404).json({
+        success: false,
+        message: "Interview role not found.",
+      });
+    }
+
+    if (roleName !== undefined) {
+      if (typeof roleName !== "string") {
+        return res.status(400).json({
+          success: false,
+          message: "Role name must be a valid string.",
+        });
+      }
+
+      if (!roleName.trim()) {
+        return res.status(400).json({
+          success: false,
+          message: "Role name cannot be empty.",
+        });
+      }
+
+      if (/^\d+$/.test(roleName.trim())) {
+        return res.status(400).json({
+          success: false,
+          message: "Role name cannot contain only numbers.",
+        });
+      }
+
+      role.roleName = roleName.trim();
+    }
+
+    if (questionsCount !== undefined) {
+      if (questionsCount === null) {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count is required.",
+        });
+      }
+
+      if (String(questionsCount).trim() === "") {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count cannot be empty.",
+        });
+      }
+
+      if (!Number.isInteger(Number(questionsCount))) {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count must be a valid integer.",
+        });
+      }
+
+      if (Number(questionsCount) < 0) {
+        return res.status(400).json({
+          success: false,
+          message: "Questions count cannot be negative.",
+        });
+      }
+
+      role.questionsCount = Number(questionsCount);
+    }
+
+    if (roleName !== undefined) {
+      const exists = await InterviewRole.findOne({
+        roleName: roleName.trim(),
+        _id: { $ne: roleId },
+      });
+
+      if (exists) {
+        return res.status(409).json({
+          success: false,
+          message: "An interview role with this name already exists.",
+        });
+      }
+    }
+
+    const uploads = await uploadFiles(req.files, {
+      imageFile: { folder: "jobvia/roles", type: "image" },
+      csvFile: { folder: "jobvia/csv", type: "raw" },
+    });
+
+    if (uploads.imageFile) {
+      role.image = uploads.imageFile;
+    }
+
+    if (uploads.csvFile) {
+      role.csvFileUrl = uploads.csvFile;
+    }
+
+    await role.save();
+
+    if (questionsData) {
+      const formatted = parseQuestions(
+        questionsData,
+        "role",
+        role._id,
+        req.user.id,
+      );
+
+      await replaceQuestions(RoleQuestion, { roleId }, formatted);
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Interview role updated successfully.",
+      role,
+    });
+  } catch (error) {
+    console.error(
+      "Update Interview Role Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while updating the interview role.",
+      error: `Update Interview Role Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
