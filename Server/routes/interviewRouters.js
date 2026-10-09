@@ -3,6 +3,7 @@ import express from "express";
 import {
   addInterviewCompany,
   addInterviewRole,
+  deleteInterviewCompany,
   deleteInterviewRole,
   getInterviewCompanies,
   getInterviewQuestionsByCompany,
@@ -73,6 +74,13 @@ interviewRouter.put(
     { name: "csvFile", maxCount: 1 },
   ]),
   updateInterviewCompany,
+);
+
+interviewRouter.delete(
+  "/:companyId",
+  authMiddleware,
+  authorize("admin"),
+  deleteInterviewCompany,
 );
 
 export default interviewRouter;
