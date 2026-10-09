@@ -1,0 +1,39 @@
+/* Jobvia / Admin / src / components / Navbar / Navbar.css */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s ease-out;
+}
+
+.animated-border {
+  background: linear-gradient(90deg, #d946ef, #3b82f6, #14b8a6);
+  background-size: 300% 100%;
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  animation: gradientShift 3s linear infinite;
+  border-radius: 12px;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
