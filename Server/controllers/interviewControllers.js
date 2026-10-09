@@ -7,6 +7,7 @@ import {
   replaceQuestions,
   uploadFiles,
 } from "../utils/helpers.js";
+import InterviewCompany from "../models/InterviewCompany.js";
 
 /* -------- Get Interview Roles -------- */
 export const getInterviewRoles = async (req, res) => {
@@ -366,6 +367,37 @@ export const deleteInterviewRole = async (req, res) => {
       message:
         "An unexpected error occurred while deleting the interview role.",
       error: `Delete Interview Role Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Get Interview Companies -------- */
+export const getInterviewCompanies = async (req, res) => {
+  try {
+    const companies = await InterviewCompany.find().sort({ createdAt: -1 });
+
+    return res.status(200).json({
+      success: true,
+      message:
+        companies.length === 0
+          ? "No interview companies found."
+          : companies.length === 1
+            ? "Interview company retrieved successfully."
+            : "Interview companies retrieved successfully.",
+      count: companies.length,
+      companies,
+    });
+  } catch (error) {
+    console.error(
+      "Get Interview Companies Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while retrieving interview companies.",
+      error: `Get Interview Companies Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
