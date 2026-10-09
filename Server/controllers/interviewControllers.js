@@ -687,3 +687,45 @@ export const updateInterviewCompany = async (req, res) => {
     });
   }
 };
+
+/* -------- Delete Interview Company -------- */
+export const deleteInterviewCompany = async (req, res) => {
+  try {
+    const { companyId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(companyId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid interview company ID.",
+      });
+    }
+
+    const company = await InterviewCompany.findByIdAndDelete(companyId);
+
+    if (!company) {
+      return res.status(404).json({
+        success: false,
+        message: "Interview company not found.",
+      });
+    }
+
+    await InterviewQuestion.deleteMany({ company: companyId });
+
+    return res.status(200).json({
+      success: true,
+      message: "Interview company deleted successfully.",
+    });
+  } catch (error) {
+    console.error(
+      "Delete Interview Company Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while deleting the interview company.",
+      error: `Delete Interview Company Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
