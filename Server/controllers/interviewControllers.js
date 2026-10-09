@@ -326,3 +326,46 @@ export const updateInterviewRole = async (req, res) => {
     });
   }
 };
+
+/* -------- Delete Interview Role -------- */
+export const deleteInterviewRole = async (req, res) => {
+  try {
+    const { roleId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(roleId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid interview role ID.",
+      });
+    }
+
+    const role = await InterviewRole.findById(roleId);
+
+    if (!role) {
+      return res.status(404).json({
+        success: false,
+        message: "Interview role not found.",
+      });
+    }
+
+    await InterviewRole.findByIdAndDelete(roleId);
+    await RoleQuestion.deleteMany({ roleId });
+
+    return res.status(200).json({
+      success: true,
+      message: "Interview role deleted successfully.",
+    });
+  } catch (error) {
+    console.error(
+      "Delete Interview Role Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while deleting the interview role.",
+      error: `Delete Interview Role Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
