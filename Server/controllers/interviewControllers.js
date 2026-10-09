@@ -8,6 +8,7 @@ import {
   uploadFiles,
 } from "../utils/helpers.js";
 import InterviewCompany from "../models/InterviewCompany.js";
+import InterviewQuestion from "../models/InterviewQuestion.js";
 
 /* -------- Get Interview Roles -------- */
 export const getInterviewRoles = async (req, res) => {
@@ -398,6 +399,55 @@ export const getInterviewCompanies = async (req, res) => {
       message:
         "An unexpected error occurred while retrieving interview companies.",
       error: `Get Interview Companies Error: ${error?.stack || error?.message || error}`,
+    });
+  }
+};
+
+/* -------- Get Companies -------- */
+export const getInterviewQuestionsByCompany = async (req, res) => {
+  try {
+    const { companyId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(companyId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid interview company ID.",
+      });
+    }
+
+    const [company, questions] = await Promise.all([
+      InterviewCompany.findById(companyId),
+      InterviewQuestion.find({ company: companyId }).sort({ createdAt: -1 }),
+    ]);
+
+    if (!company) {
+      return res.status(404).json({
+        success: false,
+        message: "Interview company not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message:
+        questions.length === 0
+          ? "No interview questions found for this company."
+          : "Interview questions retrieved successfully.",
+      company,
+      questionsCount: questions.length,
+      questions,
+    });
+  } catch (error) {
+    console.error(
+      "Get Interview Questions By Company Error:",
+      error?.stack || error?.message || error,
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "An unexpected error occurred while retrieving interview questions for the company.",
+      error: `Get Interview Questions By Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
