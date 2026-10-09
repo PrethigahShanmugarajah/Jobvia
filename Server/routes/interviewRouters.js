@@ -4,6 +4,7 @@ import {
   addInterviewRole,
   deleteInterviewRole,
   getInterviewCompanies,
+  getInterviewQuestionsByCompany,
   getInterviewRoles,
   getQuestionsByRole,
   updateInterviewRole,
@@ -47,5 +48,7 @@ interviewRouter.delete(
 );
 
 interviewRouter.get("/companies", getInterviewCompanies);
+
+interviewRouter.get("/company/:companyId", getInterviewQuestionsByCompany);
 
 export default interviewRouter;
