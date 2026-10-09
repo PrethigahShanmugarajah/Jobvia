@@ -2,7 +2,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import { port } from "./config/env.js";
+import { adminUrl, clientUrl, port } from "./config/env.js";
 import connectDB from "./config/db.js";
 import authRouter from "./routes/authRouters.js";
 import userRouter from "./routes/userRouters.js";
@@ -21,7 +21,12 @@ connectDB();
 
 /* -------- MIDDLEWARE CONFIGURATION -------- */
 app.use(cors());
-app.use(express.json());
+app.use(
+  express.json({
+    origin: [clientUrl, adminUrl],
+    credentials: true,
+  }),
+);
 
 app.use("/uploads", express.static("uploads"));
 
