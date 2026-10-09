@@ -58,3 +58,9 @@ export const parseQuestions = (questionsData, type, id, userId) => {
     };
   });
 };
+
+/* -------- Replace Questions -------- */
+export const replaceQuestions = async (Model, filter, questions) => {
+  await Model.deleteMany(filter);
+  await Model.insertMany(questions);
+};
