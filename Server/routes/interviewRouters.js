@@ -4,6 +4,7 @@ import {
   addInterviewRole,
   getInterviewRoles,
   getQuestionsByRole,
+  updateInterviewRole,
 } from "../controllers/interviewControllers.js";
 import { authMiddleware, authorize } from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/uploadMiddleware.js";
@@ -23,6 +24,17 @@ interviewRouter.post(
     { name: "csvFile", maxCount: 1 },
   ]),
   addInterviewRole,
+);
+
+interviewRouter.put(
+  "/role/:roleId",
+  authMiddleware,
+  authorize("admin"),
+  upload.fields([
+    { name: "imageFile", maxCount: 1 },
+    { name: "csvFile", maxCount: 1 },
+  ]),
+  updateInterviewRole,
 );
 
 export default interviewRouter;
