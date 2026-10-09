@@ -2,6 +2,7 @@
 import express from "express";
 import {
   addInterviewRole,
+  deleteInterviewRole,
   getInterviewRoles,
   getQuestionsByRole,
   updateInterviewRole,
@@ -35,6 +36,13 @@ interviewRouter.put(
     { name: "csvFile", maxCount: 1 },
   ]),
   updateInterviewRole,
+);
+
+interviewRouter.delete(
+  "/role/:roleId",
+  authMiddleware,
+  authorize("admin"),
+  deleteInterviewRole,
 );
 
 export default interviewRouter;
