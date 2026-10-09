@@ -10,6 +10,7 @@ import companyRouter from "./routes/companyRouters.js";
 import jobRouter from "./routes/jobRouters.js";
 import applicationRouter from "./routes/applicationRouters.js";
 import interviewRouter from "./routes/interviewRouters.js";
+import savedRouter from "./routes/savedRouters.js";
 
 /* -------- INITIALIZE EXPRESS -------- */
 const app = express();
@@ -31,6 +32,7 @@ app.use("/api/company", companyRouter);
 app.use("/api/job", jobRouter);
 app.use("/api/application", applicationRouter);
 app.use("/api/interview", interviewRouter);
+app.use("/api/saved", savedRouter);
 
 /* -------- PORT -------- */
 app.listen(port, () => {
