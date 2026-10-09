@@ -20,3 +20,7 @@ export const cloudinaryCloudName = process.env.CLOUDINARY_CLOUD_NAME;
 export const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
 
 export const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET;
+
+export const clientUrl = process.env.CLINT_URL;
+
+export const adminUrl = process.env.ADMIN_URL;
