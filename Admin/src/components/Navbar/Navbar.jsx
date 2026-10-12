@@ -290,7 +290,7 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                     className="w-12 h-12 object-cover"
                   />
                 ) : (
-                  <span className="w-12 h-12 flex items-center justify-center text-2xl font-bold text-fuchsia-600">
+                  <span className="w-12 h-12 flex items-center justify-center text-2xl font-bold text-indigo-600">
                     {brandName[0]}
                   </span>
                 )}
@@ -312,11 +312,11 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
               <div ref={navContainerRef} className="relative">
                 {active && indicatorStyle.width > 0 && (
                   <div
-                    className="absolute -bottom-2 h-1 rounded-full bg-linear-to-r from-fuchsia-300 to-blue-300 transition-all duration-300 ease-out"
+                    className="absolute -bottom-2 h-1 rounded-full bg-linear-to-r from-indigo-300 to-pink-300 transition-all duration-300 ease-out"
                     style={{
                       left: indicatorStyle.left,
                       width: indicatorStyle.width,
-                      boxShadow: "0 0 8px rgba(240, 171, 252, 0.5)",
+                      boxShadow: "0 0 8px rgba(165, 180, 252, 0.5)",
                     }}
                   />
                 )}
@@ -371,8 +371,8 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                               }}
                               className={`flex cursor-pointer items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                                 isActiveParent
-                                  ? "text-fuchsia-700 bg-fuchsia-50/70 shadow-sm"
-                                  : "text-gray-600 hover:text-fuchsia-600 hover:bg-white/60"
+                                  ? "text-indigo-700 bg-indigo-50/70 shadow-sm"
+                                  : "text-gray-600 hover:text-indigo-600 hover:bg-white/60"
                               }`}
                             >
                               <Icon className="w-5 h-5" />
@@ -418,9 +418,9 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                                             onClick={() => {
                                               handleNavigate(sub.key);
                                             }}
-                                            className={`w-full text-left px-4 py-3 text-sm transition-all flex items-center gap-2 ${isActiveSub ? "bg-fuchsia-50/70 text-fuchsia-700 font-medium" : "text-gray-700 hover:bg-gray-50"}`}
+                                            className={`w-full text-left px-4 py-3 text-sm transition-all flex items-center gap-2 ${isActiveSub ? "bg-indigo-50/70 text-indigo-700 font-medium" : "text-gray-700 hover:bg-gray-50"}`}
                                           >
-                                            <span className="w-2 h-2 rounded-full bg-fuchsia-300"></span>
+                                            <span className="w-2 h-2 rounded-full bg-indigo-300"></span>
 
                                             <span>{sub.label}</span>
                                           </button>
@@ -451,11 +451,11 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                                     }}
                                     className={`flex cursor-pointer items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                                       isActiveSub
-                                        ? "text-fuchsia-700 bg-fuchsia-50/70 shadow-sm"
-                                        : "text-gray-600 hover:text-fuchsia-600 hover:bg-white/60"
+                                        ? "text-indigo-700 bg-indigo-50/70 shadow-sm"
+                                        : "text-gray-600 hover:text-indigo-600 hover:bg-white/60"
                                     }`}
                                   >
-                                    <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-300"></span>
+                                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-300"></span>
 
                                     <span className="whitespace-nowrap">
                                       {sub.label}
@@ -493,7 +493,7 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                       }}
                       className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 text-gray-800 cursor-pointer shadow-md transition-all duration-200"
                     >
-                      <User className="w-4 h-4 text-fuchsia-500" />
+                      <User className="w-4 h-4 text-indigo-500" />
 
                       <span className="text-sm font-medium">{user.name}</span>
 
@@ -530,7 +530,7 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                 ) : (
                   <button
                     onClick={() => handleNavigate("login")}
-                    className="group cursor-pointer relative overflow-hidden px-6 py-2.5 rounded-xl bg-linear-to-r from-fuchsia-500 to-blue-500 text-white font-medium shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    className="group cursor-pointer relative overflow-hidden px-6 py-2.5 rounded-xl bg-linear-to-r from-indigo-500 to-pink-500 text-white font-medium shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
                     <span className="absolute inset-0 bg-white/30 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
 
@@ -569,7 +569,7 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                     <div key={item.key} className="space-y-1">
                       <button
                         onClick={() => handleNavigate(item.key)}
-                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all ${isActiveParent ? "bg-fuchsia-50/70 text-fuchsia-700 shadow-sm" : "text-gray-700 hover:bg-white/60"}`}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all ${isActiveParent ? "bg-indigo-50/70 text-indigo-700 shadow-sm" : "text-gray-700 hover:bg-white/60"}`}
                       >
                         <Icon className="w-5 h-5" />
 
@@ -579,7 +579,7 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                       </button>
 
                       {item.dropdown && (
-                        <div className="ml-8 flex flex-col gap-1 border-l-2 border-fuchsia-200 pl-2">
+                        <div className="ml-8 flex flex-col gap-1 border-l-2 border-indigo-200 pl-2">
                           {item.dropdown.map((sub) => {
                             const isActiveSub = active === sub.key;
 
@@ -589,8 +589,8 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                                 onClick={() => handleNavigate(sub.key)}
                                 className={`w-full text-left px-4 py-2.5 rounded-lg text-sm transition-all ${
                                   isActiveSub
-                                    ? "bg-fuchsia-50/70 text-fuchsia-700 font-medium"
-                                    : "text-gray-600 hover:bg-white/60 hover:text-fuchsia-600"
+                                    ? "bg-indigo-50/70 text-indigo-700 font-medium"
+                                    : "text-gray-600 hover:bg-white/60 hover:text-indigo-600"
                                 }`}
                               >
                                 {sub.label}

@@ -44,12 +44,12 @@ const sendEmail = async ({ to, subject, htmlContent }) => {
 /* -------- OTP Email Template -------- */
 const otpTemplate = (title, name, otp, message) => `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center;">
-        <h2 style="color: #C026D3;">${title}</h2>
+        <h2 style="color: #4F46E5;">${title}</h2>
         <p>Hi ${name},</p>
         <p>${message}</p>
 
         <div style="margin: 30px 0;">
-            <span style="font-size: 32px; font-weight: bold; color: #C026D3; letter-spacing: 5px; background: #f3f4f6; padding: 10px 20px; border-radius: 8px;">${otp}</span>
+            <span style="font-size: 32px; font-weight: bold; color: #4F46E5; letter-spacing: 5px; background: #f3f4f6; padding: 10px 20px; border-radius: 8px;">${otp}</span>
         </div>
         
         <p>This code will expire in ${otpTtlMinutes} minutes.</p>
@@ -94,7 +94,7 @@ export const sendForgotPasswordEmail = async (email, name, otp) => {
 export const sendAdminInquiryEmail = async (data) => {
   const htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
-          <h2 style="color: #C026D3;">New Contact Form Submission</h2>
+          <h2 style="color: #4F46E5;">New Contact Form Submission</h2>
 
           <p>You have received a new inquiry from the Jobvia contact form.</p>
             
