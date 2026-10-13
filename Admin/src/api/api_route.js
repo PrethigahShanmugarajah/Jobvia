@@ -8,7 +8,7 @@ const API_ROUTES = {
   JOB: {
     ADMIN_STATS: "/api/job/admin/stats",
     ADMIN_JOBS: "/api/job/admin/jobs",
-    CLOSE: (jobId) => `/job/${jobId}/close`,
+    CLOSE: (jobId) => `/api/job/${jobId}/close`,
   },
 };
 
