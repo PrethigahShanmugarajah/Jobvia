@@ -19,6 +19,10 @@ export const loginAdmin = async (email, password) => {
     }
 
     if (data?.success) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("userUpdated"));
+
       toast.success(data?.message);
       console.log("Admin Login Job Success:", data?.message);
     } else {
@@ -32,6 +36,33 @@ export const loginAdmin = async (email, password) => {
   } catch (error) {
     toast.error(error?.response?.data?.message);
     console.error("Admin Login Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Close Dashboard Job -------- */
+export const closeDashboardJob = async (jobId) => {
+  try {
+    const { data } = await api.patch(API_ROUTES.JOB.CLOSE(jobId));
+
+    console.log("Close Dashboard Job API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Close Dashboard Job Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Close dashboard job with warning");
+      console.warn(
+        "Close Dashboard Job Warning:",
+        data?.message || "Close Dashboard Job Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Close Dashboard Job Error:", error);
 
     throw error;
   }
