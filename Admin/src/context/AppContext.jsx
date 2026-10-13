@@ -7,9 +7,12 @@ export const AppProvider = ({ children }) => {
 
   const location = useLocation();
 
+  const BASE_URL = import.meta.env.VITE_BASEURL;
+
   const value = {
     navigate,
     location,
+    BASE_URL,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
