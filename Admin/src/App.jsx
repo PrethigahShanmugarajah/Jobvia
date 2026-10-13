@@ -5,6 +5,7 @@ import { useAppContext } from "./context/appContext";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/View/Login";
+import Dashboard from "./pages/Dashboard/View/Dashboard";
 
 const App = () => {
   const { location } = useAppContext();
@@ -17,6 +18,7 @@ const App = () => {
 
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Dashboard />} />
       </Routes>
     </>
   );
