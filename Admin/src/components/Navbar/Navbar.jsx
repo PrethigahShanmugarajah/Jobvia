@@ -109,8 +109,22 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    setUser(storedUser ? JSON.parse(storedUser) : null);
+    const updateUser = () => {
+      const storedUser = localStorage.getItem("user");
+
+      try {
+        setUser(storedUser ? JSON.parse(storedUser) : null);
+      } catch {
+        setUser(null);
+      }
+    };
+
+    updateUser();
+    window.addEventListener("userUpdated", updateUser);
+
+    return () => {
+      window.removeEventListener("userUpdated", updateUser);
+    };
   }, [location.pathname]);
 
   const navContainerRef = useRef(null);
@@ -210,9 +224,11 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
 
   /* -------- To Logout -------- */
   const handleLogout = () => {
+    localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
-    navigate("/");
+    setUserMenuOpen(false);
+    navigate("/login");
     setMobileMenuOpen(false);
   };
 
@@ -380,58 +396,56 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                               <span className="whitespace-nowrap">
                                 {item.label}
                               </span>
-
-                              {item.dropdown && isLGOnly && (
-                                <div
-                                  className={`absolute left-1/2 top-full mt-2 z-50 rounded-xl transition-all duration-150 transform -translate-x-1/2 ${
-                                    openDropdownKey === item.key
-                                      ? "opacity-100 translate-y-0 pointer-events-auto"
-                                      : "opacity-0 -translate-y-2 pointer-events-none"
-                                  }`}
-                                  onMouseEnter={() => openNavDropdown(item.key)}
-                                  onMouseLeave={() =>
-                                    closeNavDropdownDelayed(200)
-                                  }
-                                >
-                                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-white shadow-sm"></div>
-
-                                  <div
-                                    className={`rounded-xl p-0.5 ${
-                                      openDropdownKey === item.key
-                                        ? "animate-border"
-                                        : "bg-transparent"
-                                    }`}
-                                    style={{
-                                      background:
-                                        openDropdownKey === item.key
-                                          ? undefined
-                                          : "transparent",
-                                    }}
-                                  >
-                                    <div className="bg-white rounded-lg shadow-md overflow-hidden min-w-55">
-                                      {item.dropdown.map((sub) => {
-                                        const isActiveSub = active === sub.key;
-
-                                        return (
-                                          <button
-                                            key={sub.key}
-                                            onClick={() => {
-                                              handleNavigate(sub.key);
-                                            }}
-                                            className={`w-full text-left px-4 py-3 text-sm transition-all flex items-center gap-2 ${isActiveSub ? "bg-indigo-50/70 text-indigo-700 font-medium" : "text-gray-700 hover:bg-gray-50"}`}
-                                          >
-                                            <span className="w-2 h-2 rounded-full bg-indigo-300"></span>
-
-                                            <span>{sub.label}</span>
-                                          </button>
-                                        );
-                                      })}
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
                             </button>
                           </div>
+
+                          {item.dropdown && isLGOnly && (
+                            <div
+                              className={`absolute left-1/2 top-full mt-2 z-50 rounded-xl transition-all duration-150 transform -translate-x-1/2 ${
+                                openDropdownKey === item.key
+                                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                                  : "opacity-0 -translate-y-2 pointer-events-none"
+                              }`}
+                              onMouseEnter={() => openNavDropdown(item.key)}
+                              onMouseLeave={() => closeNavDropdownDelayed(200)}
+                            >
+                              <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-white shadow-sm"></div>
+
+                              <div
+                                className={`rounded-xl p-0.5 ${
+                                  openDropdownKey === item.key
+                                    ? "animate-border"
+                                    : "bg-transparent"
+                                }`}
+                                style={{
+                                  background:
+                                    openDropdownKey === item.key
+                                      ? undefined
+                                      : "transparent",
+                                }}
+                              >
+                                <div className="bg-white rounded-lg shadow-md overflow-hidden min-w-55">
+                                  {item.dropdown.map((sub) => {
+                                    const isActiveSub = active === sub.key;
+
+                                    return (
+                                      <button
+                                        key={sub.key}
+                                        onClick={() => {
+                                          handleNavigate(sub.key);
+                                        }}
+                                        className={`w-full text-left px-4 py-3 text-sm transition-all flex items-center gap-2 ${isActiveSub ? "bg-indigo-50/70 text-indigo-700 font-medium" : "text-gray-700 hover:bg-gray-50"}`}
+                                      >
+                                        <span className="w-2 h-2 rounded-full bg-indigo-300"></span>
+
+                                        <span>{sub.label}</span>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            </div>
+                          )}
                         </li>
 
                         {!isLGOnly &&
@@ -518,7 +532,7 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                         <div className="bg-white rounded-lg shadow-md">
                           <button
                             onClick={handleLogout}
-                            className="w-full cursor-pointer text-left px-4 py-3 text-sm hover:bg-gray-100 flex items-center gap-2"
+                            className="w-full flex items-center gap-2 px-4 py-3 text-left text-sm font-medium text-rose-500 hover:bg-rose-50 transition-all duration-200 cursor-pointer"
                           >
                             <LogOut className="w-4 h-4" />
                             <span>Logout</span>
@@ -602,6 +616,16 @@ const Navbar = ({ logoSrc, brandName = "Jobvia", onNavigate }) => {
                     </div>
                   );
                 })}
+
+                {user && (
+                  <button
+                    onClick={handleLogout}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm font-medium text-rose-500 hover:bg-rose-50 transition-all duration-200 cursor-pointer"
+                  >
+                    <LogOut className="w-5 h-5" />
+                    <span>Logout</span>
+                  </button>
+                )}
               </div>
             </div>
           )}
