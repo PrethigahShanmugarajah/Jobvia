@@ -9,10 +9,13 @@ export const AppProvider = ({ children }) => {
 
   const BASE_URL = import.meta.env.VITE_BASEURL;
 
+  const CURRENCY = import.meta.env.VITE_CURRENCY;
+
   const value = {
     navigate,
     location,
     BASE_URL,
+    CURRENCY,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
