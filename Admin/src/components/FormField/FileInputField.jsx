@@ -89,13 +89,9 @@ export const FileInputField = ({
   const inputRef = useRef(null);
   const [preview, setPreview] = useState(null);
   const [dragActive, setDragActive] = useState(false);
-  const prevUrlRef = useRef(null);
 
-  useEffect(() => {
-    if ((value === null || value === undefined) && inputRef.current) {
-      inputRef.current.value = "";
-    }
-  }, [value]);
+  const prevUrlRef = useRef(null);
+  const previousValueRef = useRef(value);
 
   const updatePreview = (file) => {
     if (prevUrlRef.current) {
@@ -112,6 +108,27 @@ export const FileInputField = ({
       if (inputRef.current) inputRef.current.value = "";
     }
   };
+
+  useEffect(() => {
+    if (
+      previousValueRef.current !== null &&
+      previousValueRef.current !== undefined &&
+      (value === null || value === undefined)
+    ) {
+      if (prevUrlRef.current) {
+        URL.revokeObjectURL(prevUrlRef.current);
+        prevUrlRef.current = null;
+      }
+
+      setPreview(null);
+
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
+    }
+
+    previousValueRef.current = value;
+  }, [value]);
 
   useEffect(() => {
     return () => {
@@ -192,7 +209,7 @@ export const FileInputField = ({
         name={name}
         type="file"
         accept={accept || "image/*"}
-        className="hidden"
+        className="absolute w-px h-px opacity-0"
         onChange={(e) => handleFile(e.target.files?.[0], e)}
         {...rest}
       />
