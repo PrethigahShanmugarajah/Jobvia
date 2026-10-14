@@ -67,3 +67,32 @@ export const closeDashboardJob = async (jobId) => {
     throw error;
   }
 };
+
+/* -------- Create Job -------- */
+export const createJob = async (formDataToSend) => {
+  try {
+    const { data } = await api.post(API_ROUTES.JOB.CREATE, formDataToSend);
+
+    console.log("Create Job API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Create Job Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Create job with warning");
+      console.warn(
+        "Create Job Warning:",
+        data?.message || "Create Job Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(
+      error?.response?.data?.message || "Failed to post job. Please try again.",
+    );
+    console.error("Create Job Error:", error);
+
+    throw error;
+  }
+};
