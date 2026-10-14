@@ -27,6 +27,7 @@ const Dashboard = () => {
   const [jobs, setJobs] = useState([]);
   const [showCloseJobPopup, setShowCloseJobPopup] = useState(false);
   const [closingJobId, setClosingJobId] = useState(null);
+  const [closingJob, setClosingJob] = useState(null);
   const [closingJobLoading, setClosingJobLoading] = useState(false);
 
   const { navigate, BASE_URL } = useAppContext();
@@ -41,8 +42,9 @@ const Dashboard = () => {
     );
   }, [BASE_URL, navigate]);
 
-  const confirmCloseJob = (jobId) => {
-    setClosingJobId(jobId);
+  const confirmCloseJob = (job) => {
+    setClosingJobId(job.id);
+    setClosingJob(job);
     setShowCloseJobPopup(true);
   };
 
@@ -120,7 +122,13 @@ const Dashboard = () => {
       {showCloseJobPopup && (
         <ConfirmPopup
           title="Close Job"
-          description="Are you sure you want to close this job? This action cannot be undone."
+          description={
+            <>
+              Are you sure you want to close <strong>{closingJob?.role}</strong>{" "}
+              at <strong>{closingJob?.name}</strong>? This action cannot be
+              undone.
+            </>
+          }
           confirmText="Close Job"
           closeText="Cancel"
           loading={closingJobLoading}

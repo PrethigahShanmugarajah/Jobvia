@@ -83,7 +83,7 @@ const DashboardJobCard = ({
 
           {job.status === "active" && (
             <button
-              onClick={() => confirmCloseJob(job.id)}
+              onClick={() => confirmCloseJob(job)}
               className="pointer-events-auto bg-linear-to-r from-rose-500 to-pink-500 text-white cursor-pointer px-4 py-1.5 rounded-full text-xs font-semibold shadow-lg hover:shadow-xl transform transition-all hover:scale-105"
             >
               Close Job
