@@ -31,10 +31,24 @@ export const createJob = async (req, res) => {
       });
     }
 
+    if (!roleName.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job role name cannot be empty.",
+      });
+    }
+
     if (!companyName) {
       return res.status(400).json({
         success: false,
         message: "Company name is required.",
+      });
+    }
+
+    if (!companyName.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Company name cannot be empty.",
       });
     }
 
@@ -45,6 +59,13 @@ export const createJob = async (req, res) => {
       });
     }
 
+    if (!location.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job location cannot be empty.",
+      });
+    }
+
     if (!experience) {
       return res.status(400).json({
         success: false,
@@ -52,10 +73,24 @@ export const createJob = async (req, res) => {
       });
     }
 
-    if (!salary) {
+    if (!experience.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job experience cannot be empty.",
+      });
+    }
+
+    if (salary == null) {
       return res.status(400).json({
         success: false,
         message: "Salary is required.",
+      });
+    }
+
+    if (Number.isNaN(Number(salary))) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide a valid salary.",
       });
     }
 
@@ -66,6 +101,13 @@ export const createJob = async (req, res) => {
       });
     }
 
+    if (!jobType.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job type cannot be empty.",
+      });
+    }
+
     if (!category) {
       return res.status(400).json({
         success: false,
@@ -73,10 +115,24 @@ export const createJob = async (req, res) => {
       });
     }
 
-    if (!openings) {
+    if (!category.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job category cannot be empty.",
+      });
+    }
+
+    if (openings == null) {
       return res.status(400).json({
         success: false,
         message: "Number of job openings is required.",
+      });
+    }
+
+    if (Number.isNaN(Number(openings))) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide a valid number of job openings.",
       });
     }
 
@@ -87,6 +143,13 @@ export const createJob = async (req, res) => {
       });
     }
 
+    if (!overview.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job overview cannot be empty.",
+      });
+    }
+
     if (!req.file) {
       return res.status(400).json({
         success: false,
@@ -94,26 +157,40 @@ export const createJob = async (req, res) => {
       });
     }
 
-    if (typeof techStack === "string") {
-      techStack = JSON.parse(techStack);
-    }
+    try {
+      if (typeof techStack === "string") {
+        techStack = JSON.parse(techStack);
+      }
 
-    if (typeof responsibilities === "string") {
-      responsibilities = JSON.parse(responsibilities);
-    }
+      if (typeof responsibilities === "string") {
+        responsibilities = JSON.parse(responsibilities);
+      }
 
-    if (typeof jobCriteria === "string") {
-      jobCriteria = JSON.parse(jobCriteria);
-    }
+      if (typeof jobCriteria === "string") {
+        jobCriteria = JSON.parse(jobCriteria);
+      }
 
-    if (typeof education === "string") {
-      education = JSON.parse(education);
+      if (typeof education === "string") {
+        education = JSON.parse(education);
+      }
+    } catch {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid JSON format for job requirements.",
+      });
     }
 
     if (!techStack) {
       return res.status(400).json({
         success: false,
         message: "Technology stack is required.",
+      });
+    }
+
+    if (!Array.isArray(techStack)) {
+      return res.status(400).json({
+        success: false,
+        message: "Technology stack must be an array.",
       });
     }
 
@@ -131,6 +208,13 @@ export const createJob = async (req, res) => {
       });
     }
 
+    if (!Array.isArray(responsibilities)) {
+      return res.status(400).json({
+        success: false,
+        message: "Job responsibilities must be an array.",
+      });
+    }
+
     if (responsibilities.length === 0) {
       return res.status(400).json({
         success: false,
@@ -145,6 +229,13 @@ export const createJob = async (req, res) => {
       });
     }
 
+    if (!Array.isArray(jobCriteria)) {
+      return res.status(400).json({
+        success: false,
+        message: "Job criteria must be an array.",
+      });
+    }
+
     if (jobCriteria.length === 0) {
       return res.status(400).json({
         success: false,
@@ -156,6 +247,13 @@ export const createJob = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Education requirements are required.",
+      });
+    }
+
+    if (!Array.isArray(education)) {
+      return res.status(400).json({
+        success: false,
+        message: "Education requirements must be an array.",
       });
     }
 
@@ -181,8 +279,11 @@ export const createJob = async (req, res) => {
         postDateValue = new Date(postDate);
       }
 
-      if (isNaN(postDateValue.getTime())) {
-        postDateValue = new Date();
+      if (Number.isNaN(postDateValue.getTime())) {
+        return res.status(400).json({
+          success: false,
+          message: "Please provide a valid post date.",
+        });
       }
     } else {
       postDateValue = new Date();
@@ -198,6 +299,20 @@ export const createJob = async (req, res) => {
     );
 
     companyLogo = uploadRes.secure_url;
+
+    if (!companyLogo) {
+      return res.status(400).json({
+        success: false,
+        message: "Company logo is required.",
+      });
+    }
+
+    if (!companyLogo.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Company logo cannot be empty.",
+      });
+    }
 
     const job = new Job({
       companyLogo,
@@ -492,20 +607,27 @@ export const updateJob = async (req, res) => {
     } = req.body;
 
     /* -------- Handle arrays if sent as JSON strings from frontend FormData -------- */
-    if (typeof techStack === "string") {
-      techStack = JSON.parse(techStack);
-    }
+    try {
+      if (typeof techStack === "string") {
+        techStack = JSON.parse(techStack);
+      }
 
-    if (typeof responsibilities === "string") {
-      responsibilities = JSON.parse(responsibilities);
-    }
+      if (typeof responsibilities === "string") {
+        responsibilities = JSON.parse(responsibilities);
+      }
 
-    if (typeof jobCriteria === "string") {
-      jobCriteria = JSON.parse(jobCriteria);
-    }
+      if (typeof jobCriteria === "string") {
+        jobCriteria = JSON.parse(jobCriteria);
+      }
 
-    if (typeof education === "string") {
-      education = JSON.parse(education);
+      if (typeof education === "string") {
+        education = JSON.parse(education);
+      }
+    } catch {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid JSON format for job requirements.",
+      });
     }
 
     let postDateValue;
@@ -524,8 +646,11 @@ export const updateJob = async (req, res) => {
         postDateValue = new Date(postDate);
       }
 
-      if (isNaN(postDateValue.getTime())) {
-        postDateValue = new Date();
+      if (Number.isNaN(postDateValue.getTime())) {
+        return res.status(400).json({
+          success: false,
+          message: "Please provide a valid post date.",
+        });
       }
     } else {
       postDateValue = new Date();
@@ -553,6 +678,222 @@ export const updateJob = async (req, res) => {
       companyLogo = uploadRes.secure_url;
     }
 
+    if (!companyLogo) {
+      return res.status(400).json({
+        success: false,
+        message: "A company logo is required to update this job.",
+      });
+    }
+
+    if (!roleName) {
+      return res.status(400).json({
+        success: false,
+        message: "Job role is required.",
+      });
+    }
+
+    if (!roleName.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job role cannot be empty.",
+      });
+    }
+
+    if (!companyName) {
+      return res.status(400).json({
+        success: false,
+        message: "Company name is required.",
+      });
+    }
+
+    if (!companyName.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Company name cannot be empty.",
+      });
+    }
+
+    if (!techStack) {
+      return res.status(400).json({
+        success: false,
+        message: "Technology stack is required.",
+      });
+    }
+
+    if (!Array.isArray(techStack)) {
+      return res.status(400).json({
+        success: false,
+        message: "Technology stack must be an array.",
+      });
+    }
+
+    if (techStack.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "At least one technology is required in the technology stack.",
+      });
+    }
+
+    if (!location) {
+      return res.status(400).json({
+        success: false,
+        message: "Job location is required.",
+      });
+    }
+
+    if (!location.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job location cannot be empty.",
+      });
+    }
+
+    if (!experience) {
+      return res.status(400).json({
+        success: false,
+        message: "Experience is required.",
+      });
+    }
+
+    if (!experience.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Experience cannot be empty.",
+      });
+    }
+
+    if (salary == null) {
+      return res.status(400).json({
+        success: false,
+        message: "Salary is required.",
+      });
+    }
+
+    if (Number.isNaN(Number(salary))) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide a valid salary.",
+      });
+    }
+
+    if (!jobType) {
+      return res.status(400).json({
+        success: false,
+        message: "Job type is required.",
+      });
+    }
+
+    if (!jobType.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job type cannot be empty.",
+      });
+    }
+
+    if (!category) {
+      return res.status(400).json({
+        success: false,
+        message: "Job category is required.",
+      });
+    }
+
+    if (!category.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job category cannot be empty.",
+      });
+    }
+
+    if (openings == null) {
+      return res.status(400).json({
+        success: false,
+        message: "Number of openings is required.",
+      });
+    }
+
+    if (Number.isNaN(Number(openings))) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide a valid number of openings.",
+      });
+    }
+
+    if (!overview) {
+      return res.status(400).json({
+        success: false,
+        message: "Job overview is required.",
+      });
+    }
+
+    if (!overview.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Job overview cannot be empty.",
+      });
+    }
+
+    if (!responsibilities) {
+      return res.status(400).json({
+        success: false,
+        message: "Job responsibilities are required.",
+      });
+    }
+
+    if (!Array.isArray(responsibilities)) {
+      return res.status(400).json({
+        success: false,
+        message: "Job responsibilities must be an array.",
+      });
+    }
+
+    if (responsibilities.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "At least one job responsibility is required.",
+      });
+    }
+
+    if (!jobCriteria) {
+      return res.status(400).json({
+        success: false,
+        message: "Job criteria are required.",
+      });
+    }
+
+    if (!Array.isArray(jobCriteria)) {
+      return res.status(400).json({
+        success: false,
+        message: "Job criteria must be an array.",
+      });
+    }
+
+    if (jobCriteria.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "At least one job criterion is required.",
+      });
+    }
+
+    if (!education) {
+      return res.status(400).json({
+        success: false,
+        message: "Education requirements are required.",
+      });
+    }
+
+    if (!Array.isArray(education)) {
+      return res.status(400).json({
+        success: false,
+        message: "Education requirements must be an array.",
+      });
+    }
+
+    if (education.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "At least one education requirement is required.",
+      });
+    }
     job = await Job.findByIdAndUpdate(
       req.params.id,
       {
