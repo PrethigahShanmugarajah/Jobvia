@@ -1,7 +1,6 @@
 // Jobvia / Admin / src / pages / ListJobs Components / CompanyImageSection.jsx
 import { Image as ImageIcon } from "lucide-react";
 import { CompanyFallback, CompanyPlaceholder } from "../../../assets/assets";
-import Field from "./Field";
 
 const CompanyImageSection = ({
   editingJob,
@@ -42,10 +41,12 @@ const CompanyImageSection = ({
             aria-hidden
           />
 
-          <Field
-            label="Upload Image"
-            icon={<ImageIcon size={14} className="text-slate-400" />}
-          >
+          <div>
+            <label className="text-sm font-medium text-slate-700 mb-3 flex items-center gap-2">
+              <ImageIcon size={14} className="text-slate-400" />
+              Upload Image
+            </label>
+
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <div className="flex-1">
                 <div className="text-sm text-slate-700 mb-1">
@@ -87,7 +88,7 @@ const CompanyImageSection = ({
                 </button>
               </div>
             </div>
-          </Field>
+          </div>
         </div>
       </div>
     </div>
