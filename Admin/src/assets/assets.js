@@ -1,4 +1,6 @@
-// Client / src / assets / assets.js
+// Jobvia / Admin / src / assets / assets.js
 import Logo from "./Logo.png";
+import CompanyPlaceholder from "./CompanyPlaceholder.png";
+import CompanyFallback from "./CompanyFallback.png";
 
-export { Logo };
+export { Logo, CompanyPlaceholder, CompanyFallback };
