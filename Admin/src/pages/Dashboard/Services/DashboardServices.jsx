@@ -1,8 +1,5 @@
 // Jobvia / Admin / src / pages / Dashboard / Services / DashboardServices.jsx
-import {
-  fetchDashboardJobs,
-  fetchDashboardStats,
-} from "../../../services/fetch";
+import { fetchAdminJobs, fetchDashboardStats } from "../../../services/fetch";
 import { closeDashboardJob } from "../../../services/mutations";
 
 /* -------- Map dashboard jobs -------- */
@@ -41,7 +38,7 @@ export const fetchDashboardDataService = async (
     const statsData = await fetchDashboardStats();
     setDashboardStats(statsData.stats);
 
-    const jobsData = await fetchDashboardJobs();
+    const jobsData = await fetchAdminJobs();
     setJobs(mapDashboardJobs(jobsData.jobs, BASE_URL));
   } catch (error) {
     console.error("Error Fetching Dashboard Data:", error);
@@ -67,7 +64,7 @@ export const closeDashboardJobService = async (
     const statsData = await fetchDashboardStats();
     setDashboardStats(statsData.stats);
 
-    const jobsData = await fetchDashboardJobs();
+    const jobsData = await fetchAdminJobs();
     setJobs(mapDashboardJobs(jobsData.jobs, BASE_URL));
   } catch {
     return false;
