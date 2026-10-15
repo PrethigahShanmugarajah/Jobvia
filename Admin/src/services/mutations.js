@@ -71,7 +71,7 @@ export const closeDashboardJob = async (jobId) => {
 /* -------- Create Job -------- */
 export const createJob = async (formDataToSend) => {
   try {
-    const { data } = await api.post(API_ROUTES.JOB.CREATE, formDataToSend);
+    const { data } = await api.post(API_ROUTES.JOB.BASE, formDataToSend);
 
     console.log("Create Job API Response:", data);
 
@@ -92,6 +92,63 @@ export const createJob = async (formDataToSend) => {
       error?.response?.data?.message || "Failed to post job. Please try again.",
     );
     console.error("Create Job Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Delete Dashboard Job -------- */
+export const deleteDashboardJob = async (jobId) => {
+  try {
+    const { data } = await api.delete(`${API_ROUTES.JOB.BASE}/${jobId}`);
+
+    console.log("Delete Dashboard Job API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Delete Dashboard Job Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Delete dashboard job with warning");
+      console.warn(
+        "Delete Dashboard Job Warning:",
+        data?.message || "Delete Dashboard Job Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Delete Dashboard Job Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Update Dashboard Job -------- */
+export const updateDashboardJob = async (jobId, formDataToSend) => {
+  try {
+    const { data } = await api.put(
+      `${API_ROUTES.JOB.BASE}/${jobId}`,
+      formDataToSend,
+    );
+
+    console.log("Update Dashboard Job API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Update Dashboard Job Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Update dashboard job with warning");
+      console.warn(
+        "Update Dashboard Job Warning:",
+        data?.message || "Update Dashboard Job Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Update Dashboard Job Error:", error);
 
     throw error;
   }
