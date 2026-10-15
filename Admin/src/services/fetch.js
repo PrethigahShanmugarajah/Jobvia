@@ -31,7 +31,7 @@ export const fetchDashboardStats = async () => {
 };
 
 /* -------- Fetch Dashboard Jobs -------- */
-export const fetchDashboardJobs = async () => {
+export const fetchAdminJobs = async () => {
   try {
     const { data } = await api.get(API_ROUTES.JOB.ADMIN_JOBS);
 
