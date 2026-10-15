@@ -6,10 +6,10 @@ const API_ROUTES = {
   },
 
   JOB: {
+    BASE: "/api/job",
     ADMIN_STATS: "/api/job/admin/stats",
     ADMIN_JOBS: "/api/job/admin/jobs",
     CLOSE: (jobId) => `/api/job/${jobId}/close`,
-    CREATE: "/api/job",
   },
 };
 
