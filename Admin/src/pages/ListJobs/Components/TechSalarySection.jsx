@@ -26,18 +26,35 @@ const TechSalarySection = ({
         title="Tech Stack & Compensation"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4">
         <div>
-          <InputField
-            label="Tech Stack"
-            name="newTech"
-            type="text"
-            iconLeft={<Code size={12} className="text-slate-400" />}
-            value={newTech}
-            onChange={(e) => setNewTech(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
+          <div className="flex items-end gap-2">
+            <div className="flex-1 min-w-0">
+              <InputField
+                label="Tech Stack"
+                name="newTech"
+                type="text"
+                iconLeft={<Code size={12} className="text-slate-400" />}
+                value={newTech}
+                onChange={(e) => setNewTech(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    addArrayItemService(
+                      editingJob,
+                      setEditingJob,
+                      "techstack",
+                      newTech,
+                    );
+                    setNewTech("");
+                  }
+                }}
+                placeholder="Add a technology and press Enter"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={() => {
                 addArrayItemService(
                   editingJob,
                   setEditingJob,
@@ -45,11 +62,13 @@ const TechSalarySection = ({
                   newTech,
                 );
                 setNewTech("");
-              }
-            }}
-            placeholder="Add a technology and press Enter"
-            required
-          />
+              }}
+              className="p-2 mb-0.5 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 shrink-0"
+              aria-label="Add tech"
+            >
+              <Plus size={16} />
+            </button>
+          </div>
 
           <div className="flex flex-wrap gap-2 mt-2">
             {(editingJob?.techstack || []).map((tech, idx) => (
@@ -68,28 +87,9 @@ const TechSalarySection = ({
               </Badge>
             ))}
           </div>
-
-          <div className="flex justify-end mt-2">
-            <button
-              type="button"
-              onClick={() => {
-                addArrayItemService(
-                  editingJob,
-                  setEditingJob,
-                  "techstack",
-                  newTech,
-                );
-                setNewTech("");
-              }}
-              className="p-2 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100"
-              aria-label="Add tech"
-            >
-              <Plus size={16} />
-            </button>
-          </div>
         </div>
 
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex items-end gap-2">
             <div className="flex-1 min-w-0">
               <InputField
