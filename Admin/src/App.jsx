@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/View/Login";
 import Dashboard from "./pages/Dashboard/View/Dashboard";
 import AddJob from "./pages/AddJob/View/AddJob";
+import ListJobs from "./pages/ListJobs/View/ListJobs";
 
 const App = () => {
   const { location } = useAppContext();
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Dashboard />} />
         <Route path="/addjobs" element={<AddJob />} />
+        <Route path="/list/jobs" element={<ListJobs />} />
       </Routes>
     </>
   );
