@@ -42,7 +42,7 @@ export const handleLogoChangeService = (
 };
 
 /* -------- Validate company form -------- */
-export const validateCompanyFormService = (logoFile, website, setErrors) => {
+export const validateCompanyFormService = (logoFile, website) => {
   const newErrors = {};
 
   if (!logoFile) {
@@ -55,8 +55,6 @@ export const validateCompanyFormService = (logoFile, website, setErrors) => {
     newErrors.website = "Enter a valid URL (e.g., https://example.com)";
   }
 
-  setErrors(newErrors);
-
   return Object.keys(newErrors).length === 0;
 };
 
@@ -68,7 +66,6 @@ export const submitCompanyService = async (
   setLogoFile,
   setLogoPreview,
   setWebsite,
-  setErrors,
 ) => {
   const formData = new FormData();
 
@@ -82,7 +79,6 @@ export const submitCompanyService = async (
   setLogoFile(null);
   setLogoPreview("");
   setWebsite("");
-  setErrors({});
 
   return data;
 };
