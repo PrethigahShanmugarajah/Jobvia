@@ -1,5 +1,6 @@
 // Jobvia / Admin / src / pages / ListJobs Components / TechSalarySection.jsx
 import { useAppContext } from "../../../context/appContext";
+import SectionHeader from "./SectionHeader";
 import { Code, Plus } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";
 import {
@@ -20,10 +21,10 @@ const TechSalarySection = ({
 
   return (
     <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm overflow-visible">
-      <h4 className="text-sm font-semibold text-slate-700 mb-4 flex items-center gap-2">
-        <Code size={16} className="text-indigo-500" />
-        Tech Stack & Compensation
-      </h4>
+      <SectionHeader
+        icon={<Code size={16} className="text-indigo-500" />}
+        title="Tech Stack & Compensation"
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
