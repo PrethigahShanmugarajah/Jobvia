@@ -153,3 +153,59 @@ export const updateDashboardJob = async (jobId, formDataToSend) => {
     throw error;
   }
 };
+
+/* -------- Create Company -------- */
+export const createCompany = async (formDataToSend) => {
+  try {
+    const { data } = await api.post(API_ROUTES.COMPANY.BASE, formDataToSend);
+
+    console.log("Create Company API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Create Company Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Create company with warning");
+      console.warn(
+        "Create Company Warning:",
+        data?.message || "Create Company Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Create Company Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Delete Company -------- */
+export const deleteCompany = async (companyId) => {
+  try {
+    const { data } = await api.delete(
+      `${API_ROUTES.COMPANY.BASE}/${companyId}`,
+    );
+
+    console.log("Delete Company API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Delete Company Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Delete company with warning");
+      console.warn(
+        "Delete Company Warning:",
+        data?.message || "Delete Company Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Delete Company Error:", error);
+
+    throw error;
+  }
+};
