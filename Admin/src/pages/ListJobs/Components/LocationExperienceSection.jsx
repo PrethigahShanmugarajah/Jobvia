@@ -1,4 +1,5 @@
 // Jobvia / Admin / src / pages / ListJobs Components / LocationExperienceSection.jsx
+import SectionHeader from "./SectionHeader";
 import { Clock, Edit3, MapPin, X } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";
 import {
@@ -20,10 +21,10 @@ const LocationExperienceSection = ({
 }) => {
   return (
     <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-      <h4 className="text-sm font-semibold text-slate-700 mb-4 flex items-center gap-2">
-        <MapPin size={16} className="text-indigo-500" />
-        Location & Experience
-      </h4>
+      <SectionHeader
+        icon={<MapPin size={16} className="text-indigo-500" />}
+        title="Location & Experience"
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
