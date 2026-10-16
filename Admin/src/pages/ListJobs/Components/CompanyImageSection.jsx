@@ -1,4 +1,5 @@
 // Jobvia / Admin / src / pages / ListJobs Components / CompanyImageSection.jsx
+import SectionHeader from "./SectionHeader";
 import { Image as ImageIcon } from "lucide-react";
 import { CompanyFallback, CompanyPlaceholder } from "../../../assets/assets";
 
@@ -11,10 +12,10 @@ const CompanyImageSection = ({
 }) => {
   return (
     <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-      <h4 className="text-sm font-semibold text-slate-700 mb-4 flex items-center gap-2">
-        <ImageIcon size={16} className="text-indigo-500" />
-        Company Image
-      </h4>
+      <SectionHeader
+        icon={<ImageIcon size={16} className="text-indigo-500" />}
+        title="Company Image"
+      />
 
       <div className="flex flex-col sm:flex-row items-center gap-5">
         <div className="relative group">
