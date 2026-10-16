@@ -11,6 +11,10 @@ const API_ROUTES = {
     ADMIN_JOBS: "/api/job/admin/jobs",
     CLOSE: (jobId) => `/api/job/${jobId}/close`,
   },
+
+  COMPANY: {
+    BASE: "/api/company",
+  },
 };
 
 export default API_ROUTES;
