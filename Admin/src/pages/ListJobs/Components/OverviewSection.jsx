@@ -5,15 +5,17 @@ import { FileText } from "lucide-react";
 const OverviewSection = ({ editingJob, handleFieldChange }) => {
   return (
     <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+      <h4 className="text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+        <FileText size={16} className="text-indigo-500" />
+        Overview
+      </h4>
+
       <TextAreaField
-        label="Overview"
         name="overview"
-        iconLeft={<FileText size={12} className="text-slate-400" />}
         value={editingJob?.overview ?? ""}
         onChange={(value) => handleFieldChange("overview", value)}
         rows={3}
         placeholder="Brief description of the role..."
-        required
       />
     </div>
   );
