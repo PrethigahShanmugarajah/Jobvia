@@ -8,6 +8,7 @@ import Login from "./pages/Login/View/Login";
 import Dashboard from "./pages/Dashboard/View/Dashboard";
 import AddJob from "./pages/AddJob/View/AddJob";
 import ListJobs from "./pages/ListJobs/View/ListJobs";
+import Companies from "./pages/Companies/View/Companies";
 
 const App = () => {
   const { location } = useAppContext();
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="/addjobs" element={<AddJob />} />
         <Route path="/list/jobs" element={<ListJobs />} />
+        <Route path="/companies" element={<Companies />} />
       </Routes>
     </>
   );
