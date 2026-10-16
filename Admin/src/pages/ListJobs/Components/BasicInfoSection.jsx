@@ -1,4 +1,5 @@
 // Jobvia / Admin / src / pages / ListJobs Components / BasicInfoSection.jsx
+import SectionHeader from "./SectionHeader";
 import { Briefcase, Building2, Clock, Layers, Tag } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";
 import { SelectInput } from "../../../components/FormField/SelectInput";
@@ -6,10 +7,10 @@ import { SelectInput } from "../../../components/FormField/SelectInput";
 const BasicInfoSection = ({ editingJob, handleFieldChange }) => {
   return (
     <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-      <h4 className="text-sm font-semibold text-slate-700 mb-4 flex items-center gap-2">
-        <Layers size={16} className="text-indigo-500" />
-        Basic Information
-      </h4>
+      <SectionHeader
+        icon={<Layers size={16} className="text-indigo-500" />}
+        title="Basic Information"
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
