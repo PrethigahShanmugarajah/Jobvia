@@ -209,3 +209,30 @@ export const deleteCompany = async (companyId) => {
     throw error;
   }
 };
+
+/* -------- Create Interview -------- */
+export const createInterview = async (formDataToSend) => {
+  try {
+    const { data } = await api.post(API_ROUTES.INTERVIEW.BASE, formDataToSend);
+
+    console.log("Create Interview API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Create Interview Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Create interview with warning");
+      console.warn(
+        "Create Interview Warning:",
+        data?.message || "Create Interview Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Create Interview Error:", error);
+
+    throw error;
+  }
+};
