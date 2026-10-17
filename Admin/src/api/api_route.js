@@ -15,6 +15,10 @@ const API_ROUTES = {
   COMPANY: {
     BASE: "/api/company",
   },
+
+  INTERVIEW: {
+    BASE: "/api/interview",
+  },
 };
 
 export default API_ROUTES;
