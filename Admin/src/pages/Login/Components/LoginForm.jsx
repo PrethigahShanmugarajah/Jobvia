@@ -60,7 +60,8 @@ const LoginForm = ({
               visible={true}
               height="20"
               width="40"
-              color="#ffffff"
+              color="#FFFFFF"
+              secondaryColor="#E2E8F0"
               radius="9"
               ariaLabel="three-dots-loading"
             />

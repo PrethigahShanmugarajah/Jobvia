@@ -119,6 +119,7 @@ const AddJob = () => {
                   height="24"
                   width="40"
                   color="#FFFFFF"
+                  secondaryColor="#E2E8F0"
                   radius="9"
                   ariaLabel="posting-job-loader"
                 />
