@@ -38,6 +38,7 @@ export const FileInputField = ({
   errorClassName = "",
   triggerText,
   TriggerIcon = null,
+  imagePreview = true,
   value,
   onChange,
   error,
@@ -141,15 +142,19 @@ export const FileInputField = ({
   const handleFile = (file, e) => {
     if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
-      if (inputRef.current) inputRef.current.value = "";
+    if (imagePreview && !file.type.startsWith("image/")) {
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
       return;
     }
 
-    updatePreview(file);
+    if (imagePreview) {
+      updatePreview(file);
+    }
+
     onChange?.(file, e);
   };
-
   const handleDrop = (e) => {
     e.preventDefault();
     setDragActive(false);
@@ -208,13 +213,13 @@ export const FileInputField = ({
         id={name}
         name={name}
         type="file"
-        accept={accept || "image/*"}
+        accept={accept || (imagePreview ? "image/*" : undefined)}
         className="absolute w-px h-px opacity-0"
         onChange={(e) => handleFile(e.target.files?.[0], e)}
         {...rest}
       />
 
-      {preview ? (
+      {imagePreview && preview ? (
         <div className="relative flex justify-center">
           <img
             src={preview}
@@ -240,7 +245,7 @@ export const FileInputField = ({
           )}
 
           <p className="mt-2 text-gray-600">
-            Drag & drop an image here, or{" "}
+            Drag & drop a {imagePreview ? "image" : "file"} here, or{" "}
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
