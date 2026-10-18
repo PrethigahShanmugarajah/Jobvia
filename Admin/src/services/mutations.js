@@ -34,7 +34,7 @@ export const loginAdmin = async (email, password) => {
     }
     return data;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message || error?.message);
     console.error("Admin Login Error:", error);
 
     throw error;
@@ -88,9 +88,7 @@ export const createJob = async (formDataToSend) => {
 
     return data;
   } catch (error) {
-    toast.error(
-      error?.response?.data?.message || "Failed to post job. Please try again.",
-    );
+    toast.error(error?.response?.data?.message || error?.message);
     console.error("Create Job Error:", error);
 
     throw error;
@@ -316,10 +314,65 @@ export const addRoleQuestion = async (formDataToSend) => {
 
     return data;
   } catch (error) {
-    toast.error(
-      error?.response?.data?.message || "Failed to add role questions.",
-    );
+    toast.error(error?.response?.data?.message || error?.message);
     console.error("Add Role Question Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Update Interview Role Question -------- */
+export const updateRoleQuestion = async (roleId, formDataToSend) => {
+  try {
+    const { data } = await api.put(
+      `${API_ROUTES.INTERVIEW.ROLE}/${roleId}`,
+      formDataToSend,
+    );
+
+    console.log("Update Role Question API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Update Role Question Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to update role questions.");
+      console.warn(
+        "Update Role Question Warning:",
+        data?.message || "Failed to update role questions.",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Update Role Question Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Delete Interview Role Question -------- */
+export const deleteRoleQuestion = async (roleId) => {
+  try {
+    const { data } = await api.delete(`${API_ROUTES.INTERVIEW.ROLE}/${roleId}`);
+
+    console.log("Delete Role Question API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Delete Role Question Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to delete role.");
+      console.warn(
+        "Delete Role Question Warning:",
+        data?.message || "Failed to delete role.",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Delete Role Question Error:", error);
 
     throw error;
   }
