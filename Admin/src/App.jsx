@@ -11,6 +11,7 @@ import ListJobs from "./pages/ListJobs/View/ListJobs";
 import Companies from "./pages/Companies/View/Companies";
 import CompanyQuestion from "./pages/CompanyQuestion/View/CompanyQuestion";
 import ListCompanyQuestions from "./pages/ListCompanyQuestions/View/ListCompanyQuestions";
+import RoleQuestion from "./pages/RoleQuestion/View/RoleQuestion";
 
 const App = () => {
   const { location } = useAppContext();
@@ -32,6 +33,7 @@ const App = () => {
           path="/list/company-questions"
           element={<ListCompanyQuestions />}
         />
+        <Route path="/role-questions" element={<RoleQuestion />} />
       </Routes>
     </>
   );
