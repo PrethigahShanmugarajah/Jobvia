@@ -83,3 +83,30 @@ export const fetchCompanies = async () => {
     throw error;
   }
 };
+
+/* -------- Fetch Interview Companies -------- */
+export const fetchInterviewCompanies = async () => {
+  try {
+    const { data } = await api.get(API_ROUTES.INTERVIEW.COMPANIES);
+
+    console.log("Fetch Interview Companies API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Interview Companies Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Fetch interview companies with warning");
+      console.warn(
+        "Fetch Interview Companies Warning:",
+        data?.message || "Fetch Interview Companies Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Interview Companies Error:", error);
+
+    throw error;
+  }
+};
