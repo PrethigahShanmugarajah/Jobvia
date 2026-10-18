@@ -39,6 +39,8 @@ export const FileInputField = ({
   triggerText,
   TriggerIcon = null,
   imagePreview = true,
+  previewUrl = "",
+  fileName = "",
   value,
   onChange,
   error,
@@ -193,12 +195,12 @@ export const FileInputField = ({
     <div
       className={`relative w-full border-2 border-dashed rounded-xl transition-all duration-300 ${
         dragActive
-          ? "border-indigo-400 bg-indigo-50"
+          ? "border-blue-400 bg-blue-50"
           : error
             ? "border-rose-300 bg-rose-50"
             : preview
-              ? "border-indigo-300 bg-indigo-50/50"
-              : "border-gray-300 bg-gray-50 hover:border-indigo-300"
+              ? "border-blue-300 bg-blue-50/50"
+              : "border-gray-300 bg-gray-50 hover:border-blue-300"
       } ${inputClassName}`}
       style={{
         minHeight: `${s.height}px`,
@@ -219,10 +221,10 @@ export const FileInputField = ({
         {...rest}
       />
 
-      {imagePreview && preview ? (
+      {imagePreview && (preview || previewUrl) ? (
         <div className="relative flex justify-center">
           <img
-            src={preview}
+            src={preview || previewUrl}
             alt="Company logo preview"
             className="max-h-20 sm:max-h-32 rounded-lg object-contain"
           />
@@ -234,6 +236,19 @@ export const FileInputField = ({
             aria-label="Remove image"
           >
             <X size={14} />
+          </button>
+        </div>
+      ) : fileName ? (
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-sm text-gray-700 truncate">{fileName}</span>
+
+          <button
+            type="button"
+            onClick={removeImage}
+            className="p-1 text-red-500"
+            aria-label="Remove file"
+          >
+            <X size={16} />
           </button>
         </div>
       ) : (
@@ -249,7 +264,7 @@ export const FileInputField = ({
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
-              className="text-indigo-600 hover:text-indigo-700 cursor-pointer font-bold"
+              className="text-blue-600 hover:text-blue-700 cursor-pointer font-bold"
               style={{ fontSize: `${s.fontSize}px` }}
             >
               {triggerText || "Browse"}
