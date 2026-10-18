@@ -295,3 +295,32 @@ export const updateInterviewCompany = async (companyId, formDataToSend) => {
     throw error;
   }
 };
+
+/* -------- Add Role Question -------- */
+export const addRoleQuestion = async (formDataToSend) => {
+  try {
+    const { data } = await api.post(API_ROUTES.INTERVIEW.ROLE, formDataToSend);
+
+    console.log("Add Role Question API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message || "Role questions added successfully.");
+      console.log("Add Role Question Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to add role questions.");
+      console.warn(
+        "Add Role Question Warning:",
+        data?.message || "Failed to add role questions.",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(
+      error?.response?.data?.message || "Failed to add role questions.",
+    );
+    console.error("Add Role Question Error:", error);
+
+    throw error;
+  }
+};
