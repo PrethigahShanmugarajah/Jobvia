@@ -236,3 +236,62 @@ export const createInterview = async (formDataToSend) => {
     throw error;
   }
 };
+
+/* -------- Delete Interview Company -------- */
+export const deleteInterviewCompany = async (companyId) => {
+  try {
+    const { data } = await api.delete(
+      `${API_ROUTES.INTERVIEW.BASE}/${companyId}`,
+    );
+
+    console.log("Delete Interview Company API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Delete Interview Company Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Delete interview company with warning");
+      console.warn(
+        "Delete Interview Company Warning:",
+        data?.message || "Delete Interview Company Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Delete Interview Company Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Update Interview Company -------- */
+export const updateInterviewCompany = async (companyId, formDataToSend) => {
+  try {
+    const { data } = await api.put(
+      `${API_ROUTES.INTERVIEW.BASE}/${companyId}`,
+      formDataToSend,
+    );
+
+    console.log("Update Interview Company API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Update Interview Company Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Update interview company with warning");
+      console.warn(
+        "Update Interview Company Warning:",
+        data?.message || "Update Interview Company Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Update Interview Company Error:", error);
+
+    throw error;
+  }
+};
