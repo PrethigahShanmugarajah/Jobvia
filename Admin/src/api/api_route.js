@@ -20,6 +20,7 @@ const API_ROUTES = {
     BASE: "/api/interview",
     COMPANIES: "/api/interview/companies",
     ROLE: "/api/interview/role",
+    ROLES: "/api/interview/roles",
   },
 };
 
