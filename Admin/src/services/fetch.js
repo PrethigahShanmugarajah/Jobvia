@@ -110,3 +110,30 @@ export const fetchInterviewCompanies = async () => {
     throw error;
   }
 };
+
+/* -------- Fetch Interview Roles -------- */
+export const fetchInterviewRoles = async () => {
+  try {
+    const { data } = await api.get(API_ROUTES.INTERVIEW.ROLES);
+
+    console.log("Fetch Interview Roles API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Interview Roles Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Fetch interview roles with warning");
+      console.warn(
+        "Fetch Interview Roles Warning:",
+        data?.message || "Fetch Interview Roles Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Interview Roles Error:", error);
+
+    throw error;
+  }
+};
