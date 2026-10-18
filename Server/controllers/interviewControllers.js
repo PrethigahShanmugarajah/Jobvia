@@ -150,9 +150,16 @@ export const addInterviewRole = async (req, res) => {
       csvFile: { folder: "jobvia/csv", type: "raw" },
     });
 
+    if (!uploads.imageFile) {
+      return res.status(400).json({
+        success: false,
+        message: "An image is required to create an interview role.",
+      });
+    }
+
     const role = await InterviewRole.create({
       roleName: normalizedRoleName,
-      image: uploads.imageFile || "",
+      image: uploads.imageFile,
       questionsCount: Number(questionsCount),
       csvFileUrl: uploads.csvFile || "",
       createdBy: req.user.id,
