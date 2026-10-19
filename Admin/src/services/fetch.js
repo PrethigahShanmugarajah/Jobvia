@@ -137,3 +137,35 @@ export const fetchInterviewRoles = async () => {
     throw error;
   }
 };
+
+/* -------- Fetch Applicants -------- */
+export const fetchApplicants = async (jobId) => {
+  try {
+    const { data } = await api.get(API_ROUTES.APPLICATION.APPLICATIONS(jobId));
+
+    console.log("Fetch Applicants API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Applicants Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to fetch applicants");
+      console.warn(
+        "Fetch Applicants Warning:",
+        data?.message || "Fetch Applicants Warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Applicants Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Get Resume URL -------- */
+export const getResumeUrl = (userId) => {
+  return `${api.defaults.baseURL}${API_ROUTES.USER.RESUME(userId)}`;
+};
