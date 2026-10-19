@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { useAppContext } from "../../../context/appContext";
 import { loginAdminService } from "../Services/LoginServices";
-import LoginHeader from "../Components/LoginHeader";
+import PageHeader from "../../../components/PageHeader";
+import { ShieldCheck } from "lucide-react";
 import LoginForm from "../Components/LoginForm";
 
 const Login = () => {
@@ -30,7 +31,11 @@ const Login = () => {
   return (
     <div className="min-h-screen font-[pacifico] bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl w-full max-w-md p-8 transform transition-all duration-300 hover:shadow-3xl border border-white/20">
-        <LoginHeader />
+        <PageHeader
+          title="Admin Panel"
+          description="Jobvia Administration"
+          Icon={ShieldCheck}
+        />
 
         <LoginForm
           email={email}

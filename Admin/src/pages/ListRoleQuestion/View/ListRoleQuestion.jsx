@@ -6,6 +6,8 @@ import {
   parseRoleQuestionsCSVService,
   updateRoleQuestionService,
 } from "../Services/ListRoleQuestionServices";
+import PageHeader from "../../../components/PageHeader.jsx";
+import { BriefcaseBusiness } from "lucide-react";
 import { ThreeCircles } from "react-loader-spinner";
 import EditRoleQuestionForm from "../Components/EditRoleQuestionForm.jsx";
 import RoleQuestionCard from "../Components/RoleQuestionCard.jsx";
@@ -154,9 +156,11 @@ const ListRoleQuestion = () => {
 
   return (
     <div className="min-h-screen font-[pacifico] bg-linear-to-br from-gray-50 to-gray-100 p-4 sm:p-6">
-      <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-purple-600 mb-8">
-        Role Questions
-      </h1>
+      <PageHeader
+        title="Role Questions"
+        description="Manage role interview questions and question banks"
+        Icon={BriefcaseBusiness}
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
         {loading ? (

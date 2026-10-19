@@ -7,6 +7,7 @@ import {
   getApplicantResumeUrlService,
 } from "../Services/ApplicantsServices";
 import { ArrowLeft, Users } from "lucide-react";
+import PageHeader from "../../../components/PageHeader";
 import CompanyBadge from "../Components/CompanyBadge";
 import { ThreeCircles } from "react-loader-spinner";
 import NoApplicants from "../Components/NoApplicants";
@@ -64,14 +65,11 @@ const Applicants = () => {
       </button>
 
       <div className="max-w-7xl pt-10 mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-center mb-3 sm:mb-4">
-          <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold bg-linear-to-r from-indigo-800 to-purple-800 bg-clip-text text-transparent flex items-center gap-2 sm:gap-3">
-            <Users className="w-6 mb-7 md:mb-0 lg:mb-0 xl:mb-0 h-6 sm:w-7 sm:h-7 text-indigo-600" />
-            <span className="leading-tight">
-              {role ? `${role} - Applicants` : "All"}
-            </span>
-          </h1>
-        </div>
+        <PageHeader
+          title={role ? `${role} - Applicants` : "All Applicants"}
+          description="Review applicants and view their resumes"
+          Icon={Users}
+        />
 
         {companyName && <CompanyBadge companyName={companyName} />}
 

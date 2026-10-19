@@ -7,6 +7,8 @@ import {
   submitCompanyService,
   validateCompanyFormService,
 } from "../Services/CompaniesServices";
+import PageHeader from "../../../components/PageHeader";
+import { Building2 } from "lucide-react";
 import CompanyForm from "../Components/CompanyForm";
 import CompanyCard from "../Components/CompanyCard";
 import ConfirmPopup from "../../../components/ConfirmPopup";
@@ -78,12 +80,11 @@ const Companies = () => {
   return (
     <div className="min-h-screen font-[pacifico] bg-linear-to-br from-indigo-50 via-white to-purple-50 p-6 sm:p-4 md:p-6">
       <div className="max-w-3xl mx-auto">
-        <header className="text-center mb-10">
-          <h1 className="text-4xl font-bold bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            Add Company
-          </h1>
-          <p className="text-slate-600">Upload Logo Provide Website URL</p>
-        </header>
+        <PageHeader
+          title="Add Company"
+          description="Upload a company logo and provide its website URL"
+          Icon={Building2}
+        />
 
         <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-6 sm:p-6 md:p-8">
           <CompanyForm

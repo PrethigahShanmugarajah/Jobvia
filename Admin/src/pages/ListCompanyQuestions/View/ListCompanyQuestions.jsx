@@ -5,6 +5,7 @@ import {
   fetchCompanyQuestionsService,
   updateCompanyQuestionService,
 } from "../Services/ListCompanyQuestionsServices";
+import PageHeader from "../../../components/PageHeader";
 import { Building2 } from "lucide-react";
 import { ThreeCircles } from "react-loader-spinner";
 import CompanyQuestionCard from "../Components/CompanyQuestionCard";
@@ -131,11 +132,11 @@ const ListCompanyQuestions = () => {
 
   return (
     <div className="p-6 sm:p-4 md:p-6 bg-gray-50 font-[pacifico] min-h-screen">
-      <header className="flex items-center gap-3 mb-8">
-        <Building2 className="text-blue-600" size={36} />
-
-        <h1 className="text-3xl font-bold text-gray-800">Company Questions</h1>
-      </header>
+      <PageHeader
+        title="Company Questions"
+        description="Manage company questions and assessments"
+        Icon={Building2}
+      />
 
       {/* -------- Grid Of Cards -------- */}
       {loading && (

@@ -7,7 +7,8 @@ import {
   closeDashboardJobService,
   fetchDashboardDataService,
 } from "../Services/DashboardServices";
-import DashboardHeader from "../Components/DashboardHeader";
+import PageHeader from "../../../components/PageHeader";
+import { TrendingUp } from "lucide-react";
 import DashboardStats from "../Components/DashboardStats";
 import DashboardFilters from "../Components/DashboardFilters";
 import DashboardJobList from "../Components/DashboardJobList";
@@ -89,7 +90,11 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen font-[pacifico] bg-linear-to-br from-slate-50 via-white to-blue-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
-        <DashboardHeader />
+        <PageHeader
+          title="Jobvia Dashboard"
+          description="Real-time overview of jobs and applicants"
+          Icon={TrendingUp}
+        />
 
         {/* -------- Stats Card -------- */}
         <DashboardStats dashboardStats={dashboardStats} loading={loading} />

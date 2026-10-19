@@ -6,7 +6,8 @@ import {
   validateCompanyQuestionFormService,
 } from "../Services/CompanyQuestionServices";
 import { parseCountString } from "../../../utils/companyQuestions";
-import CompanyQuestionHeader from "../Components/CompanyQuestionHeader";
+import PageHeader from "../../../components/PageHeader";
+import { Building2 } from "lucide-react";
 import CompanyQuestionForm from "../Components/CompanyQuestionForm";
 import UploadedQuestions from "../Components/UploadedQuestions";
 
@@ -61,7 +62,11 @@ const CompanyQuestion = () => {
   return (
     <div className="min-h-screen font-[pacifico] bg-linear-to-br from-blue-50 via-white to-indigo-50 p-6 sm:p-4 md:p-6">
       <div className="max-w-5xl mx-auto">
-        <CompanyQuestionHeader />
+        <PageHeader
+          title="Company Interview Questions"
+          description="Add company and upload a question bank CSV (Question, Answer, KeyPoints, PostDate optional)."
+          Icon={Building2}
+        />
 
         <CompanyQuestionForm
           handleSubmit={handleSubmit}

@@ -1,14 +1,17 @@
-// Jobvia / Admin / src / pages / ListJobs Components / JobListingsHeader.jsx
-import { InputField } from "../../../components/FormField/InputField";
+// Jobvia / Admin / src / pages / ListJobs / Components / JobListingsHeader.jsx
+import PageHeader from "../../../components/PageHeader";
 import { Briefcase, X } from "lucide-react";
+import { InputField } from "../../../components/FormField/InputField";
 import Badge from "./Badge";
 
 const JobListingsHeader = ({ companyFilter, setCompanyFilter, jobsCount }) => {
   return (
     <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
-      <h1 className="text-3xl font-bold bg-linear-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-        Job Listings
-      </h1>
+      <PageHeader
+        title="Job Listings"
+        description="Browse and manage your job listings"
+        Icon={Briefcase}
+      />
 
       <div className="flex items-center gap-3 w-full sm:w-auto">
         {/* -------- Company Filter -------- */}

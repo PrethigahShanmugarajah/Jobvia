@@ -2,7 +2,8 @@
 import "./RoleQuestion.css";
 import { useRef, useState } from "react";
 import { submitRoleQuestionService } from "../Services/RoleQuestionServices";
-import RoleQuestionHeader from "../Components/RoleQuestionHeader";
+import PageHeader from "../../../components/PageHeader";
+import { BriefcaseBusiness } from "lucide-react";
 import RoleQuestionForm from "../Components/RoleQuestionForm";
 import RoleQuestionList from "../Components/RoleQuestionList";
 
@@ -49,7 +50,11 @@ const RoleQuestion = () => {
   return (
     <div className="min-h-screen font-[pacifico] bg-linear-to-br from-blue-50 to-indigo-50 p-6 sm:p-4 md:p-6">
       <div className="max-w-7xl mx-auto">
-        <RoleQuestionHeader />
+        <PageHeader
+          title="Role Interview Questions"
+          description="Add a role and upload a question bank CSV (Question, Answer, KeyPoints, Company, Date)."
+          Icon={BriefcaseBusiness}
+        />
 
         <RoleQuestionForm
           roleName={roleName}

@@ -3,6 +3,7 @@ import "./AddJob.css";
 import { getTodayDate } from "../../../utils/date";
 import { useState } from "react";
 import { submitJobService } from "../Services/AddJobServices";
+import PageHeader from "../../../components/PageHeader.jsx";
 import { Briefcase, Code2, GraduationCap, ListChecks } from "lucide-react";
 import CompanyInfoSection from "../Components/CompanyInfoSection.jsx";
 import ArrayInputSection from "../Components/ArrayInputSection.jsx";
@@ -46,16 +47,11 @@ const AddJob = () => {
   return (
     <div className="min-h-screen font-[pacifico] bg-linear-to-br from-blue-50 via-white to-indigo-50 py-8 sm:py-12 px-3 sm:px-4">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600 flex items-center justify-center gap-3">
-            <Briefcase size={32} />
-            <span className="leading-tight">Post a New Job</span>
-          </h1>
-
-          <p className="text-gray-500 mt-2 text-sm sm:text-base">
-            Create a beautiful, high-converting job listing
-          </p>
-        </div>
+        <PageHeader
+          title="Post a New Job"
+          description="Create a beautiful, high-converting job listing"
+          Icon={Briefcase}
+        />
 
         <form
           onSubmit={handleSubmit}
