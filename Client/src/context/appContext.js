@@ -1,0 +1,6 @@
+// Jobvia / Client / src / context / appContext.js
+import { createContext, useContext } from "react";
+
+export const AppContext = createContext();
+
+export const useAppContext = () => useContext(AppContext);
