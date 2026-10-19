@@ -1,0 +1,18 @@
+/* Jobvia / Admin / src / pages / Applicants / View / Applicants.css */
+
+@keyframes gentleFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.applicant-card {
+  animation: gentleFadeUp 0.45s ease-out forwards;
+  opacity: 0;
+}
