@@ -22,6 +22,14 @@ const API_ROUTES = {
     ROLE: "/api/interview/role",
     ROLES: "/api/interview/roles",
   },
+
+  APPLICATION: {
+    APPLICATIONS: (jobId) => `/api/application/${jobId}/applications`,
+  },
+
+  USER: {
+    RESUME: (userId) => `/api/user/resume/${userId}`,
+  },
 };
 
 export default API_ROUTES;
