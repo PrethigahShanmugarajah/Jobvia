@@ -7,9 +7,12 @@ export const AppProvider = ({ children }) => {
 
   const location = useLocation();
 
+  const CURRENCY = import.meta.env.VITE_CURRENCY;
+
   const value = {
     navigate,
     location,
+    CURRENCY,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
