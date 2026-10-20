@@ -1,0 +1,65 @@
+/* Jobvia / Client / src / pages / Home / Styles / Career.css */
+
+@keyframes scrollRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
+
+@keyframes scrollLeftToRight {
+  0% {
+    transform: translateX(calc(-50% - 1rem));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-right-to-left,
+.animate-scroll-left-to-right {
+  display: flex;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.animate-scroll-right-to-left {
+  animation-name: scrollRightToLeft;
+  animation-duration: 24s;
+}
+
+.animate-scroll-left-to-right {
+  animation-name: scrollLeftToRight;
+  animation-duration: 24s;
+}
+
+@media (min-width: 640px) {
+  .animate-scroll-right-to-left,
+  .animate-scroll-left-to-right {
+    animation-duration: 32s;
+  }
+}
+
+@media (min-width: 1024px) {
+  .animate-scroll-right-to-left,
+  .animate-scroll-left-to-right {
+    animation-duration: 36s;
+  }
+}
+
+@media (min-width: 1280px) {
+  .animate-scroll-right-to-left,
+  .animate-scroll-left-to-right {
+    animation-duration: 40s;
+  }
+}
+
+.animate-scroll-right-to-left:hover,
+.animate-scroll-left-to-right:hover {
+  animation-play-state: paused;
+}
