@@ -2,6 +2,8 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/View/Home";
 
 const App = () => {
   return (
@@ -9,6 +11,10 @@ const App = () => {
       <ToastContainer autoClose={3000} newestOnTop={true} />
 
       <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
   );
 };
