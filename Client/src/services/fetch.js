@@ -29,3 +29,51 @@ export const fetchCompanies = async () => {
     throw error;
   }
 };
+
+/* -------- Fetch Interview Companies -------- */
+export const fetchInterviewCompanies = async () => {
+  try {
+    const { data } = await api.get(API_ROUTES.INTERVIEW.COMPANIES);
+
+    console.log("Fetch Interview Companies API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Interview Companies Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Fetch interview companies with warning");
+      console.warn("Fetch Interview Companies Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Interview Companies Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Fetch Interview Roles -------- */
+export const fetchInterviewRoles = async () => {
+  try {
+    const { data } = await api.get(API_ROUTES.INTERVIEW.ROLES);
+
+    console.log("Fetch Interview Roles API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Interview Roles Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Fetch interview roles with warning");
+      console.warn("Fetch Interview Roles Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Interview Roles Error:", error);
+
+    throw error;
+  }
+};
