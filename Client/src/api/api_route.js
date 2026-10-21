@@ -2,12 +2,18 @@
 
 const API_ROUTES = {
   COMPANY: {
-    BASE: "/api/company",
+    BASE: "company",
   },
 
   INTERVIEW: {
-    COMPANIES: "/api/interview/companies",
-    ROLES: "/api/interview/roles",
+    COMPANIES: "interview/companies",
+    ROLES: "interview/roles",
+  },
+
+  AUTH: {
+    LOGIN: "/auth/login",
+    FORGOT_PASSWORD: "/auth/forgot-password",
+    RESET_PASSWORD: "/auth/reset-password",
   },
 };
 
