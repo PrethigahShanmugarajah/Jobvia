@@ -14,6 +14,8 @@ const API_ROUTES = {
     LOGIN: "/auth/login",
     FORGOT_PASSWORD: "/auth/forgot-password",
     RESET_PASSWORD: "/auth/reset-password",
+    REGISTER: "/auth/register",
+    VERIFY_EMAIL: "/auth/verify-email",
   },
 };
 
