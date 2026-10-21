@@ -9,10 +9,22 @@ export const AppProvider = ({ children }) => {
 
   const CURRENCY = import.meta.env.VITE_CURRENCY;
 
+  const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL;
+
+  const CONTACT_PHONE = import.meta.env.VITE_CONTACT_PHONE;
+
+  const CONTACT_LOCATION = import.meta.env.VITE_CONTACT_LOCATION;
+
+  const PORTFOLIO_URL = import.meta.env.VITE_PORTFOLIO_URL;
+
   const value = {
     navigate,
     location,
     CURRENCY,
+    CONTACT_EMAIL,
+    CONTACT_PHONE,
+    CONTACT_LOCATION,
+    PORTFOLIO_URL,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
