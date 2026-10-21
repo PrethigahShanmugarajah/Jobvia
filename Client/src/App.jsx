@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/View/Home";
 import SignIn from "./pages/SignIn/View/SignIn";
+import SignUp from "./pages/SignUp/View/SignUp";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
 
       {!hideLayout && <Footer />}
