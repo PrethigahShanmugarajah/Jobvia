@@ -59,10 +59,8 @@ const navItems = [
   },
 ];
 
-const STORAGE_KEY = "jobvia_user";
-
 const Navbar = () => {
-  const { navigate, location } = useAppContext();
+  const { navigate, location, STORAGE_KEY } = useAppContext();
 
   const path = location.pathname || "/";
 
@@ -105,7 +103,7 @@ const Navbar = () => {
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
-  }, []);
+  }, [STORAGE_KEY]);
 
   useEffect(() => {
     const onClick = (e) => {
@@ -290,7 +288,7 @@ const Navbar = () => {
                       className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-50 transition"
                     >
                       <User className="w-4 h-4 text-gray-600" />
-                      
+
                       <span className="text-sm text-gray-700">
                         View Profile
                       </span>
@@ -393,7 +391,7 @@ const Navbar = () => {
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <User className="w-5 h-5" />
-                          
+
                           <span className="font-medium">Profile</span>
                         </Link>
 
