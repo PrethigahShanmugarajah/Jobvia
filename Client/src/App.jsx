@@ -1,23 +1,30 @@
 // Jobvia / Client / src / App.jsx
+import { useAppContext } from "./context/appContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/View/Home";
+import SignIn from "./pages/SignIn/View/SignIn";
 import Footer from "./components/Footer";
 
 const App = () => {
+  const { location } = useAppContext();
+
+  const hideLayout = ["/login", "/signup"].includes(location.pathname);
+
   return (
     <>
       <ToastContainer autoClose={3000} newestOnTop={true} />
 
-      <Navbar />
+      {!hideLayout && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<SignIn />} />
       </Routes>
 
-      <Footer />
+      {!hideLayout && <Footer />}
     </>
   );
 };
