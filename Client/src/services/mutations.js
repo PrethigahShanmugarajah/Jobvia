@@ -92,3 +92,60 @@ export const resetPassword = async (email, otp, newPassword) => {
     throw error;
   }
 };
+
+/* -------- Register User -------- */
+export const registerUser = async (formData) => {
+  try {
+    const { data } = await api.post(API_ROUTES.AUTH.REGISTER, formData);
+
+    console.log("Register User API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Register User Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Register User failed with warning");
+      console.warn(
+        "Register User Warning:",
+        data?.message || "Register User failed with warning",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Register User Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Verify Email -------- */
+export const verifyEmail = async (email, otp) => {
+  try {
+    const { data } = await api.post(API_ROUTES.AUTH.VERIFY_EMAIL, {
+      email,
+      otp,
+    });
+
+    console.log("Verify Email API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Verify Email Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Email verification failed");
+      console.warn(
+        "Verify Email Warning:",
+        data?.message || "Email verification failed",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Verify Email Error:", error);
+
+    throw error;
+  }
+};
