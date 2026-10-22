@@ -2,23 +2,20 @@
 import "../Styles/FindJob.css";
 import CompanyLogo from "./CompanyLogo";
 import {
-  MapPin,
+  Bookmark,
   Briefcase,
   Calendar,
   ExternalLink,
-  Users,
-  Bookmark,
   Eye,
-  DollarSign,
+  MapPin,
+  Users,
 } from "lucide-react";
-import { getExperienceColor } from "../Constants/getExperienceColor";
-import {
-  formatDate,
-  formatSalary,
-  normalizeJobTypeForDisplay,
-} from "../Utils/jobFormatters";
-import { getJobTypeColor } from "../Constants/getJobTypeColor";
-import { getCategoryColor } from "../Constants/categoryColors";
+import { getExperienceColor } from "../../../constants/getExperienceColor";
+import { formatSalary } from "../../../utils/salary";
+import { getJobTypeColor } from "../../../constants/getJobTypeColor";
+import { normalizeJobTypeForDisplay } from "../Utils/jobFormatters";
+import { formatRelativeDate } from "../../../utils/date";
+import { getCategoryColor } from "../../../constants/categoryColors";
 import { Link } from "react-router-dom";
 
 const JobList = ({
@@ -30,6 +27,7 @@ const JobList = ({
   savedJobs,
   openConfirmPopup,
   loadToggleSaveJob,
+  CURRENCY,
 }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -102,12 +100,14 @@ const JobList = ({
 
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-green-50">
-                  <DollarSign className="w-4 h-4 text-green-600" />
+                  <span className="text-sm font-bold text-green-600">
+                    {CURRENCY}
+                  </span>
                 </div>
 
                 <div>
                   <span className="px-3 py-1.5 rounded-full line-clamp-3 text-xs font-bold border bg-linear-to-r from-green-100 to-emerald-100 text-green-700 border-green-200">
-                    {formatSalary(job.salary, job.salaryType)}
+                    {formatSalary(job.salary, job.salaryType, CURRENCY)}
                   </span>
                 </div>
               </div>
@@ -132,7 +132,7 @@ const JobList = ({
                 <Calendar className="w-4 h-4 text-gray-400" />
 
                 <span className="text-sm text-gray-500">
-                  {formatDate(job.datePosted)}
+                  {formatRelativeDate(job.datePosted)}
                 </span>
               </div>
 
