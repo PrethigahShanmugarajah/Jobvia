@@ -149,3 +149,54 @@ export const verifyEmail = async (email, otp) => {
     throw error;
   }
 };
+
+/* -------- Toggle Save Job -------- */
+export const toggleSaveJob = async (jobId) => {
+  try {
+    const { data } = await api.post(API_ROUTES.SAVED.JOB(jobId));
+
+    console.log("Toggle Save Job API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Toggle Save Job Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to save job.");
+      console.warn(
+        "Toggle Save Job Warning:",
+        data?.message || "Email verification failed",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Toggle Save Job Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Apply For Job -------- */
+export const applyForJob = async (jobId) => {
+  try {
+    const { data } = await api.post(API_ROUTES.APPLICATION.APPLY(jobId));
+
+    console.log("Apply For Job API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Apply For Job Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to submit application.");
+      console.warn("Apply For Job Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Apply For Job Error:", error);
+
+    throw error;
+  }
+};
