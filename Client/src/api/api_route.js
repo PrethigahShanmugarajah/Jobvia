@@ -25,6 +25,7 @@ const API_ROUTES = {
 
   USER: {
     BASE: "user",
+    RESUME: (userId) => `user/resume/${userId}`,
   },
 
   APPLICATION: {
