@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/View/Home";
 import SignIn from "./pages/SignIn/View/SignIn";
 import SignUp from "./pages/SignUp/View/SignUp";
+import FindJob from "./pages/FindJob/View/FindJob";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/jobs" element={<FindJob />} />
       </Routes>
 
       {!hideLayout && <Footer />}
