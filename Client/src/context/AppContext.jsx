@@ -19,6 +19,12 @@ export const AppProvider = ({ children }) => {
 
   const STORAGE_KEY = import.meta.env.VITE_STORAGE_KEY;
 
+  const STORAGE_JOBS_KEY = import.meta.env.VITE_STORAGE_JOBS_KEY;
+
+  const STORAGE_APPLIED_KEY = import.meta.env.VITE_STORAGE_APPLIED_KEY;
+
+  const BASE_URL = import.meta.env.VITE_BASEURL;
+
   const value = {
     navigate,
     location,
@@ -28,6 +34,9 @@ export const AppProvider = ({ children }) => {
     CONTACT_LOCATION,
     PORTFOLIO_URL,
     STORAGE_KEY,
+    STORAGE_JOBS_KEY,
+    STORAGE_APPLIED_KEY,
+    BASE_URL,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
