@@ -1,4 +1,4 @@
-// Jobvia / Client / src / pages / FindJob / Constants / categoryColors.js
+// Jobvia / Client / src / constants / categoryColors.js
 
 /* -------- Get category badge colors -------- */
 export const getCategoryColor = (category) => {
@@ -15,3 +15,4 @@ export const getCategoryColor = (category) => {
 
   return colors[category] || "bg-gray-100 text-gray-700 border-gray-200";
 };
+
