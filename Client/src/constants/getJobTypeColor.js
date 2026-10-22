@@ -1,4 +1,4 @@
-// Jobvia / Client / src / pages / FindJob / Constants / getJobTypeColor.js
+// Jobvia / Client / src / constants / getJobTypeColor.js
 
 /* -------- Get job type badge colors -------- */
 export const getJobTypeColor = (type) => {
