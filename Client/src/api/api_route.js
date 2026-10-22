@@ -17,6 +17,24 @@ const API_ROUTES = {
     REGISTER: "/auth/register",
     VERIFY_EMAIL: "/auth/verify-email",
   },
+
+  SAVED: {
+    BASE: "saved",
+    JOB: (jobId) => `saved/job/${jobId}`,
+  },
+
+  USER: {
+    BASE: "user",
+  },
+
+  APPLICATION: {
+    APPLY: (jobId) => `application/apply/${jobId}`,
+    USER: "application/user",
+  },
+
+  JOB: {
+    BASE: "job",
+  },
 };
 
 export default API_ROUTES;
