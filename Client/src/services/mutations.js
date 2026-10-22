@@ -200,3 +200,30 @@ export const applyForJob = async (jobId) => {
     throw error;
   }
 };
+
+/* -------- Update User Profile -------- */
+export const updateUserProfile = async (formData) => {
+  try {
+    const { data } = await api.put(API_ROUTES.USER.BASE, formData);
+
+    console.log("Update User Profile API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Update User Profile Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to update user profile.");
+      console.warn(
+        "Update User Profile Warning:",
+        data?.message || "Failed to update user profile.",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Update User Profile Error:", error);
+
+    throw error;
+  }
+};
