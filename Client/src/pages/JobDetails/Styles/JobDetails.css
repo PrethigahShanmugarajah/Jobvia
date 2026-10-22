@@ -1,0 +1,128 @@
+/* Jobvia / Client / src / pages / JobDetails / Styles / JobDetails.css */
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.45s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.45s ease-out;
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.line-clamp-1 {
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.job-info-item:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.job-info-item:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.job-info-item:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.job-info-item:nth-child(4) {
+  animation-delay: 240ms;
+}
+
+.job-info-item:nth-child(5) {
+  animation-delay: 320ms;
+}
+
+.job-info-value {
+  max-width: 22rem;
+}
+
+.job-category-section {
+  animation-delay: 200ms;
+}
+
+.job-overview-section {
+  animation-delay: 300ms;
+}
+
+.job-responsibilities-section {
+  animation-delay: 400ms;
+}
+
+.job-criteria-section {
+  animation-delay: 500ms;
+}
+
+.job-education-section {
+  animation-delay: 600ms;
+}
+
+.job-tech-stack-section {
+  animation-delay: 700ms;
+}
+
+.job-actions-section {
+  animation-delay: 800ms;
+}
