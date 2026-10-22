@@ -251,6 +251,7 @@ const FindJob = () => {
                 savedJobs={savedJobs}
                 openConfirmPopup={openConfirmPopup}
                 loadToggleSaveJob={loadToggleSaveJob}
+                CURRENCY={CURRENCY}
               />
             )}
 
