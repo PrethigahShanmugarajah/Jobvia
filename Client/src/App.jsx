@@ -8,6 +8,7 @@ import Home from "./pages/Home/View/Home";
 import SignIn from "./pages/SignIn/View/SignIn";
 import SignUp from "./pages/SignUp/View/SignUp";
 import FindJob from "./pages/FindJob/View/FindJob";
+import JobDetails from "./pages/JobDetails/View/JobDetails";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/jobs" element={<FindJob />} />
+        <Route path="/job-details/:id" element={<JobDetails />} />
       </Routes>
 
       {!hideLayout && <Footer />}
