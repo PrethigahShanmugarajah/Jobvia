@@ -175,3 +175,27 @@ export const fetchJobs = async (params) => {
     throw error;
   }
 };
+
+/* -------- Fetch Job Details -------- */
+export const fetchJobDetails = async (jobId) => {
+  try {
+    const { data } = await api.get(`${API_ROUTES.JOB.BASE}/${jobId}`);
+
+    console.log("Fetch Job Details API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Job Details Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to fetch job details.");
+      console.warn("Fetch Job Details Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Job Details Error:", error);
+
+    throw error;
+  }
+};
