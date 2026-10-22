@@ -199,3 +199,21 @@ export const fetchJobDetails = async (jobId) => {
     throw error;
   }
 };
+
+/* -------- Fetch User Resume -------- */
+export const fetchUserResume = async (userId) => {
+  try {
+    const { data } = await api.get(API_ROUTES.USER.RESUME(userId), {
+      responseType: "blob",
+    });
+
+    console.log("Fetch User Resume Success:", userId);
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch User Resume Error:", error);
+
+    throw error;
+  }
+};
