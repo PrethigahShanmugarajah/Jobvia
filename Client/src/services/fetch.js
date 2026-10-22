@@ -77,3 +77,101 @@ export const fetchInterviewRoles = async () => {
     throw error;
   }
 };
+
+/* -------- Fetch User Profile -------- */
+export const fetchUserProfile = async () => {
+  try {
+    const { data } = await api.get(API_ROUTES.USER.BASE);
+
+    console.log("Fetch User Profile API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch User Profile Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to fetch user profile.");
+      console.warn("Fetch User Profile Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch User Profile Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Fetch Applied Jobs -------- */
+export const fetchAppliedJobs = async () => {
+  try {
+    const { data } = await api.get(API_ROUTES.APPLICATION.USER);
+
+    console.log("Fetch Applied Jobs API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Applied Jobs Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to fetch applied jobs.");
+      console.warn("Fetch Applied Jobs Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Applied Jobs Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Fetch Saved Jobs -------- */
+export const fetchSavedJobs = async () => {
+  try {
+    const { data } = await api.get(API_ROUTES.SAVED.BASE);
+
+    console.log("Fetch Saved Jobs API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Saved Jobs Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to fetch saved jobs.");
+      console.warn("Fetch Saved Jobs Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Saved Jobs Error:", error);
+
+    throw error;
+  }
+};
+
+/* -------- Fetch Jobs -------- */
+export const fetchJobs = async (params) => {
+  try {
+    const { data } = await api.get(
+      `${API_ROUTES.JOB.BASE}?${params.toString()}`,
+    );
+
+    console.log("Fetch Jobs API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Jobs Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to fetch jobs.");
+      console.warn("Fetch Jobs Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Jobs Error:", error);
+
+    throw error;
+  }
+};
