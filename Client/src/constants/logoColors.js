@@ -1,4 +1,4 @@
-// Jobvia / Client / src / pages / FindJob / Constants / logoColors.js
+// Jobvia / Client / src / constants / logoColors.js
 
 /* -------- Logo Colors -------- */
 export const logoColors = [
