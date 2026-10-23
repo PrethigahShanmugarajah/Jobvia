@@ -227,3 +227,27 @@ export const updateUserProfile = async (formData) => {
     throw error;
   }
 };
+
+/* -------- Toggle Save Interview Question -------- */
+export const toggleSaveInterviewQuestion = async (id) => {
+  try {
+    const { data } = await api.post(API_ROUTES.SAVED.QUESTION(id, "interview"));
+
+    console.log("Toggle Save Interview Question API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Toggle Save Interview Question Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to save interview question.");
+      console.warn("Toggle Save Interview Question Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Toggle Save Interview Question Error:", error);
+
+    throw error;
+  }
+};
