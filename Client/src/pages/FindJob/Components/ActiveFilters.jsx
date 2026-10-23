@@ -1,6 +1,6 @@
 // Jobvia / Client / src / pages / FindJob / Components / ActiveFilters.jsx
 import "../Styles/FindJob.css";
-import { normalizeJobTypeForDisplay } from "../Utils/jobFormatters";
+import { normalizeJobTypeForDisplay } from "../../../utils/jobFormatters";
 import { X } from "lucide-react";
 
 const ActiveFilters = ({ filters, handleFilterChange }) => {
