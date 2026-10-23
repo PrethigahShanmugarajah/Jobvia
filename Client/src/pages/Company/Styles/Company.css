@@ -1,0 +1,15 @@
+/* Jobvia / Client / src / pages / Company / Styles / Company.css */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.company-name {
+  max-width: 140px;
+}
+
+.question-card {
+  animation-delay: 0ms;
+}
