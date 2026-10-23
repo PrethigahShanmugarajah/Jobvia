@@ -1,7 +1,7 @@
 // Jobvia / Client / src / pages / FindJob / Components / JobFilters.jsx
 import "../Styles/FindJob.css";
-import { Filter, X, BarChart3, BriefcaseBusiness } from "lucide-react";
-import { jobTypeOptions } from "../Data/jobTypeOptions";
+import { BarChart3, BriefcaseBusiness, Filter, X } from "lucide-react";
+import { jobTypeOptions } from "../../../data/jobTypeOptions";
 import { InputField } from "../../../components/FormField/InputField";
 import { categories } from "../../../utils/jobConstants";
 import ActiveFilters from "./ActiveFilters";
