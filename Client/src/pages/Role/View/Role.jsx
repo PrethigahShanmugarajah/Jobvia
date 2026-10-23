@@ -12,7 +12,7 @@ import RoleHeader from "../Components/RoleHeader";
 import RoleSelector from "../Components/RoleSelector";
 import { ThreeCircles } from "react-loader-spinner";
 import EmptyQuestions from "../Components/EmptyQuestions";
-import RoleQuestionList from "../Components/RoleQuestionList";
+import RoleQuestionCard from "../../../components/RoleQuestionCard";
 
 const Role = () => {
   const { navigate, location, params, STORAGE_QUESTIONS_KEY } = useAppContext();
@@ -106,11 +106,21 @@ const Role = () => {
         ) : questions.length === 0 ? (
           <EmptyQuestions />
         ) : (
-          <RoleQuestionList
-            questions={questions}
-            savedIds={savedIds}
-            toggleSave={toggleSave}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {questions.map((q, index) => (
+              <RoleQuestionCard
+                key={q._id}
+                questionNumber={index + 1}
+                question={q.question.replace(/^\d+\.\s*/, "")}
+                isSaved={savedIds.includes(`role:${q._id}`)}
+                onToggleSave={() => toggleSave(q._id)}
+                answer={q.answer}
+                keyPoints={q.keyPoints || []}
+                isImportant={q.isImportant}
+                askedBy={Array.isArray(q.askedBy) ? q.askedBy : []}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>
