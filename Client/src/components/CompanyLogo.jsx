@@ -1,6 +1,5 @@
-// Jobvia / Client / src / pages / FindJob / Components / CompanyLogo.jsx
-import "../Styles/FindJob.css";
-import { logoColors } from "../Constants/logoColors";
+// Jobvia / Client / src / components / CompanyLogo.jsx
+import { logoColors } from "../constants/logoColors";
 
 const CompanyLogo = ({ job, imgErrors, BASE_URL, handleImgError }) => {
   const logoUrl = job.logo;
