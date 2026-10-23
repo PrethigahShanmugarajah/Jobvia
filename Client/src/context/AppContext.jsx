@@ -1,11 +1,13 @@
 // Jobvia / Client / src / context / AppContext.jsx
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "./appContext";
 
 export const AppProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
+
+  const params = useParams();
 
   const CURRENCY = import.meta.env.VITE_CURRENCY;
 
@@ -25,9 +27,12 @@ export const AppProvider = ({ children }) => {
 
   const BASE_URL = import.meta.env.VITE_BASEURL;
 
+  const STORAGE_QUESTIONS_KEY = import.meta.env.VITE_STORAGE_QUESTIONS_KEY;
+
   const value = {
     navigate,
     location,
+    params,
     CURRENCY,
     CONTACT_EMAIL,
     CONTACT_PHONE,
@@ -37,6 +42,7 @@ export const AppProvider = ({ children }) => {
     STORAGE_JOBS_KEY,
     STORAGE_APPLIED_KEY,
     BASE_URL,
+    STORAGE_QUESTIONS_KEY,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
