@@ -1,5 +1,5 @@
-// Jobvia / Client / src / pages / FindJob / Utils / jobFormatters.js
-import { jobTypeOptions } from "../Data/jobTypeOptions";
+// Jobvia / Client / src / utils / jobFormatters.js
+import { jobTypeOptions } from "../data/jobTypeOptions";
 
 /* -------- Normalize job type for display -------- */
 export const normalizeJobTypeForDisplay = (value) => {
