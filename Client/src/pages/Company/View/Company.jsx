@@ -9,11 +9,12 @@ import {
   loadQuestionsService,
   toggleSaveQuestionService,
 } from "../Services/CompanyServices";
-import { Building2 } from "lucide-react";
+import { Building2, ChevronDown, ChevronUp } from "lucide-react";
 import CompanyList from "../Components/CompanyList";
 import { ThreeCircles } from "react-loader-spinner";
 import EmptyQuestions from "../Components/EmptyQuestions";
-import QuestionList from "../Components/QuestionList";
+import CompanyQuestionCard from "../../../components/CompanyQuestionCard";
+import { formatDate } from "../Utils/date";
 
 const Company = () => {
   const { navigate, location, params, STORAGE_QUESTIONS_KEY } = useAppContext();
@@ -134,15 +135,47 @@ const Company = () => {
         ) : filteredAndSortedQuestions.length === 0 ? (
           <EmptyQuestions />
         ) : (
-          <QuestionList
-            questionsToShow={questionsToShow}
-            savedIds={savedIds}
-            toggleSave={toggleSave}
-            filteredAndSortedQuestions={filteredAndSortedQuestions}
-            showAllQuestions={showAllQuestions}
-            setShowAllQuestions={setShowAllQuestions}
-            VISIBLE_COUNT={VISIBLE_COUNT}
-          />
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {questionsToShow.map((question, index) => {
+                const isSaved = savedIds.includes(`company:${question._id}`);
+
+                return (
+                  <CompanyQuestionCard
+                    key={question._id}
+                    questionNumber={index + 1}
+                    question={question.question.replace(/^\d+\.\s*/, "")}
+                    date={question.postDate}
+                    formatDate={formatDate}
+                    isSaved={isSaved}
+                    onToggleSave={() => toggleSave(question._id)}
+                    answer={question.answer}
+                    keyPoints={question.keyPoints || []}
+                  />
+                );
+              })}
+            </div>
+
+            {filteredAndSortedQuestions.length > VISIBLE_COUNT && (
+              <div className="mt-10 text-center">
+                <button
+                  onClick={() => setShowAllQuestions((show) => !show)}
+                  className="btn-3d inline-flex items-center gap-2 px-8 py-3 rounded-2xl text-white font-medium transform transition-transform will-change-transform"
+                >
+                  {showAllQuestions ? (
+                    <>
+                      <ChevronUp className="w-5 h-5" /> Show Less
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="w-5 h-5" /> Show All{" "}
+                      {filteredAndSortedQuestions.length} Questions
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
