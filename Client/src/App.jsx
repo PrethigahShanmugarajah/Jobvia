@@ -12,6 +12,7 @@ import JobDetails from "./pages/JobDetails/View/JobDetails";
 import ViewProfile from "./pages/ViewProfile/View/ViewProfile";
 import Company from "./pages/Company/View/Company";
 import Role from "./pages/Role/View/Role";
+import Save from "./pages/Save/View/Save";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/companies" element={<Company />} />
         <Route path="/roles" element={<Role />} />
         <Route path="/roles/:roleSlug" element={<Role />} />
+        <Route path="/saved" element={<Save />} />
       </Routes>
 
       {!hideLayout && <Footer />}
