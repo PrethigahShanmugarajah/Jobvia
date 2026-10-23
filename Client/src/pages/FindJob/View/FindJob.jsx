@@ -15,7 +15,7 @@ import {
 import JobSearch from "../Components/JobSearch";
 import JobFilters from "../Components/JobFilters";
 import { ThreeCircles } from "react-loader-spinner";
-import JobList from "../Components/JobList";
+import JobCard from "../../../components/JobCard";
 import EmptyJobs from "../Components/EmptyJobs";
 import Pagination from "../../../components/Pagination";
 import ConfirmPopup from "../../../components/ConfirmPopup";
@@ -242,17 +242,23 @@ const FindJob = () => {
                 />
               </div>
             ) : (
-              <JobList
-                displayedJobs={displayedJobs}
-                imgErrors={imgErrors}
-                BASE_URL={BASE_URL}
-                handleImgError={handleImgError}
-                appliedJobs={appliedJobs}
-                savedJobs={savedJobs}
-                openConfirmPopup={openConfirmPopup}
-                loadToggleSaveJob={loadToggleSaveJob}
-                CURRENCY={CURRENCY}
-              />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                {displayedJobs.map((job) => (
+                  <JobCard
+                    key={job.id}
+                    job={job}
+                    variant="find"
+                    imgErrors={imgErrors}
+                    BASE_URL={BASE_URL}
+                    handleImgError={handleImgError}
+                    appliedJobs={appliedJobs}
+                    savedJobs={savedJobs}
+                    currency={CURRENCY}
+                    onApply={openConfirmPopup}
+                    onToggleSave={loadToggleSaveJob}
+                  />
+                ))}
+              </div>
             )}
 
             {!loading && filteredJobs.length === 0 && (
