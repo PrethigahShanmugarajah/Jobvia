@@ -217,3 +217,27 @@ export const fetchUserResume = async (userId) => {
     throw error;
   }
 };
+
+/* -------- Fetch Interview Questions By Company -------- */
+export const fetchInterviewQuestionsByCompany = async (companyId) => {
+  try {
+    const { data } = await api.get(API_ROUTES.INTERVIEW.COMPANY(companyId));
+
+    console.log("Fetch Interview Questions API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Interview Questions Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to fetch interview questions.");
+      console.warn("Fetch Interview Questions Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Interview Questions Error:", error);
+
+    throw error;
+  }
+};
