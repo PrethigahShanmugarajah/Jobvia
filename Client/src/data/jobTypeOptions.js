@@ -1,4 +1,4 @@
-// Jobvia / Client / src / pages / FindJob / Data / jobTypeOptions.js
+// Jobvia / Client / src / data / jobTypeOptions.js
 
 /* -------- Job type filter options -------- */
 export const jobTypeOptions = [
