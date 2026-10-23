@@ -251,3 +251,27 @@ export const toggleSaveInterviewQuestion = async (id) => {
     throw error;
   }
 };
+
+/* -------- Toggle Save Role Question -------- */
+export const toggleSaveRoleQuestion = async (id) => {
+  try {
+    const { data } = await api.post(API_ROUTES.SAVED.ROLE_QUESTION(id));
+
+    console.log("Toggle Save Role Question API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Toggle Save Role Question Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to save role question.");
+      console.warn("Toggle Save Role Question Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Toggle Save Role Question Error:", error);
+
+    throw error;
+  }
+};
