@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp/View/SignUp";
 import FindJob from "./pages/FindJob/View/FindJob";
 import JobDetails from "./pages/JobDetails/View/JobDetails";
 import ViewProfile from "./pages/ViewProfile/View/ViewProfile";
+import Company from "./pages/Company/View/Company";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/jobs" element={<FindJob />} />
         <Route path="/job-details/:id" element={<JobDetails />} />
         <Route path="/view-profile" element={<ViewProfile />} />
+        <Route path="/companies" element={<Company />} />
       </Routes>
 
       {!hideLayout && <Footer />}
