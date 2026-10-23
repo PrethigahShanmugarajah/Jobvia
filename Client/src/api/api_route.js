@@ -9,6 +9,7 @@ const API_ROUTES = {
     COMPANIES: "interview/companies",
     ROLES: "interview/roles",
     COMPANY: (companyId) => `interview/company/${companyId}`,
+    ROLE: (roleId) => `interview/role/${roleId}`,
   },
 
   AUTH: {
@@ -23,6 +24,7 @@ const API_ROUTES = {
     BASE: "saved",
     JOB: (jobId) => `saved/job/${jobId}`,
     QUESTION: (id, type = "interview") => `saved/question/${id}?type=${type}`,
+    ROLE_QUESTION: (id) => `saved/question/${id}?type=role`,
   },
 
   USER: {
