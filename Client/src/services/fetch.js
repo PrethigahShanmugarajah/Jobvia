@@ -241,3 +241,29 @@ export const fetchInterviewQuestionsByCompany = async (companyId) => {
     throw error;
   }
 };
+
+/* -------- Fetch Interview Questions By Role -------- */
+export const fetchInterviewQuestionsByRole = async (roleId) => {
+  try {
+    const { data } = await api.get(API_ROUTES.INTERVIEW.ROLE(roleId));
+
+    console.log("Fetch Interview Questions By Role API Response:", data);
+
+    if (data?.success) {
+      // toast.success(data?.message);
+      console.log("Fetch Interview Questions By Role Success:", data?.message);
+    } else {
+      toast.warn(
+        data?.message || "Failed to fetch interview questions by role.",
+      );
+      console.warn("Fetch Interview Questions By Role Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Fetch Interview Questions By Role Error:", error);
+
+    throw error;
+  }
+};
