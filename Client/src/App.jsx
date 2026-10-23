@@ -11,6 +11,7 @@ import FindJob from "./pages/FindJob/View/FindJob";
 import JobDetails from "./pages/JobDetails/View/JobDetails";
 import ViewProfile from "./pages/ViewProfile/View/ViewProfile";
 import Company from "./pages/Company/View/Company";
+import Role from "./pages/Role/View/Role";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -32,6 +33,8 @@ const App = () => {
         <Route path="/job-details/:id" element={<JobDetails />} />
         <Route path="/view-profile" element={<ViewProfile />} />
         <Route path="/companies" element={<Company />} />
+        <Route path="/roles" element={<Role />} />
+        <Route path="/roles/:roleSlug" element={<Role />} />
       </Routes>
 
       {!hideLayout && <Footer />}
