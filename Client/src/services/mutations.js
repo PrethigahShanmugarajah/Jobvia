@@ -275,3 +275,27 @@ export const toggleSaveRoleQuestion = async (id) => {
     throw error;
   }
 };
+
+/* -------- Send Inquiry -------- */
+export const sendInquiry = async (formData) => {
+  try {
+    const { data } = await api.post(API_ROUTES.INQUIRY.BASE, formData);
+
+    console.log("Send Inquiry API Response:", data);
+
+    if (data?.success) {
+      toast.success(data?.message);
+      console.log("Send Inquiry Success:", data?.message);
+    } else {
+      toast.warn(data?.message || "Failed to send message.");
+      console.warn("Send Inquiry Warning:", data?.message);
+    }
+
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error?.message);
+    console.error("Send Inquiry Error:", error);
+
+    throw error;
+  }
+};
