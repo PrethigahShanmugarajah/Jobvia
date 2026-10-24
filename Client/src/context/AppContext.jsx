@@ -9,6 +9,8 @@ export const AppProvider = ({ children }) => {
 
   const params = useParams();
 
+  const { pathname } = location;
+
   const CURRENCY = import.meta.env.VITE_CURRENCY;
 
   const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL;
@@ -33,6 +35,7 @@ export const AppProvider = ({ children }) => {
     navigate,
     location,
     params,
+    pathname,
     CURRENCY,
     CONTACT_EMAIL,
     CONTACT_PHONE,
