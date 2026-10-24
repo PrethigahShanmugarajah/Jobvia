@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Login / Components / LoginForm.jsx
 import { InputField } from "../../../components/FormField/InputField";
 import { Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react";
 import { ThreeDots } from "react-loader-spinner";

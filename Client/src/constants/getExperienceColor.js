@@ -1,5 +1,3 @@
-// Jobvia / Client / src / constants / getExperienceColor.js
-
 /* -------- Get experience level badge colors -------- */
 export const getExperienceColor = (level) => {
   const colors = {

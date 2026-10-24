@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / EditJobModal.jsx
 import { Check, Edit3, ListChecks, X } from "lucide-react";
 import CompanyImageSection from "./CompanyImageSection";
 import BasicInfoSection from "./BasicInfoSection";

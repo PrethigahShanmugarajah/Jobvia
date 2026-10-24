@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / CompanyImageSection.jsx
 import SectionHeader from "./SectionHeader";
 import { Image as ImageIcon } from "lucide-react";
 import { CompanyFallback, CompanyPlaceholder } from "../../../assets/assets";

@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / AddJob / Services / AddJobServices.jsx
 import { createJob } from "../../../services/mutations";
 import { getTodayDate } from "../../../utils/date";
 

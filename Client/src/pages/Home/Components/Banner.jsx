@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / Banner.jsx
 import "../Styles/Banner.css";
 import { useBannerService } from "../Services/BannerServices";
 import {

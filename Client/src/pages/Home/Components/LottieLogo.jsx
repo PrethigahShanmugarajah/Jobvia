@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / LottieLogo.jsx
 import "../Styles/LottieLogo.css";
 import { useLottieLogoService } from "../Services/LottieLogoServices";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";

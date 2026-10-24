@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs / Services / ListJobsServices.jsx
 import { fetchAdminJobs } from "../../../services/fetch";
 import {
   deleteDashboardJob,

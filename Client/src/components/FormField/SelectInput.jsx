@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components /  FormField / SelectInput.jsx
 import { X } from "lucide-react";
 import Select, { components } from "react-select";
 import { useEffect, useMemo, useState } from "react";

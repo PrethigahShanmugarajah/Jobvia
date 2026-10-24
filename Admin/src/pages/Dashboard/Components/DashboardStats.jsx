@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Dashboard / Components / DashboardStats.jsx
 import { Briefcase, Building, Users } from "lucide-react";
 import { statColors } from "../../../constants/statColors";
 import { ThreeDots } from "react-loader-spinner";

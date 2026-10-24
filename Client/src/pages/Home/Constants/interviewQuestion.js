@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Home / Constants / interviewQuestion.js
-
 /* -------- Company Color Classes -------- */
 export const companyColorClasses = [
   "bg-orange-100 text-orange-600",

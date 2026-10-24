@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListCompanyQuestions / Components / CompanyQuestionCard.jsx
 import { CompanyPlaceholder } from "../../../assets/assets";
 import { FileText, Pencil, Trash2, Image as ImageIcon } from "lucide-react";
 

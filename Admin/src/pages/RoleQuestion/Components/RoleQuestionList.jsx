@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / RoleQuestion / Components / RoleQuestionList.jsx
 import { Briefcase, Calendar } from "lucide-react";
 import { formatDate } from "../../../utils/roleQuestion";
 

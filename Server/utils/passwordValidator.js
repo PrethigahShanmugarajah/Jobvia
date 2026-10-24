@@ -1,5 +1,3 @@
-// Jobvia / Server / utils / passwordValidator.js
-
 /* -------- Validate Password -------- */
 export const validatePassword = (password) => {
   if (password.length < 6) {

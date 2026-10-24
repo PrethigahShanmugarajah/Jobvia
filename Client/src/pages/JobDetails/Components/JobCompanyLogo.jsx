@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / JobDetails / Components / JobCompanyLogo.jsx
 import { useState } from "react";
 
 const JobCompanyLogo = ({ job, BASE_URL }) => {

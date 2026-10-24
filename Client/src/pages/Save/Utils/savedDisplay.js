@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / savedDisplay.js
-
 /* -------- Filter and sort saved items -------- */
 export const getCombinedSortedDisplay = (
   filteredSaved,

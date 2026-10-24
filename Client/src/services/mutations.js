@@ -1,4 +1,3 @@
-// Jobvia / Client / src / services / mutations.js
 import api from "../api/axios";
 import API_ROUTES from "../api/api_route";
 import { toast } from "react-toastify";
@@ -11,11 +10,8 @@ export const loginUser = async (email, password) => {
       password,
     });
 
-    console.log("Login User API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Login Success:", data?.message);
     } else {
       toast.warn(data?.message || "Login User failed with warning");
       console.warn(
@@ -40,11 +36,8 @@ export const forgotPassword = async (email) => {
       email,
     });
 
-    console.log("Forgot Password API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Forgot Password Success:", data?.message);
     } else {
       toast.warn(data?.message || "Forgot Password failed with warning");
       console.warn(
@@ -71,11 +64,8 @@ export const resetPassword = async (email, otp, newPassword) => {
       newPassword,
     });
 
-    console.log("Reset Password API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Reset Password Success:", data?.message);
     } else {
       toast.warn(data?.message || "Reset Password failed with warning");
       console.warn(
@@ -98,11 +88,8 @@ export const registerUser = async (formData) => {
   try {
     const { data } = await api.post(API_ROUTES.AUTH.REGISTER, formData);
 
-    console.log("Register User API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Register User Success:", data?.message);
     } else {
       toast.warn(data?.message || "Register User failed with warning");
       console.warn(
@@ -128,11 +115,8 @@ export const verifyEmail = async (email, otp) => {
       otp,
     });
 
-    console.log("Verify Email API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Verify Email Success:", data?.message);
     } else {
       toast.warn(data?.message || "Email verification failed");
       console.warn(
@@ -155,11 +139,8 @@ export const toggleSaveJob = async (jobId) => {
   try {
     const { data } = await api.post(API_ROUTES.SAVED.JOB(jobId));
 
-    console.log("Toggle Save Job API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Toggle Save Job Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to save job.");
       console.warn(
@@ -182,11 +163,8 @@ export const applyForJob = async (jobId) => {
   try {
     const { data } = await api.post(API_ROUTES.APPLICATION.APPLY(jobId));
 
-    console.log("Apply For Job API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Apply For Job Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to submit application.");
       console.warn("Apply For Job Warning:", data?.message);
@@ -206,11 +184,8 @@ export const updateUserProfile = async (formData) => {
   try {
     const { data } = await api.put(API_ROUTES.USER.BASE, formData);
 
-    console.log("Update User Profile API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Update User Profile Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to update user profile.");
       console.warn(
@@ -233,11 +208,8 @@ export const toggleSaveInterviewQuestion = async (id) => {
   try {
     const { data } = await api.post(API_ROUTES.SAVED.QUESTION(id, "interview"));
 
-    console.log("Toggle Save Interview Question API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Toggle Save Interview Question Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to save interview question.");
       console.warn("Toggle Save Interview Question Warning:", data?.message);
@@ -257,11 +229,8 @@ export const toggleSaveRoleQuestion = async (id) => {
   try {
     const { data } = await api.post(API_ROUTES.SAVED.ROLE_QUESTION(id));
 
-    console.log("Toggle Save Role Question API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Toggle Save Role Question Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to save role question.");
       console.warn("Toggle Save Role Question Warning:", data?.message);
@@ -281,11 +250,8 @@ export const sendInquiry = async (formData) => {
   try {
     const { data } = await api.post(API_ROUTES.INQUIRY.BASE, formData);
 
-    console.log("Send Inquiry API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Send Inquiry Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to send message.");
       console.warn("Send Inquiry Warning:", data?.message);

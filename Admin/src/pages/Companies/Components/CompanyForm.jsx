@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Companies / Components / CompanyForm.jsx
 import { FileInputField } from "../../../components/FormField/FileInputField";
 import { InputField } from "../../../components/FormField/InputField";
 import { Link2 } from "lucide-react";

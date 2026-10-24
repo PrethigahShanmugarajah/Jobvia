@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListRoleQuestion / Services / ListRoleQuestionServices.jsx
 import { fetchInterviewRoles } from "../../../services/fetch";
 import {
   deleteRoleQuestion,

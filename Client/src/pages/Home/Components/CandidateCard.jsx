@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / CandidateCard.jsx
 import "../Styles/Candidate.css";
 import React from "react";
 import { CheckCircle, Target } from "lucide-react";

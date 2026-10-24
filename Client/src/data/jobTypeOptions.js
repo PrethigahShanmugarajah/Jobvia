@@ -1,5 +1,3 @@
-// Jobvia / Client / src / data / jobTypeOptions.js
-
 /* -------- Job type filter options -------- */
 export const jobTypeOptions = [
   { value: "full-time", label: "Full Time" },

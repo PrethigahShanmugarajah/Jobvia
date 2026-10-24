@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / LocationExperienceSection.jsx
 import SectionHeader from "./SectionHeader";
 import { Clock, Edit3, MapPin, X } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";

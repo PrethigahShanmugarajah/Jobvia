@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Services / BannerServices.jsx
 import { useEffect, useRef, useState } from "react";
 import { B1 } from "../../../assets/assets";
 import { useAppContext } from "../../../context/appContext";

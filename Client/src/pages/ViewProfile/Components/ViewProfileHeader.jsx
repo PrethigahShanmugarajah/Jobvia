@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / ViewProfile / Components / ViewProfileHeader.jsx
 import "../Styles/ViewProfile.css";
 import { Edit3, Save, X } from "lucide-react";
 import { ThreeDots } from "react-loader-spinner";

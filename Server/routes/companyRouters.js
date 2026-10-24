@@ -1,4 +1,3 @@
-// Jobvia / Server / routes / companyRouters.js
 import express from "express";
 import {
   addCompany,

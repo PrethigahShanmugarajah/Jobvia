@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / View / Home.jsx
 import Banner from "../Components/Banner";
 import Candidate from "../Components/Candidate";
 import Career from "../Components/Career";

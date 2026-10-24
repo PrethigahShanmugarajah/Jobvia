@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / utils / listRoleQuestion.js
-
 /* -------- Parses CSV text into column headers and row data. -------- */
 export function parseCSV(text) {
   if (!text) return [];

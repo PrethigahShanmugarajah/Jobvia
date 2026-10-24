@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Login / Services / LoginServices.jsx
 import { loginAdmin } from "../../../services/mutations";
 
 /* -------- Handle Admin Login -------- */

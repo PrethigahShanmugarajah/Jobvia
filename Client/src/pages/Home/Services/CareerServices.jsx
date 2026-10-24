@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Services / CareerServices.jsx
 import { useEffect, useState } from "react";
 import { fetchCompanies } from "../../../services/fetch";
 

@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Login / View / Login.jsx
 import { useState } from "react";
 import { useAppContext } from "../../../context/appContext";
 import { loginAdminService } from "../Services/LoginServices";

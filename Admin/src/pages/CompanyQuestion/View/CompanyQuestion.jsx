@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / CompanyQuestion / View / CompanyQuestion.jsx
 import "./CompanyQuestion.css";
 import { useState } from "react";
 import {

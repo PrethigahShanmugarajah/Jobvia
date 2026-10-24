@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / JobDetails / Components / JobInfoList.jsx
 import "../Styles/JobDetails.css";
 import { getJobInfo } from "../Data/jobInfo";
 

@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / Pagination.jsx
 import { useMemo } from "react";
 import { MoreHorizontal } from "lucide-react";
 import { SelectInput } from "./FormField/SelectInput";

@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Company / Utils / savedQuestion.js
-
 /* -------- Get Saved Question IDs From Local Storage -------- */
 export const getStoredSavedIds = (STORAGE_QUESTIONS_KEY) => {
   try {

@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Save / Components / SavedItemsList.jsx
 import "../Styles/Save.css";
 import MissingSavedItem from "../Components/MissingSavedItem";
 import JobCard from "../../../components/JobCard";

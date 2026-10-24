@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / App.jsx
 import { useAppContext } from "./context/appContext";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";

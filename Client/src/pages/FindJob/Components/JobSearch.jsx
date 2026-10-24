@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / FindJob / Components / JobSearch.jsx
 import "../Styles/FindJob.css";
 import { InputField } from "../../../components/FormField/InputField";
 import { MapPin, Briefcase, Building, X, Users } from "lucide-react";

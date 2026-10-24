@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / JobDetails / Services / JobDetailsServices.jsx
 import {
   fetchAppliedJobs,
   fetchJobDetails,

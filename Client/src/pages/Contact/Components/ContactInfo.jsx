@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Contact / Components / ContactInfo.jsx
 import "../Styles/Contact.css";
 import { useAppContext } from "../../../context/appContext";
 import { Mail, MapPin, Phone } from "lucide-react";

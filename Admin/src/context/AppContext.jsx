@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / context / AppContext.jsx
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "./appContext";
 

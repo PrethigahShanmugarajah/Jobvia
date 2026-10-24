@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Home / Data / bannerJobs.js
-
 export const jobs = [
   {
     title: "Senior UX Designer",

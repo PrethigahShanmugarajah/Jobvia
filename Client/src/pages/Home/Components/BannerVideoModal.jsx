@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / BannerVideoModal.jsx
 import "../Styles/Banner.css";
 import { X } from "lucide-react";
 

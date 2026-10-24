@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / FindJob / View / FindJob.jsx
 import "../Styles/FindJob.css";
 import { useAppContext } from "../../../context/appContext";
 import { useState, useEffect, useRef, useMemo } from "react";

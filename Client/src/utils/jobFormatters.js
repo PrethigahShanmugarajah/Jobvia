@@ -1,4 +1,3 @@
-// Jobvia / Client / src / utils / jobFormatters.js
 import { jobTypeOptions } from "../data/jobTypeOptions";
 
 /* -------- Normalize job type for display -------- */

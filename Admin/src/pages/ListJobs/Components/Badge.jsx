@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / Badge.jsx
 import { getBadgeClasses } from "../../../constants/badgeStyles";
 import { X } from "lucide-react";
 

@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / company.js
-
 /* -------- Get available companies -------- */
 export const getAvailableCompanies = (savedItems, companiesState) => {
   const companiesMap = new Map();

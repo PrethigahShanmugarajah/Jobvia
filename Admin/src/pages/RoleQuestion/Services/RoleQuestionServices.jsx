@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / RoleQuestion / Services / RoleQuestionServices.jsx
 import { toast } from "react-toastify";
 import {
   parseCompanyEntry,

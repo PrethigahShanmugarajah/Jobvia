@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / pages / Applicants / Components / CompanyBadge.jsx
-
 const CompanyBadge = ({ companyName }) => {
   return (
     <div className="flex justify-center mb-8 sm:mb-10">

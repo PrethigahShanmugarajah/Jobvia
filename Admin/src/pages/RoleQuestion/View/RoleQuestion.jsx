@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / RoleQuestion / View / RoleQuestion.jsx
 import "./RoleQuestion.css";
 import { useRef, useState } from "react";
 import { submitRoleQuestionService } from "../Services/RoleQuestionServices";

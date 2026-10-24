@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Company / View / Company.jsx
 import "../Styles/Company.css";
 import { useAppContext } from "../../../context/appContext";
 import { useEffect, useState } from "react";

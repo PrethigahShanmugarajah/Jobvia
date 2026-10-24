@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Data / candidateCardData.jsx
 import {
   Award,
   Briefcase,

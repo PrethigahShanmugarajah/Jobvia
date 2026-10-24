@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / CompanyQuestion / Services / CompanyQuestionServices.jsx
 import {
   parseCountString,
   parseCSVText,

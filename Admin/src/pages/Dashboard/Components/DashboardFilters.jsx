@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Dashboard / Components / DashboardFilters.jsx
 import { Filter, Search, X } from "lucide-react";
 import { SelectInput } from "../../../components/FormField/SelectInput";
 

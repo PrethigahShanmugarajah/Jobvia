@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / storage.js
-
 /* -------- Persist applied jobs -------- */
 export const persistAppliedJobs = (storageKey, jobs) => {
   try {

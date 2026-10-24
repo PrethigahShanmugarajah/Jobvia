@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / applicationControllers.js
 import Job from "../models/Job.js";
 import User from "../models/User.js";
 import Application from "../models/Application.js";
@@ -79,7 +78,6 @@ export const applyJob = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while applying for the job.",
-      error: `Apply Job Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -115,7 +113,6 @@ export const getUserApplications = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while retrieving your applications.",
-      error: `Get User Applications Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -167,7 +164,6 @@ export const getApplications = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving applications.",
-      error: `Get Applications Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

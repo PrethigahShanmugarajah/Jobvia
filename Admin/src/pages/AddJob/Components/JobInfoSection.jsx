@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / AddJob / Components / JobInfoSection.jsx
 import { SelectInput } from "../../../components/FormField/SelectInput";
 import { Briefcase, Calendar, FileText, Tag, Users } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";

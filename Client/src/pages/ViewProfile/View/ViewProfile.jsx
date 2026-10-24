@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / ViewProfile / View / ViewProfile.jsx
 import "../Styles/ViewProfile.css";
 import { useEffect, useState } from "react";
 import {

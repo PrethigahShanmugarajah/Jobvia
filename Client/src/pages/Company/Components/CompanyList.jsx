@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Company / Components / CompanyList.jsx
 import "../Styles/Company.css";
 
 const CompanyList = ({

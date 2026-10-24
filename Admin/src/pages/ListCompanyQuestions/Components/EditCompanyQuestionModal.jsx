@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListCompanyQuestions / Components / EditCompanyQuestionModal.jsx
 import { toast } from "react-toastify";
 import { Building2, FileText, Save, Upload, X } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";

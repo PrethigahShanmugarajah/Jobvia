@@ -1,4 +1,3 @@
-// Jobvia / Server / routes / interviewRouters.js
 import express from "express";
 import {
   addInterviewCompany,

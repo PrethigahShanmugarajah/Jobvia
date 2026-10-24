@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / CompanyQuestion / Components /  UploadedQuestions.jsx
 import { CircleDashed, Download, HelpCircle, Lightbulb } from "lucide-react";
 import { formatDatePretty } from "../../../utils/companyQuestions";
 

@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / RoleQuestion / Components / RoleQuestionForm.jsx
 import { InputField } from "../../../components/FormField/InputField";
 import { Briefcase, FileText, Hash, Image as ImageIcon } from "lucide-react";
 import { FileInputField } from "../../../components/FormField/FileInputField";

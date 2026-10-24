@@ -1,4 +1,3 @@
-// Jobvia / Server / routes / authRouters.js
 import express from "express";
 import {
   forgotPassword,

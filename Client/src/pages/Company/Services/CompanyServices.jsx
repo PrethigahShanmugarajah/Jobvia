@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Company / Services / CompanyServices.jsx
 import {
   fetchInterviewCompanies,
   fetchInterviewQuestionsByCompany,

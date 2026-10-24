@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Role / Components / EmptyQuestions.jsx
 import "../Styles/Role.css";
 import { Briefcase } from "lucide-react";
 

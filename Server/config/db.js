@@ -1,4 +1,3 @@
-// Jobvia / Server / config / db.js
 import mongoose from "mongoose";
 import { mongodbUri, projectName } from "./env.js";
 

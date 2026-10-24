@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / RoleQuestionCard.jsx
 import { Award, Bookmark, Building2, CheckCircle2, Dot } from "lucide-react";
 
 const RoleQuestionCard = ({

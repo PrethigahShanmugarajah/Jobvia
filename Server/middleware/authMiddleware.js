@@ -1,4 +1,3 @@
-// Jobvia / Server / middleware  / authMiddleware.js
 import jwt from "jsonwebtoken";
 import { jwtSecret } from "../config/env.js";
 
@@ -26,7 +25,6 @@ export const authMiddleware = (req, res, next) => {
     return res.status(401).json({
       success: false,
       message: "An unexpected error occurred while authenticating the user.",
-      error: `Authenticate User Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

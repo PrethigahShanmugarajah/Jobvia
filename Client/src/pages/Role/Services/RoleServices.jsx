@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Role / Services / RoleServices.jsx
 import {
   fetchInterviewQuestionsByRole,
   fetchInterviewRoles,

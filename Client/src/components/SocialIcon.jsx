@@ -1,5 +1,3 @@
-// Jobvia / Client / src / components / SocialIcon.jsx
-
 const SocialIcon = ({ href, icon, label }) => {
   return (
     <a

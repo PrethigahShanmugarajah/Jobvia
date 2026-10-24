@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Contact / Services / ContactServices.jsx
 import { toast } from "react-toastify";
 import { sendInquiry } from "../../../services/mutations";
 

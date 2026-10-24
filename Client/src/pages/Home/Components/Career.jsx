@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / Career.jsx
 import "../Styles/Career.css";
 import { useCareerService } from "../Services/CareerServices";
 

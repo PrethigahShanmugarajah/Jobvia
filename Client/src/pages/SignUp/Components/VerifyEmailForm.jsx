@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / SignUp / Components / VerifyEmailForm.jsx
 import "../Styles/SignUp.css";
 import { InputField } from "../../../components/FormField/InputField";
 import { ShieldCheck } from "lucide-react";

@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / CompanyQuestionCard.jsx
 import { Bookmark, Calendar, CircleDashed, Lightbulb } from "lucide-react";
 
 const CompanyQuestionCard = ({

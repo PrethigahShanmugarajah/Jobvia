@@ -1,6 +1,3 @@
-// Jobvia / Server / utils / otp.js
-
-/* -------- Generate OTP -------- */
 export const generateOTP = () => {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

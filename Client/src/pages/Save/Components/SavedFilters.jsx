@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Save / Components / SavedFilters.jsx
 import "../Styles/Save.css";
 import { SelectInput } from "../../../components/FormField/SelectInput";
 

@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Role / Components / RoleHeader.jsx
-
 const RoleHeader = () => {
   return (
     <div className="mb-10 text-center animate-fadeIn">

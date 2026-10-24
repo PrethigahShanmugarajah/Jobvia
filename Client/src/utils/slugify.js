@@ -1,5 +1,3 @@
-// Jobvia / Client / src / utils / slugify.js
-
 /* -------- Slugify Text -------- */
 export const slugify = (str) =>
   str

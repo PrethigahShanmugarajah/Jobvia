@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / SignIn / Components / ForgotPasswordForm.jsx;
 import "../Styles/SignIn.css";
 import { InputField } from "../../../components/FormField/InputField";
 import { Mail } from "lucide-react";

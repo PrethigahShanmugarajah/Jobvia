@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / userControllers.js
 import User from "../models/User.js";
 import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
 import { getPublicIdFromUrl } from "../utils/cloudinaryUtils.js";
@@ -30,7 +29,6 @@ export const getProfile = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving the profile.",
-      error: `Get Profile Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -107,7 +105,6 @@ export const updateProfile = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while updating the profile.",
-      error: `Update Profile Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -171,7 +168,6 @@ export const getResume = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving the resume.",
-      error: `Get Resume Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

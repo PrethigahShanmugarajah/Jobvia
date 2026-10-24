@@ -1,4 +1,3 @@
-// Jobvia / Server / models / InterviewCompany.js
 import mongoose from "mongoose";
 
 const interviewCompanySchema = new mongoose.Schema(

@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Dashboard / Components / DashboardJobList.jsx
 import { Building } from "lucide-react";
 import { SelectInput } from "../../../components/FormField/SelectInput";
 import { ThreeDots } from "react-loader-spinner";

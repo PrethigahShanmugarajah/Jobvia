@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / FindJob / Components / EmptyJobs.jsx
 import "../Styles/FindJob.css";
 import { Search } from "lucide-react";
 

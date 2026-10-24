@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / savedQuestion.js
 
 /* -------- Transform saved questions -------- */
 export const getUnifiedSavedQuestions = (savedItems) => {

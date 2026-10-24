@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / JobDetails / Components / JobRequirements.jsx
-
 const JobRequirements = ({ title, items, sectionClass }) => {
   if (!items || (Array.isArray(items) && items.length === 0)) {
     return null;

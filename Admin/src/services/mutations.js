@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / services / mutations.js
 import api from "../api/axios";
 import API_ROUTES from "../api/api_route";
 import { toast } from "react-toastify";
@@ -11,27 +10,24 @@ export const loginAdmin = async (email, password) => {
       password,
     });
 
-    console.log("Admin Login API Response:", data);
+    if (!data?.success) {
+      toast.warn(data?.message || "Admin login failed.");
+      console.warn("Admin Login Warning:", data?.message);
+      return data;
+    }
 
     if (data?.user?.role !== "admin") {
       toast.error("Access denied. Admins only.");
       return null;
     }
 
-    if (data?.success) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      window.dispatchEvent(new Event("userUpdated"));
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
 
-      toast.success(data?.message);
-      console.log("Admin Login Job Success:", data?.message);
-    } else {
-      toast.warn(data?.message || "Admin Login with warning");
-      console.warn(
-        "Admin Login Warning:",
-        data?.message || "Admin Login Warning",
-      );
-    }
+    window.dispatchEvent(new Event("userUpdated"));
+
+    toast.success(data?.message);
+
     return data;
   } catch (error) {
     toast.error(error?.response?.data?.message || error?.message);
@@ -46,11 +42,8 @@ export const closeDashboardJob = async (jobId) => {
   try {
     const { data } = await api.patch(API_ROUTES.JOB.CLOSE(jobId));
 
-    console.log("Close Dashboard Job API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Close Dashboard Job Success:", data?.message);
     } else {
       toast.warn(data?.message || "Close dashboard job with warning");
       console.warn(
@@ -73,11 +66,8 @@ export const createJob = async (formDataToSend) => {
   try {
     const { data } = await api.post(API_ROUTES.JOB.BASE, formDataToSend);
 
-    console.log("Create Job API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Create Job Success:", data?.message);
     } else {
       toast.warn(data?.message || "Create job with warning");
       console.warn(
@@ -100,11 +90,8 @@ export const deleteDashboardJob = async (jobId) => {
   try {
     const { data } = await api.delete(`${API_ROUTES.JOB.BASE}/${jobId}`);
 
-    console.log("Delete Dashboard Job API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Delete Dashboard Job Success:", data?.message);
     } else {
       toast.warn(data?.message || "Delete dashboard job with warning");
       console.warn(
@@ -130,11 +117,8 @@ export const updateDashboardJob = async (jobId, formDataToSend) => {
       formDataToSend,
     );
 
-    console.log("Update Dashboard Job API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Update Dashboard Job Success:", data?.message);
     } else {
       toast.warn(data?.message || "Update dashboard job with warning");
       console.warn(
@@ -157,11 +141,8 @@ export const createCompany = async (formDataToSend) => {
   try {
     const { data } = await api.post(API_ROUTES.COMPANY.BASE, formDataToSend);
 
-    console.log("Create Company API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Create Company Success:", data?.message);
     } else {
       toast.warn(data?.message || "Create company with warning");
       console.warn(
@@ -186,11 +167,8 @@ export const deleteCompany = async (companyId) => {
       `${API_ROUTES.COMPANY.BASE}/${companyId}`,
     );
 
-    console.log("Delete Company API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Delete Company Success:", data?.message);
     } else {
       toast.warn(data?.message || "Delete company with warning");
       console.warn(
@@ -213,11 +191,8 @@ export const createInterview = async (formDataToSend) => {
   try {
     const { data } = await api.post(API_ROUTES.INTERVIEW.BASE, formDataToSend);
 
-    console.log("Create Interview API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Create Interview Success:", data?.message);
     } else {
       toast.warn(data?.message || "Create interview with warning");
       console.warn(
@@ -242,11 +217,8 @@ export const deleteInterviewCompany = async (companyId) => {
       `${API_ROUTES.INTERVIEW.BASE}/${companyId}`,
     );
 
-    console.log("Delete Interview Company API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Delete Interview Company Success:", data?.message);
     } else {
       toast.warn(data?.message || "Delete interview company with warning");
       console.warn(
@@ -272,11 +244,8 @@ export const updateInterviewCompany = async (companyId, formDataToSend) => {
       formDataToSend,
     );
 
-    console.log("Update Interview Company API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Update Interview Company Success:", data?.message);
     } else {
       toast.warn(data?.message || "Update interview company with warning");
       console.warn(
@@ -299,11 +268,8 @@ export const addRoleQuestion = async (formDataToSend) => {
   try {
     const { data } = await api.post(API_ROUTES.INTERVIEW.ROLE, formDataToSend);
 
-    console.log("Add Role Question API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message || "Role questions added successfully.");
-      console.log("Add Role Question Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to add role questions.");
       console.warn(
@@ -329,11 +295,8 @@ export const updateRoleQuestion = async (roleId, formDataToSend) => {
       formDataToSend,
     );
 
-    console.log("Update Role Question API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Update Role Question Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to update role questions.");
       console.warn(
@@ -356,11 +319,8 @@ export const deleteRoleQuestion = async (roleId) => {
   try {
     const { data } = await api.delete(`${API_ROUTES.INTERVIEW.ROLE}/${roleId}`);
 
-    console.log("Delete Role Question API Response:", data);
-
     if (data?.success) {
       toast.success(data?.message);
-      console.log("Delete Role Question Success:", data?.message);
     } else {
       toast.warn(data?.message || "Failed to delete role.");
       console.warn(

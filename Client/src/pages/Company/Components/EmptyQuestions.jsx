@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Company / Components / EmptyQuestions.jsx
-
 const EmptyQuestions = () => {
   return (
     <div className="text-center py-16 bg-white rounded-2xl shadow-lg border border-gray-200">

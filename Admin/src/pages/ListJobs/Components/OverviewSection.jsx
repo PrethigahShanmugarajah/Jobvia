@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / OverviewSection.jsx
 import SectionHeader from "./SectionHeader";
 import { FileText } from "lucide-react";
 import { TextAreaField } from "../../../components/FormField/TextAreaField";

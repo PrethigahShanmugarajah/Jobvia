@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / ArrayField.jsx
 import SectionHeader from "./SectionHeader";
 import { Plus, X } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";

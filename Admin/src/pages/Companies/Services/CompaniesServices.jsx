@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Companies / Services / CompaniesServices.jsx
 import { fetchCompanies } from "../../../services/fetch";
 import { createCompany, deleteCompany } from "../../../services/mutations";
 

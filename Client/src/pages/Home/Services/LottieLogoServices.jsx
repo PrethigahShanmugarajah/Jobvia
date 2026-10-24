@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Services / LottieLogoServices.jsx
 import { useEffect, useRef, useState } from "react";
 
 export const useLottieLogoService = (src) => {

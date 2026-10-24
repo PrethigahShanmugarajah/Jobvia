@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListCompanyQuestions / View / ListCompanyQuestions.jsx
 import { useState, useEffect } from "react";
 import {
   deleteCompanyQuestionService,

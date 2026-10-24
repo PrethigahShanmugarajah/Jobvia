@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / role.js
 
 /* -------- Find role by ID -------- */
 export const findRoleById = (roles, id) =>

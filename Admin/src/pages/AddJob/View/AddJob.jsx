@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / AddJob / View / AddJob.jsx
 import "./AddJob.css";
 import { getTodayDate } from "../../../utils/date";
 import { useState } from "react";

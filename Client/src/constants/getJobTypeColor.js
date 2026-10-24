@@ -1,5 +1,3 @@
-// Jobvia / Client / src / constants / getJobTypeColor.js
-
 /* -------- Get job type badge colors -------- */
 export const getJobTypeColor = (type) => {
   if (!type) return "bg-gray-100 text-gray-700 border-gray-200";

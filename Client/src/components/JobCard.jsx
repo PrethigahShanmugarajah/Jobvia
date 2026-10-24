@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / JobCard.jsx
 import CompanyLogo from "./CompanyLogo";
 import {
   Bookmark,

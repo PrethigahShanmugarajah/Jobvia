@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / SectionHeader.jsx
-
 const SectionHeader = ({ icon, title, className = "mb-4" }) => {
   return (
     <h4

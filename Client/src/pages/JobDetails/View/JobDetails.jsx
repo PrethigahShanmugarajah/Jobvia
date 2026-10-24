@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / JobDetails / View / JobDetails.jsx
 import "../Styles/JobDetails.css";
 import { useAppContext } from "../../../context/appContext";
 import { Link, useParams } from "react-router-dom";

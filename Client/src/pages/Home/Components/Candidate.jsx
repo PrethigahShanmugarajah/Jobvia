@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / Candidate.jsx
 import "../Styles/Candidate.css";
 import { useState } from "react";
 import { cardData } from "../Data/candidateCardData";

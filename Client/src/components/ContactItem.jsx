@@ -1,5 +1,3 @@
-// Jobvia / Client / src / components / ContactItem.jsx
-
 const ContactItem = ({ icon, text, href }) => {
   return (
     <div className="flex items-start gap-3">

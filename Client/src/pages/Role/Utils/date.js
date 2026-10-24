@@ -1,5 +1,3 @@
-// Jobvia / Client /src / pages / Role / Utils / date.js
-
 /* -------- Format Date as Time Ago -------- */
 export const timeAgo = (dateString) => {
   if (!dateString) {

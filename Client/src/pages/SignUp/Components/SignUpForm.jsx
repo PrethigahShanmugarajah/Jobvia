@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / SignUp / Components / SignUpForm.jsx
 import "../Styles/SignUp.css";
 import { InputField } from "../../../components/FormField/InputField";
 import { CheckCircle, Eye, EyeOff, Lock, Mail, User } from "lucide-react";

@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Dashboard / Services / DashboardServices.jsx
 import { fetchAdminJobs, fetchDashboardStats } from "../../../services/fetch";
 import { closeDashboardJob } from "../../../services/mutations";
 

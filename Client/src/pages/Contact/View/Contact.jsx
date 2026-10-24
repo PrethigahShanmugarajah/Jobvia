@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Contact / View / Contact.jsx
 import "../Styles/Contact.css";
 import { useRef, useState } from "react";
 import {

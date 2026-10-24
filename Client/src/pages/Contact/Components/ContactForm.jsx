@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Contact / Components / ContactForm.jsx
 import "../Styles/Contact.css";
 import {
   Briefcase,

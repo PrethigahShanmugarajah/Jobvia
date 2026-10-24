@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / AddJob / Components / CompanyInfoSection.jsx
 import { FileInputField } from "../../../components/FormField/FileInputField";
 import { Briefcase, Building2, Upload } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";

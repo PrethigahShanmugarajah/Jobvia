@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / utils / jobConstants.js
-
 /* -------- Job Categories -------- */
 export const categories = [
   "Engineering",

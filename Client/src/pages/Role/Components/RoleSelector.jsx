@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Role / Components / RoleSelector.jsx
 import "../Styles/Role.css";
 import { ThreeDots } from "react-loader-spinner";
 import { ChevronRight } from "lucide-react";

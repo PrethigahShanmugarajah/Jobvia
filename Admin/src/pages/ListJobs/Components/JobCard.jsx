@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / JobCard.jsx
 import { CompanyFallback, CompanyPlaceholder } from "../../../assets/assets";
 import {
   Building2,

@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Companies / Components / CompanyCard.jsx
 import { Trash2 } from "lucide-react";
 
 const CompanyCard = ({ company, setSelectedCompanyId }) => {

@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / utils / salary.js
-
 /* -------- Format salary with amount and payment period -------- */
 export const formatSalary = (salary) => {
   if (!salary) {

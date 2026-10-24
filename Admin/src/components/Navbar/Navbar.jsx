@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/set-state-in-effect */
-// Jobvia / Admin / src / components / Navbar / Navbar.jsx
 import "./Navbar.css";
 import {
   Briefcase,

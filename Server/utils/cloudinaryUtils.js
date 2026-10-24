@@ -1,5 +1,3 @@
-// Jobvia / Server / utils / cloudinaryUtils.js
-
 /* -------- Extract Public Id from Cloudinary URL -------- */
 export const getPublicIdFromUrl = (url, resourceType) => {
   try {

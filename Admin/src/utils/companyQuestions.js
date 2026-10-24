@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / utils / companyQuestions.js
-
 /* -------- Converts count strings such as "2.5k" or "1,000" into numbers. -------- */
 export const parseCountString = (str) => {
   if (!str) {

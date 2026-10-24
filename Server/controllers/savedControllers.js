@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / savedControllers.js
 import User from "../models/User.js";
 import mongoose from "mongoose";
 import RoleQuestion from "../models/RoleQuestion.js";
@@ -45,7 +44,6 @@ export const getSavedItems = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving saved items.",
-      error: `Get Saved Items Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -100,7 +98,6 @@ export const toggleSaveJob = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while updating saved jobs.",
-      error: `Toggle Save Job Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -201,7 +198,6 @@ export const toggleSaveQuestion = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while updating saved questions.",
-      error: `Toggle Save Question Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

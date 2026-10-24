@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Dashboard / View / Dashboard.jsx
 import "./Dashboard.css";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../../context/appContext";

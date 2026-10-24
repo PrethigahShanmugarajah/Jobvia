@@ -1,4 +1,3 @@
-// Jobvia / Server / utils / emailService.js
 import "dotenv/config";
 import { brevoApiKey, otpTtlMinutes, senderEmail } from "../config/env.js";
 

@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / JobCardInfoItem.jsx
-
 const JobCardInfoItem = ({ Icon, children }) => {
   return (
     <div className="flex items-center gap-1.5 text-slate-600">

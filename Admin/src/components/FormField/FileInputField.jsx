@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / components /  FormField / FileInputField.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Upload, X } from "lucide-react";
 

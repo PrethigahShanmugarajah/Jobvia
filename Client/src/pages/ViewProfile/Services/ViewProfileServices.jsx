@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / ViewProfile / Services / ViewProfileServices.jsx
 import { fetchUserProfile, fetchUserResume } from "../../../services/fetch";
 import { toast } from "react-toastify";
 import { updateUserProfile } from "../../../services/mutations";

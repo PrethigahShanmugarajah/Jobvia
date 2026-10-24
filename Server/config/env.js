@@ -1,4 +1,3 @@
-// Jobvia / Server / config / env.js
 export const port = process.env.PORT;
 
 export const mongodbUri = process.env.MONGODB_URI;

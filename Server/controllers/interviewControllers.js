@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / interviewControllers.js
 import InterviewRole from "../models/InterviewRole.js";
 import mongoose from "mongoose";
 import RoleQuestion from "../models/RoleQuestion.js";
@@ -35,7 +34,6 @@ export const getInterviewRoles = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving interview roles.",
-      error: `Get Interview Roles Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -86,7 +84,6 @@ export const getQuestionsByRole = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while retrieving questions for this interview role.",
-      error: `Get Questions By Role Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -191,7 +188,6 @@ export const addInterviewRole = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while creating the interview role.",
-      error: `Add Interview Role Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -331,7 +327,6 @@ export const updateInterviewRole = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while updating the interview role.",
-      error: `Update Interview Role Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -374,7 +369,6 @@ export const deleteInterviewRole = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while deleting the interview role.",
-      error: `Delete Interview Role Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -405,7 +399,6 @@ export const getInterviewCompanies = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while retrieving interview companies.",
-      error: `Get Interview Companies Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -454,7 +447,6 @@ export const getInterviewQuestionsByCompany = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while retrieving interview questions for the company.",
-      error: `Get Interview Questions By Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -567,7 +559,6 @@ export const addInterviewCompany = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while creating the interview company.",
-      error: `Add Interview Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -690,7 +681,6 @@ export const updateInterviewCompany = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while updating the interview company.",
-      error: `Update Interview Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -732,7 +722,6 @@ export const deleteInterviewCompany = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while deleting the interview company.",
-      error: `Delete Interview Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

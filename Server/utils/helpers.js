@@ -1,4 +1,3 @@
-// Jobvia / Server / utils / helpers.js
 import { uploadToCloudinary } from "./cloudinaryUpload.js";
 
 /* -------- Upload Files To Cloudinary -------- */

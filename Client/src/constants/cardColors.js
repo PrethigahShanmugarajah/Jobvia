@@ -1,5 +1,3 @@
-// Jobvia / Client / src / constants / cardColors.js
-
 export const cardColors = {
   blue: {
     front: "from-blue-500 via-blue-400 to-cyan-400",
@@ -18,7 +16,7 @@ export const cardColors = {
     back: "from-violet-600 to-violet-700",
     accent: "bg-violet-500",
   },
-  
+
   amber: {
     front: "from-amber-500 via-amber-400 to-orange-400",
     back: "from-amber-600 to-amber-700",

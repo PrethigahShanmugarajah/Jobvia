@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / jobControllers.js
 import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
 import Job from "../models/Job.js";
 import Application from "../models/Application.js";
@@ -347,7 +346,6 @@ export const createJob = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while creating the job.",
-      error: `Create Job Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -408,7 +406,6 @@ export const getDashboardStats = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while retrieving dashboard statistics.",
-      error: `Get Dashboard Stats Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -463,7 +460,6 @@ export const getJobsByAdmin = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving jobs.",
-      error: `Get Jobs By Admin Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -552,7 +548,6 @@ export const getJobs = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving jobs.",
-      error: `Get Jobs Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -580,7 +575,6 @@ export const getJob = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving the job.",
-      error: `Get Job Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -928,7 +922,6 @@ export const updateJob = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while updating the job.",
-      error: `Update Job Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -959,7 +952,6 @@ export const deleteJob = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while deleting the job.",
-      error: `Delete Job Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -989,7 +981,6 @@ export const closeJob = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while closing the job.",
-      error: `Close Job Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

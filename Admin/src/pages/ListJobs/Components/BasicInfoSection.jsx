@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / BasicInfoSection.jsx
 import SectionHeader from "./SectionHeader";
 import { Briefcase, Building2, Clock, Layers, Tag } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";

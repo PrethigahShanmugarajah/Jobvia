@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / CompanyQuestion / Components /  CompanyQuestionForm.jsx
 import { InputField } from "../../../components/FormField/InputField";
 import { Building2, CheckCircle, FileText, Upload, X } from "lucide-react";
 import { formatCountShort } from "../../../utils/companyQuestions";

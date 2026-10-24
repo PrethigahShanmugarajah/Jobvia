@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / JobDetails / Data / jobInfo.js
 import { Briefcase, MapPin, Users } from "lucide-react";
 import { getLocationColor } from "../../../constants/getLocationColor";
 import { getExperienceColor } from "../../../constants/getExperienceColor";

@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / utils / roleQuestion.js
-
 /* -------- Parse CSV Text -------- */
 export function parseCSV(text) {
   if (!text) {

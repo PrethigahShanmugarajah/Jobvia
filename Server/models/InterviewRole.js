@@ -1,4 +1,3 @@
-// Jobvia / Server / models / InterviewRole.js
 import mongoose from "mongoose";
 
 const interviewRoleSchema = new mongoose.Schema(

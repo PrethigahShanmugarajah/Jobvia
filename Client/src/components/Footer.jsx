@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / Footer.jsx
 import { useAppContext } from "../context/appContext";
 import { Logo, Prethigah } from "../assets/assets";
 import SocialIcon from "./SocialIcon";

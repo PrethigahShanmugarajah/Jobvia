@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / JobDetails / Components / JobDetailsHeader.jsx
 import "../Styles/JobDetails.css";
 import JobCompanyLogo from "../Components/JobCompanyLogo";
 import { Bookmark, Building } from "lucide-react";

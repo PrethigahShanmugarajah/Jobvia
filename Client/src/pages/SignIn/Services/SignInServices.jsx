@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / SignIn / Services / SignInServices.jsx;
 import {
   forgotPassword,
   loginUser,

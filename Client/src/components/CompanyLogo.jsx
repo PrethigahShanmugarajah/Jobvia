@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / CompanyLogo.jsx
 import { logoColors } from "../constants/logoColors";
 
 const CompanyLogo = ({ job, imgErrors, BASE_URL, handleImgError }) => {

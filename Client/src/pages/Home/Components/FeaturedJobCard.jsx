@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / FeaturedJobCard.jsx
 import "../Styles/Banner.css";
 import LottieLogo from "./LottieLogo";
 

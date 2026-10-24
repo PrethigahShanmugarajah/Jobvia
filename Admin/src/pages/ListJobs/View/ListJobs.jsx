@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/set-state-in-effect */
-// Jobvia / Admin / src / pages / ListJobs / View / ListJobs.jsx
 import "./ListJobs.css";
 import { useState, useEffect, useRef } from "react";
 import { useAppContext } from "../../../context/appContext";

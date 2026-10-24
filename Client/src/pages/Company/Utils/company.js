@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Company / Utils / company.js
-
 /* -------- Get Initial Company ID -------- */
 export const getInitialCompanyId = (location, params, companies) => {
   return (

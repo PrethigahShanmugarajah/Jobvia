@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / SignUp / View / SignUp.jsx
 import "../Styles/SignUp.css";
 import { useAppContext } from "../../../context/appContext";
 import { useState } from "react";

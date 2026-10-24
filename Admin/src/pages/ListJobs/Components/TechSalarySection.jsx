@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / TechSalarySection.jsx
 import { useAppContext } from "../../../context/appContext";
 import SectionHeader from "./SectionHeader";
 import { Code, Plus } from "lucide-react";

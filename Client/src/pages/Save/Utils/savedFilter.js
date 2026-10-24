@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / savedFilter.js
-
 /* -------- Filter saved questions -------- */
 export const filterSavedQuestions = (
   unifiedSaved,

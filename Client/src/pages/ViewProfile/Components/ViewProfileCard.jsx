@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / ViewProfile / Components / ViewProfileCard.jsx
 import "../Styles/ViewProfile.css";
 import { FileText, Mail, Phone, Trash2, User } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";

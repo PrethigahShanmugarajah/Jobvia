@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Applicants / Components / NoApplicants.jsx
 import { Users } from "lucide-react";
 
 const NoApplicants = () => {

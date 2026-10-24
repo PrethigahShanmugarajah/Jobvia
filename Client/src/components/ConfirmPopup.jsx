@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / ConfirmPopup.jsx
 import { X } from "lucide-react";
 import { ThreeDots } from "react-loader-spinner";
 

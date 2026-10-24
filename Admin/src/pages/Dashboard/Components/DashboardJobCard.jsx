@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Dashboard / Components / DashboardJobCard.jsx
 import { Building, MapPin, Users } from "lucide-react";
 
 const DashboardJobCard = ({

@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / companyNames.js
-
 /* -------- Get company names from saved questions -------- */
 export const getCompanyNames = (companies = []) =>
   companies

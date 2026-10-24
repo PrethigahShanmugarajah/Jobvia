@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / constants / badgeStyles.js
-
 export const getBadgeClasses = (variant, baseClass) => {
   const variants = {
     default: "bg-slate-100 text-slate-700",

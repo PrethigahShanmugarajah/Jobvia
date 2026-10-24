@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / main.jsx
 import "./index.css";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";

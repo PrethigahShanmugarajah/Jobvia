@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Role / View / Role.jsx
 import "../Styles/Role.css";
 import { useAppContext } from "../../../context/appContext";
 import { useEffect, useState } from "react";

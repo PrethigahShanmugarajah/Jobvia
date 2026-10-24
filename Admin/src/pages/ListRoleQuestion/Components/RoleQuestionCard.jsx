@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListRoleQuestion / Components / RoleQuestionCard.jsx
 import { Image as ImageIcon, Edit2, Trash2, FileText } from "lucide-react";
 
 const RoleQuestionCard = ({ role, handleEditStart, handleDeleteClick }) => {

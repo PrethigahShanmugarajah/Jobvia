@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Applicants / View / Applicants.jsx
 import "./Applicants.css";
 import { useAppContext } from "../../../context/appContext";
 import { useEffect, useState } from "react";

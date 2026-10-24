@@ -1,5 +1,3 @@
-// Jobvia / Client / src / constants / logoColors.js
-
 /* -------- Logo Colors -------- */
 export const logoColors = [
   "bg-linear-to-br from-blue-500 to-indigo-600",

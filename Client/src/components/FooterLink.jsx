@@ -1,5 +1,3 @@
-// Jobvia / Client / src / components / FooterLink.jsx
-
 const FooterLink = ({ href, children, icon }) => {
   return (
     <li>
@@ -10,7 +8,7 @@ const FooterLink = ({ href, children, icon }) => {
         <span className="text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
           {icon}
         </span>
-        
+
         <span className="group-hover:translate-x-1 transition-transform">
           {children}
         </span>

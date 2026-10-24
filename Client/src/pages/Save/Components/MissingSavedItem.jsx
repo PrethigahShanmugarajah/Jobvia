@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Save / Components / MissingSavedItem.jsx
 import "../Styles/Save.css";
 import { Bookmark } from "lucide-react";
 

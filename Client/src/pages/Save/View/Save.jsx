@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Save / View / Save.jsx
 import "../Styles/Save.css";
 import { useAppContext } from "../../../context/appContext";
 import { useCallback, useEffect, useMemo, useState } from "react";

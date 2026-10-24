@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / JobCardInfoList.jsx
-
 const JobCardInfoList = ({ title, Icon, items }) => {
   return (
     <div>

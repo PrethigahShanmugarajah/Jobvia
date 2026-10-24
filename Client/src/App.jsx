@@ -1,4 +1,3 @@
-// Jobvia / Client / src / App.jsx
 import { useAppContext } from "./context/appContext";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { SquareArrowUp } from "lucide-react";

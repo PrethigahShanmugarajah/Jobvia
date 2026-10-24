@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Applicants / Services / ApplicantsServices.jsx
 import { fetchApplicants, getResumeUrl } from "../../../services/fetch";
 
 /* -------- Load Applicants -------- */

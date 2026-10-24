@@ -1,4 +1,3 @@
-// Jobvia / Server / routes / jobRouters.js
 import express from "express";
 import { authMiddleware, authorize } from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/uploadMiddleware.js";

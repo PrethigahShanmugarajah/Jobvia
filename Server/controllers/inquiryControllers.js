@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / inquiryControllers.js
 import Inquiry from "../models/Inquiry.js";
 import { sendAdminInquiryEmail } from "../utils/emailService.js";
 
@@ -64,7 +63,6 @@ export const submitInquiry = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while submitting your inquiry.",
-      error: `Submit Inquiry Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

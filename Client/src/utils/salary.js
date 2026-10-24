@@ -1,5 +1,3 @@
-// Jobvia / Client / src / utils / salary.js
-
 /* -------- Format salary -------- */
 export const formatSalary = (salary, salaryType, CURRENCY) => {
   if (salary === undefined || salary === null) {

@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / FindJob / Components / ActiveFilters.jsx
 import "../Styles/FindJob.css";
 import { normalizeJobTypeForDisplay } from "../../../utils/jobFormatters";
 import { X } from "lucide-react";

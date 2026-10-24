@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / companyControllers.js
 import Company from "../models/Company.js";
 import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
 
@@ -27,7 +26,6 @@ export const getCompanies = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while retrieving companies.",
-      error: `Get Companies Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -82,7 +80,6 @@ export const addCompany = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while creating the company.",
-      error: `Add Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -114,7 +111,6 @@ export const deleteCompany = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while deleting the company.",
-      error: `Delete Company Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

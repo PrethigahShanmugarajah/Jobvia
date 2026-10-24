@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Services / InterviewQuestionServices.jsx
 import { useEffect, useState } from "react";
 import {
   fetchInterviewCompanies,

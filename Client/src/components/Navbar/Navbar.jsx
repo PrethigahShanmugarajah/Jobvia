@@ -1,4 +1,3 @@
-// Jobvia / Client / src / components / Navbar / Navbar.jsx
 import "./Navbar.css";
 import {
   Bookmark,

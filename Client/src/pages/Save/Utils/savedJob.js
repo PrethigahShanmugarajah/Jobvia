@@ -1,5 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / savedJob.js
-
 /* -------- Transform saved jobs -------- */
 export const getSavedJobItems = (jobs, BASE_URL) =>
   jobs.map((job) => ({

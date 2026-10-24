@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / CompanyCard.jsx
 import "../Styles/InterviewQuestion.css";
 import { useState } from "react";
 import { getColorClass } from "../Constants/interviewQuestion";

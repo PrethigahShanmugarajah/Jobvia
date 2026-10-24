@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Home / Components / InterviewQuestion.jsx
 import "../Styles/InterviewQuestion.css";
 import { useInterviewQuestionService } from "../Services/InterviewQuestionServices";
 import { ThreeCircles } from "react-loader-spinner";

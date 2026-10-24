@@ -1,4 +1,3 @@
-// Jobvia / Client / src / utils / date.js
 
 /* -------- Format job posting date -------- */
 export const formatRelativeDate = (dateString) => {

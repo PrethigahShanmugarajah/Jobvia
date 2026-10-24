@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / Applicants / Components / ApplicantCard.jsx
 import { Briefcase, Calendar, Mail } from "lucide-react";
 import { formatDate } from "../../../utils/date";
 

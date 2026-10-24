@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / FindJob / Services / FindJobServices.jsx
 import { toast } from "react-toastify";
 import { applyForJob, toggleSaveJob } from "../../../services/mutations";
 import {

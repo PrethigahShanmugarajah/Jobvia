@@ -1,4 +1,3 @@
-// Jobvia / Server / controllers / authControllers.js
 import User from "../models/User.js";
 import { validatePassword } from "../utils/passwordValidator.js";
 import bcrypt from "bcrypt";
@@ -94,7 +93,6 @@ export const register = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while registering the user.",
-      error: `Register Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -150,7 +148,6 @@ export const verifyEmail = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while verifying the email.",
-      error: `Verify Email Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -219,7 +216,6 @@ export const login = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while logging in.",
-      error: `Login Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -276,7 +272,6 @@ export const forgotPassword = async (req, res) => {
       success: false,
       message:
         "An unexpected error occurred while processing the password reset request.",
-      error: `Forgot Password Error: ${error?.stack || error?.message || error}`,
     });
   }
 };
@@ -349,7 +344,6 @@ export const resetPassword = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "An unexpected error occurred while resetting the password.",
-      error: `Reset Password Error: ${error?.stack || error?.message || error}`,
     });
   }
 };

@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / ListJobs Components / EducationInfoSection.jsx
 import SectionHeader from "./SectionHeader";
 import { Calendar, GraduationCap, Users } from "lucide-react";
 import ArrayField from "./ArrayField";

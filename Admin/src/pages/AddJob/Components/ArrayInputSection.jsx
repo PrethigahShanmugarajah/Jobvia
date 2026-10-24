@@ -1,4 +1,3 @@
-// Jobvia / Admin / src / pages / AddJob / Components / ArrayInputSection.jsx
 import { ListChecks, Plus, Trash2 } from "lucide-react";
 import { InputField } from "../../../components/FormField/InputField";
 import {

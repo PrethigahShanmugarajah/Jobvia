@@ -1,5 +1,3 @@
-// Jobvia / Admin / src / components / PageHeader.jsx
-
 const PageHeader = ({ title, description, Icon }) => {
   return (
     <header className="text-center mb-6 sm:mb-8">

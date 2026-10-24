@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / Save / Utils / appliedJobs.js
 import { persistAppliedJobs } from "./storage";
 
 /* -------- Track applied jobs -------- */

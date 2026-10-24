@@ -1,4 +1,3 @@
-// Jobvia / Server / routes / inquiryRouters.js
 import express from "express";
 import { submitInquiry } from "../controllers/inquiryControllers.js";
 

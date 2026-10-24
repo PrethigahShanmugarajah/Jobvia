@@ -1,4 +1,3 @@
-// Jobvia / Server / models / Inquiry.js
 import mongoose from "mongoose";
 
 const inquirySchema = new mongoose.Schema(

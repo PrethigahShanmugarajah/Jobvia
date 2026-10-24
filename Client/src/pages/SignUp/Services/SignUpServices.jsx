@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / SignUp / Services / SignUpServices.jsx
 import { registerUser, verifyEmail } from "../../../services/mutations";
 
 /* -------- Handle signup -------- */

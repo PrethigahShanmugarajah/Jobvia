@@ -1,4 +1,3 @@
-// Jobvia / Client / src / pages / SignIn / Components / ResetPasswordForm.jsx;
 import "../Styles/SignIn.css";
 import { InputField } from "../../../components/FormField/InputField";
 import { Eye, EyeOff, Lock } from "lucide-react";
