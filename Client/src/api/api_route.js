@@ -40,6 +40,10 @@ const API_ROUTES = {
   JOB: {
     BASE: "job",
   },
+
+  INQUIRY: {
+    BASE: "inquiry",
+  },
 };
 
 export default API_ROUTES;
