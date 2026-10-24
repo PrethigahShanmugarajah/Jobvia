@@ -51,7 +51,8 @@ export const submitInquiry = async (req, res) => {
 
     return res.status(201).json({
       success: true,
-      message: "Your inquiry has been submitted successfully.",
+      message:
+        "Your inquiry has been submitted successfully. We'll get back to you shortly.",
       inquiry,
     });
   } catch (error) {
